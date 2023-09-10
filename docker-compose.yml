@@ -69,4 +69,4 @@ services:
 
 #    TODO название вольюмов
 volumes:
-  symfony-template:
+  city-service:
