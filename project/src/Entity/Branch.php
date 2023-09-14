@@ -19,11 +19,14 @@ class Branch
     private ?string $city = null;
 
 	#[Gedmo\Slug(fields: ['city'])]
-    #[ORM\Column(length: 255)]
-    private ?string $slug = null;
+             #[ORM\Column(length: 255)]
+             private ?string $slug = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $address = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $link = null;
 
     public function getId(): ?int
     {
@@ -62,6 +65,18 @@ class Branch
     public function setAddress(string $address): static
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(string $link): static
+    {
+        $this->link = $link;
 
         return $this;
     }

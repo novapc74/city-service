@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Branch;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
@@ -40,6 +41,11 @@ class BranchCrudController extends AbstractCrudController
 			,
 			FormField::addRow(),
 			TextareaField::new('address', 'Адрес')
+				->setTextAlign('center')
+				->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+			,
+			FormField::addRow(),
+			UrlField::new('link', 'Ссылка')
 				->setTextAlign('center')
 				->setColumns('col-sm-6 col-lg-5 col-xxl-3')
 			,
