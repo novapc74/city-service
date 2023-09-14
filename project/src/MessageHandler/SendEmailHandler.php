@@ -17,7 +17,4 @@ class SendEmailHandler
 	{
 		$this->mailerService->resolveMailer($sendEmail->getFeedback());
 	}
-
-	// use Symfony\Component\Messenger\MessageBusInterface;
-	// $bus->dispatch(new SendEmail($feedback));
 }

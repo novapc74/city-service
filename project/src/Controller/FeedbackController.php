@@ -20,7 +20,7 @@ class FeedbackController extends AbstractController
 	                      MessageBusInterface $bus): Response
 	{
 		if (!$request->isXmlHttpRequest()) {
-			return $this->redirectToRoute('app_home_page');
+			return $this->redirect('/');
 		}
 
 		$identifier = $request->query->get('identifier', 'none');
