@@ -4,9 +4,11 @@ namespace App\Controller\Admin;
 
 use App\Entity\Gallery;
 use App\Entity\User;
+use App\Entity\Feedback;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Menu\SectionMenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Doctrine\Persistence\ManagerRegistry;
@@ -16,45 +18,48 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DashboardController extends AbstractDashboardController
 {
-    public function __construct(private readonly ManagerRegistry   $managerRegistry,
-                                private readonly AdminUrlGenerator $adminUrlGenerator)
-    {
-    }
+	public function __construct(private readonly ManagerRegistry   $managerRegistry,
+	                            private readonly AdminUrlGenerator $adminUrlGenerator)
+	{
+	}
 
-    #[Route('/', name: 'default')]
-    public function index(): RedirectResponse
-    {
-        return $this->redirectToRoute('admin');
-    }
+	#[Route('/', name: 'default')]
+	public function index(): RedirectResponse
+	{
+		return $this->redirectToRoute('admin');
+	}
 
 
-    #[Route('/admin', name: 'admin')]
-    public function admin(): Response
-    {
-        return $this->render('@EasyAdmin/page/content.html.twig');
-    }
+	#[Route('/admin', name: 'admin')]
+	public function admin(): Response
+	{
+		return $this->render('@EasyAdmin/page/content.html.twig');
+	}
 
-    public function configureDashboard(): Dashboard
-    {
-        return Dashboard::new()
-            ->setTitle('<span style="color: red">City Service</span>');
-    }
+	public function configureDashboard(): Dashboard
+	{
+		return Dashboard::new()
+			->setTitle('<span style="color: red">City Service</span>');
+	}
 
-    public function configureCrud(): Crud
-    {
-        return parent::configureCrud()
-            ->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig');
-    }
+	public function configureCrud(): Crud
+	{
+		return parent::configureCrud()
+			->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig');
+	}
 
-    public function configureMenuItems(): iterable
-    {
-        yield MenuItem::linkToCrud('Пользователи', 'fa-solid fa-user', User::class);
+	public function configureMenuItems(): iterable
+	{
+		yield MenuItem::linkToCrud('Пользователи', 'fa-solid fa-user', User::class);
+
+		yield MenuItem::section();
+		yield MenuItem::linkToCrud('Обратная связь', 'fa-solid fa-comment', Feedback::class);
 
 //        yield MenuItem::section('Секции на страницах', 'fa-sharp fa-solid fa-puzzle-piece');
 //        foreach (self::getSectionMenu() as [$label, $icon, $url]) {
 //            yield MenuItem::linkToUrl($label, $icon, $url);
 //        }
-    }
+	}
 
 //    private function getSectionMenu(): array
 //    {
