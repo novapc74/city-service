@@ -12,20 +12,20 @@ class BranchFixtures extends BaseFixture implements FixtureGroupInterface
 	private const BRANCH_DATA = [
 		[
 			'city' => 'Москва',
-			'address' => 'Москва',
+			'address' => 'Москва, ул. Ботаническая, дом 41 корпус 7',
 		],
 		[
 			'city' => 'Петрозаводстк',
-			'address' => 'Петрозаводстк',
+			'address' => 'Москва, ул. Ботаническая, дом 41 корпус 7',
 		],		[
 			'city' => 'Великий Новгород',
-			'address' => 'Великий Новгород',
+			'address' => 'Москва, ул. Ботаническая, дом 41 корпус 7',
 		],		[
 			'city' => 'Псков',
-			'address' => 'Псков',
+			'address' => 'Москва, ул. Ботаническая, дом 41 корпус 7',
 		],		[
 			'city' => 'Мурманск',
-			'address' => 'Мурманск',
+			'address' => 'Москва, ул. Ботаническая, дом 41 корпус 7',
 		],
 	];
 	public function loadData(ObjectManager $manager): void
