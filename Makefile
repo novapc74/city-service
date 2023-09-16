@@ -56,7 +56,7 @@ yarn-remove:
 	cd project && docker-compose run --rm node-cli yarn remove ${PACK}
 
 server-update:
-	cd project && yarn build && composer install
+	cd project && yarn build && composer install && php bin/console d:m:m --no-interaction && php bin/console c:c
 
 # TODO: указать путь до версии PHP на сервере
 PROD_PHP = "/opt/php81/bin/php"
