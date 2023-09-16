@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Branch;
 use App\Entity\Gallery;
+use App\Entity\Review;
 use App\Entity\User;
 use App\Entity\Contact;
 use App\Entity\Feedback;
@@ -55,6 +56,7 @@ class DashboardController extends AbstractDashboardController
 		yield MenuItem::linkToCrud('Контакты', 'fa-regular fa-address-card', Contact::class);
 		yield MenuItem::linkToCrud('Соц.сети', 'fa-brands fa-twitter', SocialNetwork::class);
 		yield MenuItem::linkToCrud('Филиалы', 'fa-regular fa-address-card', Branch::class);
+        yield MenuItem::linkToCrud('Отзывы', 'fa-solid fa-file-pdf', Review::class);
 
 
 //        yield MenuItem::section('Секции на страницах', 'fa-sharp fa-solid fa-puzzle-piece');

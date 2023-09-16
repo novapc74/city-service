@@ -13,6 +13,13 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class MediaType extends AbstractType
 {
+    private const VALID_EXTENSION = [
+        'image/jpg',
+        'image/jpeg',
+        'image/png',
+        'video/mp4',
+        'application/pdf',
+    ];
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -42,8 +49,8 @@ class MediaType extends AbstractType
             return;
         }
 
-        if (!in_array($file->getMimeType(), ['image/jpg', 'image/jpeg', 'image/png', 'video/mp4'])) {
-            $context->buildViolation(sprintf('%s -- не допустимое расширение, допустимые: jpg, jpeg, png, mp4', $file->getMimeType()))
+        if (!in_array($file->getMimeType(), self::VALID_EXTENSION)) {
+            $context->buildViolation(sprintf('%s -- не допустимое расширение, допустимые: jpg, jpeg, png, mp4, pdf', $file->getMimeType()))
                 ->atPath('imageFile')
                 ->addViolation();
         }
