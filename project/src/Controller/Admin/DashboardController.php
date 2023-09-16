@@ -26,13 +26,6 @@ class DashboardController extends AbstractDashboardController
 	{
 	}
 
-	#[Route('/', name: 'default')]
-	public function index(): RedirectResponse
-	{
-		return $this->redirectToRoute('admin');
-	}
-
-
 	#[Route('/admin', name: 'admin')]
 	public function admin(): Response
 	{

@@ -23,7 +23,7 @@ class FeedbackController extends AbstractController
 			return $this->redirect('/');
 		}
 
-		$identifier = $request->query->get('identifier', 'none');
+		$identifier = $request->query->get('identifier', 'single');
 
 		$feedBack = new Feedback();
 
