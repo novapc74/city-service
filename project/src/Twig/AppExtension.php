@@ -5,6 +5,7 @@ namespace App\Twig;
 use App\Entity\Contact;
 use App\Repository\ContactRepository;
 use App\Repository\SocialNetworkRepository;
+use Symfony\Component\Routing\Generator\UrlGenerator;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 use Twig\TwigFilter;
@@ -21,6 +22,7 @@ class AppExtension extends AbstractExtension
         return [
             new TwigFunction('contact', [$this, 'getContact']),
             new TwigFunction('socialNetworks', [$this, 'getSocialNetworks']),
+            new TwigFunction('menuLinks', [$this, 'getMenuLinks']),
         ];
     }
 
@@ -32,5 +34,27 @@ class AppExtension extends AbstractExtension
     public function getSocialNetworks(): array
     {
         return $this->socialNetworkRepository->findAll();
+    }
+
+    public function getMenuLinks(): array
+    {
+        return [
+            [
+                'name' => 'главная',
+                'link' => 'app_home',
+            ],
+            [
+                'name' => 'контакты',
+                'link' => 'app_contact',
+            ],
+            [
+                'name' => 'о нас',
+                'link' => 'app_about',
+            ],
+            [
+                'name' => 'политика',
+                'link' => 'app_policy',
+            ],
+        ];
     }
 }
