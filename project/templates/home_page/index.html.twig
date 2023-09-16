@@ -1,5 +1,6 @@
 {# @var socialNetwork \App\Entity\SocialNetwork #}
 {# @var contact \App\Entity\Contact #}
+{# @var branch \App\Entity\Branch #}
 
 {% extends 'base.html.twig' %}
 
@@ -38,6 +39,14 @@
             </ul>
         </section>
 
+        <section>
+            <h2 style="color: #7c2d12">Филиалы</h2>
+            <ul>
+                {% for branch in branches %}
+                    <li>{{ branch.city }} - <a href="{{ branch.link }}">{{ branch.address }}</a></li>
+                {% endfor %}
+            </ul>
+        </section>
 
     </div>
 {% endblock %}
