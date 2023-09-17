@@ -1,7 +1,7 @@
 {% if  attribute(entity.instance, field.property) is defined and entity.instance.file is not null%}
     {% if entity.instance.file.mimeType == 'application/pdf' %}
         <a href="{{ vich_uploader_asset(entity.instance.file, 'imageFile') }}">PDF</a>
-    {% else  %}
+    {% elseif entity.instance.file.mimeType is not null %}
         <img src="{{ vich_uploader_asset(entity.instance.file, 'imageFile') | imagine_filter_cache('admin_thumbnail') }}"
              alt="{{ entity.instance.file.mimeType }}">
     {% endif %}
