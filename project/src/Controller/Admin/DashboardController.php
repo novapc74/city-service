@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Advantage;
 use App\Entity\Branch;
+use App\Entity\Certificate;
 use App\Entity\Gallery;
 use App\Entity\Review;
 use App\Entity\User;
@@ -61,7 +62,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section();
         yield MenuItem::linkToCrud('Отзывы', 'fa-solid fa-file-pdf', Review::class);
         yield MenuItem::linkToCrud('Преимущества', 'fa-solid fa-jet-fighter', Advantage::class);
-
+        yield MenuItem::linkToCrud('Сертификаты', 'fa-solid fa-certificate', Certificate::class);
 
 //        yield MenuItem::section('Секции на страницах', 'fa-sharp fa-solid fa-puzzle-piece');
 //        foreach (self::getSectionMenu() as [$label, $icon, $url]) {

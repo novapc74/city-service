@@ -3,12 +3,15 @@
 {# @var branch \App\Entity\Branch #}
 {# @var review \App\Entity\Review #}
 {# @var advantage \App\Entity\Advantage #}
+{# @var certificate \App\Entity\Certificate #}
+
 
 {% extends 'base.html.twig' %}
 
 {% block title %}Домашняя страница{% endblock %}
 
 {% block body %}
+
     <div class="example-wrapper">
         <h1>Домашняя страница</h1>
 
@@ -84,6 +87,22 @@
                     <li>{{ advantage.description }}</li>
                 </ul>
             {% endfor %}
+        </section>
+
+        <section>
+            <h2 style="color: #7c2d12">Сертификаты и Лицензии</h2>
+            {% for certificate in certificates %}
+                <ul>
+                    <li>{{ certificate.title }}</li>
+                    <li>{{ certificate.description }}</li>
+                    {% if  certificate.file is not null %}
+                        <li><a href="{{ vich_uploader_asset(certificate.file, 'imageFile') }}">Смотреть оригинал</a></li>
+                    {% else %}
+                        <li style="color: #7c2d12">Файлов нет</li>
+                    {% endif %}
+                </ul>
+            {% endfor %}
+            certificates
         </section>
 
     </div>

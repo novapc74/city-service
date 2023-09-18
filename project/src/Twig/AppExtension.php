@@ -12,6 +12,14 @@ use Twig\TwigFilter;
 
 class AppExtension extends AbstractExtension
 {
+    private const VALID_EXTENSION = [
+        'image/jpg',
+        'image/jpeg',
+        'image/png',
+        'video/mp4',
+        'application/pdf',
+    ];
+
     public function __construct(private readonly ContactRepository       $contactRepository,
                                 private readonly SocialNetworkRepository $socialNetworkRepository)
     {
@@ -24,6 +32,23 @@ class AppExtension extends AbstractExtension
             new TwigFunction('socialNetworks', [$this, 'getSocialNetworks']),
             new TwigFunction('menuLinks', [$this, 'getMenuLinks']),
         ];
+    }
+
+    public function getFilters(): array
+    {
+        return [
+            new TwigFilter('mimeTypeName', [$this, 'getMimeTypeName']),
+        ];
+    }
+    public function getMimeTypeName($mimeType = null): string
+    {
+        if(in_array($mimeType, self::VALID_EXTENSION)) {
+            $mimeType = explode('/', $mimeType);
+
+            return strtoupper(end($mimeType));
+        }
+
+        return 'FILE';
     }
 
     public function getContact(): ?Contact
