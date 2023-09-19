@@ -52,7 +52,7 @@ class FeedbackFormType extends AbstractType
 	public function configureOptions(OptionsResolver $resolver): void
 	{
 		$resolver->setDefaults([
-			'data_class' => Feedback::class,
+			'inherit_data' => true,
 		]);
 	}
 }

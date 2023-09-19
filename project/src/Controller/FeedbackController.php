@@ -4,7 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Feedback;
 use App\Message\SendEmail;
-use App\Form\FeedbackFormType;
+use App\Form\PopupFeedbackFormType;
+use App\Form\FooterFeedbackFormType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,23 +15,31 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 class FeedbackController extends AbstractController
 {
-	#[Route('/feedback', name: 'app_feedback', methods: ['GET', 'POST'])]
-	public function index(Request             $request,
-	                      ManagerRegistry     $managerRegistry,
-	                      MessageBusInterface $bus): Response
+	#[Route('/feedback/popup', name: 'app_feedback_footer', methods: ['GET', 'POST'])]
+	public function resolveFooterForm(Request             $request,
+	                                  ManagerRegistry     $managerRegistry,
+	                                  MessageBusInterface $bus): Response
+	{
+		return $this->resolveForm($request, $managerRegistry, $bus, PopupFeedbackFormType::class);
+	}
+
+	#[Route('/feedback/footer', name: 'app_feedback_popup', methods: ['GET', 'POST'])]
+	public function resolvePopupForm(Request             $request,
+	                                 ManagerRegistry     $managerRegistry,
+	                                 MessageBusInterface $bus): Response
+	{
+		return $this->resolveForm($request, $managerRegistry, $bus, FooterFeedbackFormType::class);
+	}
+
+	private function resolveForm($request, $managerRegistry, $bus, $formType): Response
 	{
 		if (!$request->isXmlHttpRequest()) {
 			return $this->redirect('/');
 		}
 
-		$identifier = $request->query->get('identifier', 'single');
-
 		$feedBack = new Feedback();
 
-		$form = $this->createFormBuilder($feedBack)
-			->create($identifier, FeedbackFormType::class)
-			->getForm();
-
+		$form = $this->createForm($formType, $feedBack);
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
