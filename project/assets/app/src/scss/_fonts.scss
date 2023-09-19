@@ -1,0 +1,6 @@
+@import "mixins/font-face";
+
+@include font-face("Inter-City", "Inter-300", 300, normal);
+@include font-face("Inter-City", "Inter-300-italic", 300, italic);
+@include font-face("Inter-City", "Inter-400", 400, normal);
+@include font-face("Geologica-City", "Geologica-300", 300, normal);
