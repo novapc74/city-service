@@ -7,7 +7,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class UserCrudController extends AbstractCrudController
 {
@@ -23,7 +22,6 @@ class UserCrudController extends AbstractCrudController
                 ->setTextAlign('center')
             ,
             TextField::new('password', 'Hash пароля')
-//                ->setFormType(CKEditorType::class)
                 ->setTextAlign('center')
                 ->onlyOnForms()
             ,

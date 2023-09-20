@@ -33,9 +33,9 @@ class FeedbackController extends AbstractController
 
 	private function resolveForm($request, $managerRegistry, $bus, $formType): Response
 	{
-		if (!$request->isXmlHttpRequest()) {
-			return $this->redirect('/');
-		}
+//		if (!$request->isXmlHttpRequest()) {
+//			return $this->redirect('/');
+//		}
 
 		$feedBack = new Feedback();
 
