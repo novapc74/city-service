@@ -10,6 +10,7 @@ use App\Form\Admin\ServiceBlockFormType;
 use Psr\Container\NotFoundExceptionInterface;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Psr\Container\ContainerExceptionInterface;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use Symfony\Component\Validator\Constraints\Count;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto;
@@ -28,6 +29,15 @@ class ServiceCrudController extends AbstractCrudController
 	public static function getEntityFqcn(): string
 	{
 		return Service::class;
+	}
+
+	public function configureCrud(Crud $crud): Crud
+	{
+		return $crud
+			->setEntityLabelInSingular('Услугу')
+			->setPageTitle('edit', 'Редактировать услугу')
+			->setPageTitle('new', 'Создать услугу')
+			->setEntityLabelInPlural('Услуги');
 	}
 
 	public function configureFields(string $pageName): iterable
