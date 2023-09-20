@@ -21,14 +21,17 @@ class Gallery
     #[ORM\Column(nullable: true)]
     private ?int $sort = 0;
 
+    #[ORM\ManyToOne(cascade: ['persist'], inversedBy: 'gallery')]
+    private ?Service $service = null;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function __toString(): string
+    public function __toString()
     {
-        return $this->type ?? $this->id;
+        return $this->type ?? 'no type';
     }
 
     public function getImage(): ?Media
@@ -51,6 +54,18 @@ class Gallery
     public function setSort(?int $sort): static
     {
         $this->sort = $sort;
+
+        return $this;
+    }
+
+    public function getService(): ?Service
+    {
+        return $this->service;
+    }
+
+    public function setService(?Service $service): static
+    {
+        $this->service = $service;
 
         return $this;
     }
