@@ -52,12 +52,12 @@ class WorkCategoryCrudController extends AbstractCrudController
 				->setTextAlign('center')
 				->setColumns('col-sm-6 col-lg-5 col-xxl-3')
 			,
-			FormField::addRow(),
-			TextEditorField::new('description', 'Описание')
-				->setFormType(CKEditorType::class)
-				->setTextAlign('center')
-				->setColumns('col-sm-6 col-lg-5 col-xxl-3')
-			,
+//			FormField::addRow(),
+//			TextEditorField::new('description', 'Описание')
+//				->setFormType(CKEditorType::class)
+//				->setTextAlign('center')
+//				->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+//			,
 			FormField::addTab('Галерея'),
 			TextField::new('image', 'Файлы')
 				->onlyOnIndex()
