@@ -24,6 +24,9 @@ class Gallery
     #[ORM\ManyToOne(cascade: ['persist'], inversedBy: 'gallery')]
     private ?Service $service = null;
 
+    #[ORM\ManyToOne(targetEntity: WorkCategory::class, cascade: ['persist'], inversedBy: 'gallery')]
+    private ?WorkCategory $workCategory = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -66,6 +69,18 @@ class Gallery
     public function setService(?Service $service): static
     {
         $this->service = $service;
+
+        return $this;
+    }
+
+    public function getWorkCategory(): ?WorkCategory
+    {
+        return $this->workCategory;
+    }
+
+    public function setWorkCategory(?WorkCategory $workCategory): static
+    {
+        $this->workCategory = $workCategory;
 
         return $this;
     }

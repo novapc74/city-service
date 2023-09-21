@@ -11,6 +11,7 @@ use App\Entity\Review;
 use App\Entity\User;
 use App\Entity\Contact;
 use App\Entity\Feedback;
+use App\Entity\WorkCategory;
 use App\Entity\SocialNetwork;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -67,6 +68,7 @@ class DashboardController extends AbstractDashboardController
 
 		yield MenuItem::section();
 		yield MenuItem::linkToCrud('Услуги', 'fa-solid fa-bell-concierge', Service::class);
+		yield MenuItem::linkToCrud('Категории работ', 'fa-solid fa-briefcase', WorkCategory::class);
 
 
 //        yield MenuItem::section('Секции на страницах', 'fa-sharp fa-solid fa-puzzle-piece');

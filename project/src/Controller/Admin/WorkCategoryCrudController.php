@@ -2,21 +2,19 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Service;
+use App\Entity\WorkCategory;
 use Doctrine\ORM\QueryBuilder;
 use App\Form\Admin\GalleryType;
-use App\Form\Admin\AboutServiceFormType;
-use App\Form\Admin\ServiceBlockFormType;
+use App\Form\CompletedWorkType;
 use Psr\Container\NotFoundExceptionInterface;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Psr\Container\ContainerExceptionInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use Symfony\Component\Validator\Constraints\Count;
-use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto;
+use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
+use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Orm\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
@@ -24,20 +22,20 @@ use EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection;
 use EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
-class ServiceCrudController extends AbstractCrudController
+class WorkCategoryCrudController extends AbstractCrudController
 {
 	public static function getEntityFqcn(): string
 	{
-		return Service::class;
+		return WorkCategory::class;
 	}
 
 	public function configureCrud(Crud $crud): Crud
 	{
 		return $crud
-			->setEntityLabelInSingular('Услугу')
-			->setPageTitle('edit', 'Редактировать услугу')
-			->setPageTitle('new', 'Создать услугу')
-			->setEntityLabelInPlural('Услуги');
+			->setEntityLabelInSingular('Категорию работ')
+			->setPageTitle('edit', 'Редактировать категорию')
+			->setPageTitle('new', 'Создать категорию')
+			->setEntityLabelInPlural('Категории работ');
 	}
 
 	public function configureFields(string $pageName): iterable
@@ -65,7 +63,7 @@ class ServiceCrudController extends AbstractCrudController
 				->onlyOnIndex()
 				->setTemplatePath('admin/crud/assoc_gallery.html.twig')
 			,
-			CollectionField::new('gallery', 'Картинки')
+			CollectionField::new('gallery', false)
 				->setTextAlign('center')
 				->setColumns('col-sm-6 col-lg-5 col-xxl-3')
 				->setEntryType(GalleryType::class)
@@ -76,28 +74,16 @@ class ServiceCrudController extends AbstractCrudController
 				->renderExpanded()
 				->onlyOnForms()
 			,
-			FormField::addTab('Экспертизы'),
-			CollectionField::new('expertise', 'Экспертизы')
-				->setTextAlign('center')
-				->setColumns('col-sm-6 col-lg-5 col-xxl-3')
-			,
-			FormField::addTab('О нас'),
-			CollectionField::new('about', false)
-				->setEntryType(AboutServiceFormType::class)
-				->setTextAlign('center')
+			FormField::addTab('Выполненные работы'),
+			CollectionField::new('completedWorks', false)
+				->setEntryType(CompletedWorkType::class)
 				->setFormTypeOptions([
-					'constraints' => [
-						new Count([
-							'min' => 1,
-							'max' => 1,
-						])
-					]
+					'by_reference' => false,
+					'error_bubbling' => false,
 				])
-			,
-			FormField::addTab('Сервисы'),
-			CollectionField::new('services', false)
-				->setEntryType(ServiceBlockFormType::class)
 				->setTextAlign('center')
+				->renderExpanded()
+				->onlyOnForms()
 			,
 		];
 	}
@@ -111,7 +97,6 @@ class ServiceCrudController extends AbstractCrudController
 		$repository = $this->container->get(EntityRepository::class);
 
 		return $repository->createQueryBuilder($searchDto, $entityDto, $fields, $filters)
-			->andWhere('entity.aboutService is null')
-			->andWhere('entity.parentService is null');
+			->andWhere('entity.category is null');
 	}
 }

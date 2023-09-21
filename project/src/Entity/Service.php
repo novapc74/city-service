@@ -30,17 +30,17 @@ class Service
     #[ORM\OneToMany(mappedBy: 'service', targetEntity: Gallery::class, cascade: ['persist', 'remove'])]
     private Collection $gallery;
 
+	#[ORM\ManyToOne(targetEntity: self::class, cascade: ['persist'], inversedBy: 'about')]
+	private ?self $aboutService = null;
+
+	#[ORM\OneToMany(mappedBy: 'aboutService', targetEntity: self::class, cascade: ['persist', 'remove'])]
+	private Collection $about;
+
     #[ORM\Column(type: Types::ARRAY)]
     private array $expertise = [];
 
     #[ORM\Column]
     private ?bool $isActive = false;
-
-    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'about')]
-    private ?self $aboutService = null;
-
-    #[ORM\OneToMany(mappedBy: 'aboutService', targetEntity: self::class, cascade: ['persist', 'remove'])]
-    private Collection $about;
 
     #[ORM\ManyToOne(targetEntity: self::class, cascade: ['persist'], inversedBy: 'services')]
     private ?self $parentService = null;
@@ -48,18 +48,11 @@ class Service
     #[ORM\OneToMany(mappedBy: 'parentService', targetEntity: self::class, cascade: ['persist', 'remove'])]
     private Collection $services;
 
-    #[ORM\ManyToOne(targetEntity: self::class, cascade: ['persist'], inversedBy: 'cases')]
-    private ?self $caseService = null;
-
-    #[ORM\OneToMany(mappedBy: 'caseService', targetEntity: self::class, cascade: ['persist', 'remove'])]
-    private Collection $cases;
-
     public function __construct()
     {
         $this->gallery = new ArrayCollection();
         $this->about = new ArrayCollection();
         $this->services = new ArrayCollection();
-        $this->cases = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -235,48 +228,6 @@ class Service
             // set the owning side to null (unless already changed)
             if ($service->getParentService() === $this) {
                 $service->setParentService(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getCaseService(): ?self
-    {
-        return $this->caseService;
-    }
-
-    public function setCaseService(?self $caseService): static
-    {
-        $this->caseService = $caseService;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, self>
-     */
-    public function getCases(): Collection
-    {
-        return $this->cases;
-    }
-
-    public function addCase(self $case): static
-    {
-        if (!$this->cases->contains($case)) {
-            $this->cases->add($case);
-            $case->setCaseService($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCase(self $case): static
-    {
-        if ($this->cases->removeElement($case)) {
-            // set the owning side to null (unless already changed)
-            if ($case->getCaseService() === $this) {
-                $case->setCaseService(null);
             }
         }
 
