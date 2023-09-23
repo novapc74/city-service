@@ -46,12 +46,6 @@ class ProductCrudController extends AbstractCrudController
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
             FormField::addRow(),
-            SlugField::new('slug', 'Слаг')
-                ->setTextAlign('center')
-                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
-                ->setTargetFieldName('title')
-            ,
-            FormField::addRow(),
             TextEditorField::new('description', 'Описание')
                 ->setFormType(CKEditorType::class)
                 ->setTextAlign('center')
@@ -79,6 +73,6 @@ class ProductCrudController extends AbstractCrudController
         $repository = $this->container->get(EntityRepository::class);
 
         return $repository->createQueryBuilder($searchDto, $entityDto, $fields, $filters)
-            ->andWhere('entity.parent is null');
+            ->andWhere('entity.product is null');
     }
 }

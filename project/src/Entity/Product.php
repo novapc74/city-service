@@ -27,21 +27,14 @@ class Product
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\ManyToOne(targetEntity: self::class, cascade: ['persist'], inversedBy: 'children')]
-    private ?self $parent = null;
-
-    #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class, cascade: ['persist', 'remove'])]
-    private Collection $children;
-
-    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'products')]
+    #[ORM\ManyToOne(targetEntity: self::class, cascade: ['persist'], inversedBy: 'products')]
     private ?self $product = null;
 
-    #[ORM\OneToMany(mappedBy: 'product', targetEntity: self::class)]
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: self::class, cascade: ['persist', 'remove'])]
     private Collection $products;
 
     public function __construct()
     {
-        $this->children = new ArrayCollection();
         $this->products = new ArrayCollection();
     }
 

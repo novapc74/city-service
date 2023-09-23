@@ -68,9 +68,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Сертификаты', 'fa-solid fa-certificate', Certificate::class);
 
 		yield MenuItem::section();
-		yield MenuItem::linkToCrud('Группы услуг', 'fa-solid fa-bell-concierge', Service::class);
-		yield MenuItem::linkToCrud('Категории работ', 'fa-solid fa-briefcase', WorkCategory::class);
-        yield MenuItem::linkToCrud('Продукты', 'fa-solid fa-briefcase', Product::class);
+		yield MenuItem::linkToCrud('Категории услуг', 'fa-solid fa-bell-concierge', Service::class);
+        yield MenuItem::linkToCrud('Услуги', 'fa-solid fa-briefcase', Product::class);
+        yield MenuItem::linkToCrud('Выполненные работы', 'fa-solid fa-briefcase', WorkCategory::class);
 
 
 //        yield MenuItem::section('Секции на страницах', 'fa-sharp fa-solid fa-puzzle-piece');
