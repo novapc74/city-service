@@ -3,24 +3,22 @@
 namespace App\Controller\Admin;
 
 use App\Entity\WorkCategory;
-use Doctrine\ORM\QueryBuilder;
+use App\Form\Admin\CompletedWorkType;
 use App\Form\Admin\GalleryType;
-use App\Form\CompletedWorkType;
-use Psr\Container\NotFoundExceptionInterface;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
-use Psr\Container\ContainerExceptionInterface;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto;
-use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
-use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
-use EasyCorp\Bundle\EasyAdminBundle\Orm\EntityRepository;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
+use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection;
 use EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
+use EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Orm\EntityRepository;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class WorkCategoryCrudController extends AbstractCrudController
 {
@@ -76,14 +74,12 @@ class WorkCategoryCrudController extends AbstractCrudController
 			,
 			FormField::addTab('Выполненные работы'),
 			CollectionField::new('completedWorks', false)
-				->setEntryType(CompletedWorkType::class)
-				->setFormTypeOptions([
-					'by_reference' => false,
-					'error_bubbling' => false,
-				])
-				->setTextAlign('center')
-				->renderExpanded()
-				->onlyOnForms()
+                ->setEntryType(CompletedWorkType::class)
+                ->setFormTypeOptions([
+                    'by_reference' => false,
+                    'error_bubbling' => false,
+                ])
+                ->setTemplatePath('admin/crud/assoc_description.html.twig')
 			,
 		];
 	}

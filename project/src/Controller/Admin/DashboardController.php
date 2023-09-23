@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Product;
 use App\Entity\Service;
 use App\Entity\Advantage;
 use App\Entity\Branch;
@@ -67,8 +68,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Сертификаты', 'fa-solid fa-certificate', Certificate::class);
 
 		yield MenuItem::section();
-		yield MenuItem::linkToCrud('Услуги', 'fa-solid fa-bell-concierge', Service::class);
+		yield MenuItem::linkToCrud('Группы услуг', 'fa-solid fa-bell-concierge', Service::class);
 		yield MenuItem::linkToCrud('Категории работ', 'fa-solid fa-briefcase', WorkCategory::class);
+        yield MenuItem::linkToCrud('Продукты', 'fa-solid fa-briefcase', Product::class);
 
 
 //        yield MenuItem::section('Секции на страницах', 'fa-sharp fa-solid fa-puzzle-piece');

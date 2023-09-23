@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Admin;
 
 use App\Entity\WorkCategory;
-use App\Form\Admin\GalleryType;
 use Symfony\Component\Form\AbstractType;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class CompletedWorkType extends AbstractType
 {
@@ -17,17 +16,16 @@ class CompletedWorkType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-				'label' => 'Заголовок',
+                'label' => 'Заголовок'
             ])
             ->add('description', CKEditorType::class, [
-				'label' => 'Описание'
+                'label' => 'Описание'
             ])
-	        ->add('gallery', CollectionType::class, [
-		        'label' => 'Галерея',
-		        'entry_type' => GalleryType::class,
-		        'allow_add' => true,
-	        ])
-        ;
+            ->add('gallery', CollectionType::class, [
+                'label' => 'Галерея',
+                'entry_type' => GalleryType::class,
+                'allow_add' => true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

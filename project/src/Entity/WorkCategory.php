@@ -10,7 +10,6 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: WorkCategoryRepository::class)]
-#[ORM\HasLifecycleCallbacks()]
 class WorkCategory
 {
     #[ORM\Id]
@@ -160,15 +159,4 @@ class WorkCategory
 
         return $this;
     }
-
-    #[ORM\PreRemove]
-    public function preRemove(): void
-    {
-        $completedWork = $this->getCompletedWorks()->toArray();
-
-        array_map(function (WorkCategory $work) {
-            $this->removeCompletedWork($work);
-        }, $completedWork);
-    }
-
 }
