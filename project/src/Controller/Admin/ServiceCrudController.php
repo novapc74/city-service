@@ -63,7 +63,7 @@ class ServiceCrudController extends AbstractCrudController
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
             FormField::addTab('Галерея'),
-            TextField::new('image', 'Файлы')
+            TextField::new('image', 'Галерея')
                 ->onlyOnIndex()
                 ->setTemplatePath('admin/crud/assoc_gallery.html.twig')
             ,
@@ -132,7 +132,6 @@ class ServiceCrudController extends AbstractCrudController
         $repository = $this->container->get(EntityRepository::class);
 
         return $repository->createQueryBuilder($searchDto, $entityDto, $fields, $filters)
-            ->andWhere('entity.aboutService is null')
-            ->andWhere('entity.parentService is null');
+            ->andWhere('entity.aboutService is null');
     }
 }

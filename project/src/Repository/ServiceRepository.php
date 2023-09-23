@@ -28,9 +28,7 @@ class ServiceRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('s')
             ->leftJoin('s.aboutService', 'aboutService')
-            ->leftJoin('s.services', 'service')
             ->andWhere('aboutService.id is null')
-            ->andWhere('service.id is not null')
             ->getQuery()
             ->getResult();
     }

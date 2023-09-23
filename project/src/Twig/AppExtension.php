@@ -92,6 +92,7 @@ class AppExtension extends AbstractExtension
             ],
             [
                 'name' => 'Услуги',
+                'link' => 'app_service',
                 'subLinks' => array_map(fn(Service $service) => [
                     'name' => $service->getTitle(),
                     'link' => "/service/{$service->getSlug()}",

@@ -10,7 +10,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ServiceRepository::class)]
-#[ORM\HasLifecycleCallbacks()]
+#[ORM\HasLifecycleCallbacks]
 class Service
 {
     #[ORM\Id]
@@ -43,12 +43,6 @@ class Service
     #[ORM\Column]
     private ?bool $isActive = false;
 
-    #[ORM\ManyToOne(targetEntity: self::class, cascade: ['persist'], inversedBy: 'services')]
-    private ?self $parentService = null;
-
-    #[ORM\OneToMany(mappedBy: 'parentService', targetEntity: self::class, cascade: ['persist', 'remove'])]
-    private Collection $services;
-
     #[ORM\ManyToOne(targetEntity: Product::class, cascade: ['persist'], inversedBy: 'services')]
     private ?Product $product = null;
 
@@ -59,7 +53,7 @@ class Service
     {
         $this->gallery = new ArrayCollection();
         $this->about = new ArrayCollection();
-        $this->services = new ArrayCollection();
+//        $this->services = new ArrayCollection();
         $this->workCategories = new ArrayCollection();
     }
 
@@ -194,48 +188,6 @@ class Service
             // set the owning side to null (unless already changed)
             if ($about->getAboutService() === $this) {
                 $about->setAboutService(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getParentService(): ?self
-    {
-        return $this->parentService;
-    }
-
-    public function setParentService(?self $parentService): static
-    {
-        $this->parentService = $parentService;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, self>
-     */
-    public function getServices(): Collection
-    {
-        return $this->services;
-    }
-
-    public function addService(self $service): static
-    {
-        if (!$this->services->contains($service)) {
-            $this->services->add($service);
-            $service->setParentService($this);
-        }
-
-        return $this;
-    }
-
-    public function removeService(self $service): static
-    {
-        if ($this->services->removeElement($service)) {
-            // set the owning side to null (unless already changed)
-            if ($service->getParentService() === $this) {
-                $service->setParentService(null);
             }
         }
 
