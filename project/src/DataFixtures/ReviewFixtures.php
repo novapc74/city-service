@@ -3,13 +3,10 @@
 namespace App\DataFixtures;
 
 use App\Entity\Review;
-use App\Entity\SocialNetwork;
-use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-;
-
-class ReviewFixtures extends BaseFixture implements FixtureGroupInterface
+class ReviewFixtures extends BaseFixture implements DependentFixtureInterface
 {
     private const REVIEW_DATA = [
         [
@@ -48,7 +45,7 @@ class ReviewFixtures extends BaseFixture implements FixtureGroupInterface
         $manager->flush();
     }
 
-    public static function getGroups(): array
+    public function getDependencies(): array
     {
         return [
             BranchFixtures::class

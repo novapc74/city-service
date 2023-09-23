@@ -2,11 +2,13 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Product;
 use App\Entity\Service;
 use Doctrine\ORM\QueryBuilder;
 use App\Form\Admin\GalleryType;
 use App\Form\Admin\AboutServiceFormType;
 use App\Form\Admin\ServiceBlockFormType;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use Psr\Container\NotFoundExceptionInterface;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
@@ -80,6 +82,7 @@ class ServiceCrudController extends AbstractCrudController
             CollectionField::new('expertise', 'Экспертизы')
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+                ->setTemplatePath('admin/crud/assoc_description.html.twig')
             ,
             FormField::addTab('О нас'),
             CollectionField::new('about', false)
@@ -94,11 +97,33 @@ class ServiceCrudController extends AbstractCrudController
                     ],
                     'error_bubbling' => false,
                 ])
+                ->renderExpanded()
+                ->onlyOnForms()
             ,
             FormField::addTab('Сервисы'),
             CollectionField::new('services', false)
                 ->setEntryType(ServiceBlockFormType::class)
                 ->setTextAlign('center')
+            ,
+            FormField::addTab('Группа Сервисов'),
+            AssociationField::new('product', false)
+                ->setQueryBuilder(fn(QueryBuilder $queryBuilder) => $queryBuilder->where('entity.product is null'))
+                ->setTextAlign('center')
+                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+                ->setFormTypeOptions([
+                    'mapped' => true,
+                ])
+            ,
+            FormField::addTab('Выполненные работы'),
+            AssociationField::new('workCategories', 'Выполненные работы')
+                ->setQueryBuilder(fn(QueryBuilder $queryBuilder) => $queryBuilder->where('entity.category is null'))
+                ->setTextAlign('center')
+                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+                ->setFormTypeOptions([
+                    'by_reference' => false,
+
+                ])
+                ->setTemplatePath('admin/crud/assoc_description.html.twig')
             ,
         ];
     }

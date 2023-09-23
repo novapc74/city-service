@@ -4,10 +4,10 @@ namespace App\DataFixtures;
 
 
 use App\Entity\Advantage;
-use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class AdvantageFixtures extends BaseFixture implements FixtureGroupInterface
+class AdvantageFixtures extends BaseFixture implements DependentFixtureInterface
 {
     private const ADVANTAGE_DATA = [
         [
@@ -34,7 +34,7 @@ class AdvantageFixtures extends BaseFixture implements FixtureGroupInterface
         $manager->flush();
     }
 
-    public static function getGroups(): array
+    public function getDependencies(): array
     {
         return [
             ReviewFixtures::class

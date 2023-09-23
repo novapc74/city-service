@@ -36,6 +36,9 @@ class WorkCategory
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: self::class, cascade: ['persist', 'remove'])]
     private Collection $completedWorks;
 
+    #[ORM\ManyToOne(targetEntity: Service::class, cascade: ['persist'], inversedBy: 'workCategories')]
+    private ?Service $service = null;
+
     public function __construct()
     {
         $this->gallery = new ArrayCollection();
@@ -156,6 +159,18 @@ class WorkCategory
                 $completedWork->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getService(): ?Service
+    {
+        return $this->service;
+    }
+
+    public function setService(?Service $service): static
+    {
+        $this->service = $service;
 
         return $this;
     }

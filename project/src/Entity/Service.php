@@ -10,6 +10,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ServiceRepository::class)]
+#[ORM\HasLifecycleCallbacks()]
 class Service
 {
     #[ORM\Id]
@@ -20,7 +21,7 @@ class Service
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-	#[Gedmo\Slug(fields: ['title'])]
+    #[Gedmo\Slug(fields: ['title'])]
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
@@ -30,11 +31,11 @@ class Service
     #[ORM\OneToMany(mappedBy: 'service', targetEntity: Gallery::class, cascade: ['persist', 'remove'])]
     private Collection $gallery;
 
-	#[ORM\ManyToOne(targetEntity: self::class, cascade: ['persist'], inversedBy: 'about')]
-	private ?self $aboutService = null;
+    #[ORM\ManyToOne(targetEntity: self::class, cascade: ['persist'], inversedBy: 'about')]
+    private ?self $aboutService = null;
 
-	#[ORM\OneToMany(mappedBy: 'aboutService', targetEntity: self::class, cascade: ['persist', 'remove'])]
-	private Collection $about;
+    #[ORM\OneToMany(mappedBy: 'aboutService', targetEntity: self::class, cascade: ['persist', 'remove'])]
+    private Collection $about;
 
     #[ORM\Column(type: Types::ARRAY)]
     private array $expertise = [];
@@ -48,11 +49,18 @@ class Service
     #[ORM\OneToMany(mappedBy: 'parentService', targetEntity: self::class, cascade: ['persist', 'remove'])]
     private Collection $services;
 
+    #[ORM\ManyToOne(targetEntity: Product::class, cascade: ['persist'], inversedBy: 'services')]
+    private ?Product $product = null;
+
+    #[ORM\OneToMany(mappedBy: 'service', targetEntity: WorkCategory::class, cascade: ['persist'])]
+    private Collection $workCategories;
+
     public function __construct()
     {
         $this->gallery = new ArrayCollection();
         $this->about = new ArrayCollection();
         $this->services = new ArrayCollection();
+        $this->workCategories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -232,5 +240,64 @@ class Service
         }
 
         return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): static
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, WorkCategory>
+     */
+    public function getWorkCategories(): Collection
+    {
+        return $this->workCategories;
+    }
+
+    public function addWorkCategory(WorkCategory $workCategory): static
+    {
+        if (!$this->workCategories->contains($workCategory)) {
+            $this->workCategories->add($workCategory);
+            $workCategory->setService($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWorkCategory(WorkCategory $workCategory): static
+    {
+        if ($this->workCategories->removeElement($workCategory)) {
+            // set the owning side to null (unless already changed)
+            if ($workCategory->getService() === $this) {
+                $workCategory->setService(null);
+            }
+        }
+
+        return $this;
+    }
+
+    #[ORM\PreRemove]
+    public function preRemove(): void
+    {
+        if ($product = $this->getProduct()) {
+            $this->setProduct(null);
+            $product->removeService($this);
+        }
+
+        if ($workCategories = $this->getWorkCategories()) {
+
+            array_map(function (WorkCategory $workCategory) {
+                $workCategory->setService(null);
+                $this->removeWorkCategory($workCategory);
+            } , $workCategories->toArray());
+        }
     }
 }

@@ -3,10 +3,10 @@
 namespace App\DataFixtures;
 
 use App\Entity\Branch;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 
-class BranchFixtures extends BaseFixture implements FixtureGroupInterface
+class BranchFixtures extends BaseFixture implements DependentFixtureInterface
 {
 	private const BRANCH_DATA = [
 		[
@@ -49,7 +49,7 @@ class BranchFixtures extends BaseFixture implements FixtureGroupInterface
 		$manager->flush();
 	}
 
-	public static function getGroups(): array
+	public function getDependencies(): array
 	{
 		return [
 			ContactFixtures::class

@@ -2,12 +2,11 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Contact;
 use App\Entity\Product;
-use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class ProductFixtures extends BaseFixture implements FixtureGroupInterface
+class ProductFixtures extends BaseFixture implements DependentFixtureInterface
 {
     private const CHILD_PRODUCT_DATA = [
         [
@@ -51,7 +50,7 @@ class ProductFixtures extends BaseFixture implements FixtureGroupInterface
             ->setDescription(self::CHILD_PRODUCT_DATA[$count]['description']);
     }
 
-    public static function getGroups(): array
+    public function getDependencies(): array
     {
         return [
             WorkCategoryFixtures::class,

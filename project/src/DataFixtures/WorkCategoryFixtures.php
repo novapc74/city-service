@@ -2,13 +2,12 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Advantage;
 use App\Entity\WorkCategory;
-use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
 
-class WorkCategoryFixtures extends BaseFixture implements FixtureGroupInterface
+class WorkCategoryFixtures extends BaseFixture implements DependentFixtureInterface
 {
     private const CATEGORY_DATA = [
         [
@@ -49,46 +48,19 @@ class WorkCategoryFixtures extends BaseFixture implements FixtureGroupInterface
     {
         $this->createEntity(WorkCategory::class, 3, function (WorkCategory $category, $count) {
 
-            switch ($count) {
-                case 0:
-                    $completedWorkFirst = $this->createReference(
-                        self::CATEGORY_DATA[$count][0]['title'],
-                        self::CATEGORY_DATA[$count][0]['description']
-                    );
-                    $completedWorkSecond = $this->createReference(
-                        self::CATEGORY_DATA[$count][1]['title'],
-                        self::CATEGORY_DATA[$count][1]['description']
-                    );
+            $completedWorkFirst = $this->createReference(
+                self::CATEGORY_DATA[$count][0]['title'],
+                self::CATEGORY_DATA[$count][0]['description']
+            );
+            $completedWorkSecond = $this->createReference(
+                self::CATEGORY_DATA[$count][1]['title'],
+                self::CATEGORY_DATA[$count][1]['description']
+            );
 
-                    $category->addCompletedWork($completedWorkFirst)->addCompletedWork($completedWorkSecond);
-                    break;
-                case 1:
-                    $completedWorkFirst = $this->createReference(
-                        self::CATEGORY_DATA[$count][0]['title'],
-                        self::CATEGORY_DATA[$count][0]['description']
-                    );
-                    $completedWorkSecond = $this->createReference(
-                        self::CATEGORY_DATA[$count][1]['title'],
-                        self::CATEGORY_DATA[$count][1]['description']
-                    );
-
-                    $category->addCompletedWork($completedWorkFirst)->addCompletedWork($completedWorkSecond);
-                    break;
-                case 2:
-                    $completedWorkFirst = $this->createReference(
-                        self::CATEGORY_DATA[$count][0]['title'],
-                        self::CATEGORY_DATA[$count][0]['description']
-                    );
-                    $completedWorkSecond = $this->createReference(
-                        self::CATEGORY_DATA[$count][1]['title'],
-                        self::CATEGORY_DATA[$count][1]['description']
-                    );
-
-                    $category->addCompletedWork($completedWorkFirst)->addCompletedWork($completedWorkSecond);
-                    break;
-            }
             $category
-                ->setTitle(self::CATEGORY_TITLE[$count]);
+                ->setTitle(self::CATEGORY_TITLE[$count])
+                ->addCompletedWork($completedWorkFirst)
+                ->addCompletedWork($completedWorkSecond);
         });
 
         $manager->flush();
@@ -100,7 +72,8 @@ class WorkCategoryFixtures extends BaseFixture implements FixtureGroupInterface
             ->setTitle($title)
             ->setDescription($description);
     }
-    public static function getGroups(): array
+
+    public function getDependencies(): array
     {
         return [
             CertificateFixtures::class

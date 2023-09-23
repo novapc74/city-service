@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
+#[ORM\HasLifecycleCallbacks()]
 class Product
 {
     #[ORM\Id]
@@ -33,9 +34,13 @@ class Product
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: self::class, cascade: ['persist', 'remove'])]
     private Collection $products;
 
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Service::class, cascade: ['persist'])]
+    private Collection $services;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
+        $this->services = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -124,5 +129,44 @@ class Product
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Service>
+     */
+    public function getServices(): Collection
+    {
+        return $this->services;
+    }
+
+    public function addService(Service $service): static
+    {
+        if (!$this->services->contains($service)) {
+            $this->services->add($service);
+            $service->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeService(Service $service): static
+    {
+        if ($this->services->removeElement($service)) {
+            // set the owning side to null (unless already changed)
+            if ($service->getProduct() === $this) {
+                $service->setProduct(null);
+            }
+        }
+
+        return $this;
+    }
+
+    #[Orm\PreRemove]
+    public function preRemove(): void
+    {
+        if ($service = $this->getServices()->current()) {
+            $service->setProduct(null);
+            $this->removeService($service);
+        }
     }
 }

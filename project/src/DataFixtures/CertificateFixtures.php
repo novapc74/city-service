@@ -3,10 +3,10 @@
 namespace App\DataFixtures;
 
 use App\Entity\Certificate;
-use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class CertificateFixtures extends BaseFixture implements FixtureGroupInterface
+class CertificateFixtures extends BaseFixture implements DependentFixtureInterface
 {
     private const CERTIFICATE_DATA = [
         [
@@ -33,7 +33,7 @@ class CertificateFixtures extends BaseFixture implements FixtureGroupInterface
         $manager->flush();
     }
 
-    public static function getGroups(): array
+    public function getDependencies(): array
     {
         return [
             AdvantageFixtures::class
