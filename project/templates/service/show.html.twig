@@ -1,0 +1,78 @@
+{# @var service \App\Entity\Service #}
+{# @var about \App\Entity\Service #}
+{# @var product \App\Entity\Product #}
+{# @var singleProduct \App\Entity\Product #}
+{# @var workCategory \App\Entity\WorkCategory #}
+{# @var work \App\Entity\WorkCategory #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ service.title }}{% endblock %}
+
+{% block body %}
+    <h1>{{ service.title }}</h1>
+    <p>{{ service.description | raw }}</p>
+
+    <section>
+        <h2 style="color: #7c2d12">ОБ УСЛУГЕ</h2>
+        <ul>
+            {% set about = service.about.current %}
+            {% if about %}
+                <ul>
+                    <li>{{ about.title }}</li>
+                    <li>{{ about.description | raw }}</li>
+                </ul>
+            {% endif %}
+        </ul>
+    </section>
+    <br>
+    <section>
+        {% if service.expertise | length %}
+            <h2 style="color: #7c2d12">Экспертизы</h2>
+            <ul>
+                {% for expertise in service.expertise %}
+                    <li>{{ expertise }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </section>
+    <br>
+    <section>
+        <h2 style="color: #7c2d12">Услуги</h2>
+        {% set product = service.product %}
+        {% if product %}
+            <p>{{ product.title }}</p>
+            <p>{{ product.description }}</p>
+            <br>
+            {% if product.products | length %}
+                <ul>
+                    {% for singleProduct in product.products %}
+                        <li>{{ singleProduct.title }}</li>
+                        <li>{{ singleProduct.description }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endif %}
+    </section>
+
+    <section>
+        <h2 style="color: #7c2d12">ВЫПОЛНЕННЫЕ РАБОТЫ</h2>
+        {% if service.workCategories | length %}
+            <ul>
+                {% for workCategory in service.workCategories %}
+                    <li>{{ workCategory.title }}</li>
+                    {% if workCategory.completedWorks | length %}
+                        <li>
+                            <ul>
+                                {% for work in workCategory.completedWorks %}
+                                    <li>{{ work.title }}</li>
+                                    <li>{{ work.description }}</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </section>
+{% endblock %}

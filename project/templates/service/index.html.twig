@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ServiceController!{% endblock %}
+
+{% block body %}
+    <h1>Глобальные сервисы</h1>
+    <section>
+        <ul>
+            {% for service in services %}
+                <li><a href="{{ path('app_service_show', {slug: service.slug}) }}">{{ service.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
