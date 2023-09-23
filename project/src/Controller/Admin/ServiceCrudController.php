@@ -100,13 +100,8 @@ class ServiceCrudController extends AbstractCrudController
                 ->renderExpanded()
                 ->onlyOnForms()
             ,
-            FormField::addTab('Сервисы'),
-            CollectionField::new('services', false)
-                ->setEntryType(ServiceBlockFormType::class)
-                ->setTextAlign('center')
-            ,
-            FormField::addTab('Группа Сервисов'),
-            AssociationField::new('product', false)
+            FormField::addTab('Группа Услуг'),
+            AssociationField::new('product', 'Услуги')
                 ->setQueryBuilder(fn(QueryBuilder $queryBuilder) => $queryBuilder->where('entity.product is null'))
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
