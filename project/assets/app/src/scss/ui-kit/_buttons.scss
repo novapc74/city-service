@@ -1,43 +1,16 @@
-@import "vars";
-@import "./mixins/base";
-
-// headings
-.title-0 {
-  @include base-title;
-  font-size: 73px;
-}
-.title-1 {
-  @include base-title;
-  font-size: 24px;
-  @media screen and (min-width: 1024px) {
-    font-size: 35px;
-  }
-  @media screen and (min-width: 1366px) {
-    font-size: 53px;
-  }
-}
-.title-2 {
-  @include base-title;
-  font-size: 18px;
-  @media screen and (min-width: 1024px) {
-    font-size: 24px;
-  }
-  @media screen and (min-width: 1366px) {
-    font-size: 28px;
-  }
-}
-
+@import "../vars";
+@import "../mixins/base";
 // buttons
 .default-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   padding: 12px;
   border-radius: 10px;
   font-size: 16px;
   font-weight: 400;
-  line-height: 140%;
+  line-height: 100%;
   text-transform: uppercase;
   transition-property: color, background-color, border-color;
   @include base-transition;
@@ -79,21 +52,22 @@
     }
   }
 
-  &_white {
+  &_grey {
     color: $blue-dark;
-    background-color: $white;
+    background-color: $grey-light;
 
     svg {
       fill: $blue-dark;
     }
 
     &:active {
-      background-color: $blue;
+      background-color: $white;
     }
 
     @media screen and (min-width: 1024px) {
       &:hover {
-        background-color: $blue;
+        color: $grey-light;
+        background-color: $blue-dark-2;
       }
     }
   }
@@ -150,7 +124,8 @@
     @media screen and (min-width: 1024px) {
       &:hover {
         color: $grey-light;
-        background-color: $blue-dark;
+        border-color: rgba(2, 34, 45, 0.80);
+        background-color: rgba(2, 34, 45, 0.80);
 
         svg {
           fill: $grey-light;
@@ -169,25 +144,61 @@
     }
 
     &:active {
-      color: $blue-dark;
+      color: $blue;
       background-color: $white;
 
       svg {
-        fill: $blue-dark;
+        fill: $blue;
       }
     }
 
     @media screen and (min-width: 1024px) {
       &:hover {
-        color: $blue-dark;
+        color: $blue;
         background-color: $white;
 
         svg {
-          fill: $blue-dark;
+          fill: $blue;
         }
       }
     }
   }
+}
+
+.default-link {
+  position: relative;
+  cursor: pointer;
+  transition: color .4s ease;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $blue;
+    opacity: 0;
+    transform: scale(0);
+    transition-property: opacity, transform;
+    @include base-transition;
+  }
+  &:active {
+    color: $blue;
+    &:after {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    &:hover {
+      color: $blue;
+      &:after {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+
 }
 
 .swiper-button {
@@ -234,6 +245,92 @@
 
     svg {
       fill: #94a2a6;
+    }
+  }
+}
+
+.close-button {
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: $blue;
+    transition: fill .4s ease;
+  }
+
+  &:active {
+    svg {
+      fill: $blue-dark;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    &:hover {
+      svg {
+        fill: $blue-dark-2;
+      }
+    }
+  }
+}
+
+.burger {
+  width: 44px;
+  height: 44px;
+  padding: 13px 8px;
+
+  &__body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  span {
+    width: 100%;
+    height: 2px;
+    border-radius: 15px;
+    background-color: $blue;
+    position: absolute;
+    left: 0;
+    transition: all .4s ease;
+
+    &:nth-child(1) {
+      top: 0;
+    }
+
+    &:nth-child(2), &:nth-child(3) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:nth-child(4) {
+      bottom: 0;
+    }
+  }
+
+  &.active {
+    span {
+      &:nth-child(1) {
+        top: 50%;
+        width: 0;
+        left: 50%;
+      }
+
+      &:nth-child(2) {
+        transform: translateY(-50%) rotate(45deg);
+      }
+
+      &:nth-child(3) {
+        transform: translateY(-50%) rotate(-45deg);
+      }
+
+      &:nth-child(4) {
+        bottom: 50%;
+        width: 0;
+        left: 50%;
+      }
     }
   }
 }

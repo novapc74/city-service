@@ -4,4 +4,14 @@
 // базовые подключения
 @import "fonts";
 @import "base";
-@import "uikit";
+
+// ui
+@import "ui-kit/buttons";
+@import "ui-kit/typography";
+
+//dropdowns
+@import "components/dropdowns/dropdown-menu";
+
+// подключение базовых компонентов
+@import "components/base/header";
+@import "components/base/footer";

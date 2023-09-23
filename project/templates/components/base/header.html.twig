@@ -1,0 +1,67 @@
+<header class="header">
+    <div class="container header__container">
+        {% if isHome %}
+            <div class="logo header__logo">
+                {% include 'components/base/logo.html.twig' with { withTitle: true } %}
+            </div>
+        {% else %}
+            <a href="{{ path('app_home') }}" class="logo header__logo">
+                {% include 'components/base/logo.html.twig' with { withTitle: true } %}
+            </a>
+        {% endif %}
+
+        <div class="header__menu text-14">
+            <nav class="header__nav nav-header">
+                <ul class="nav-header__list">
+                    {% if menu %}
+                        {% for item in menu %}
+                            {% if item.subLinks is defined %}
+                                <li class="default-link nav-header__item nav-header__item_dropdown">
+                                    <div class="nav-header__link">
+                                        <span>{{ item.name }} <span class="text-14_italic">({{ item.subLinks | length }})</span></span>
+                                        <span class="nav-header__link-icon">
+                                            <svg>
+                                                <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#shevron-icon"></use>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <ul class="nav-header__dropdown nav-dropdown">
+                                        {% for sublink in item.subLinks %}
+                                            <li class="default-link nav-dropdown__item">
+                                                <a href="{{ sublink.link }}"
+                                                   class="nav-dropdown__link">{{ sublink.name }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% else %}
+                                <li class="default-link nav-header__item">
+                                    <a href="{{ path(item.link) }}" class="nav-header__link">{{ item.name }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </nav>
+
+            {% if contacts.phone %}
+                <a href="tel:{{ contacts.phone[0] }}" class="default-link header__phone">{{ contacts.phone[0] }}</a>
+            {% endif %}
+
+            <button class="default-button default-button_solid_dark header__button">
+                Оставить заявку
+                <svg>
+                    <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#arrow-top-right-icon"></use>
+                </svg>
+            </button>
+        </div>
+        <div class="burger header__burger" data-type="open-menu">
+            <div class="burger__body">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</header>

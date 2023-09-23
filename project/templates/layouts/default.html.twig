@@ -1,0 +1,51 @@
+{# @var socialNetwork \App\Entity\SocialNetwork #}
+{# @var contact \App\Entity\Contact #}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+    {#    <link rel="icon" type="image/svg" href="{{ asset('build/images/8x8.svg') }}"> #}
+    {#    <link rel="icon" type="image/svg" href="{{ asset('build/images/16x16.svg') }}"> #}
+    {#    <link rel="icon" type="image/svg" href="{{ asset('build/images/32x32.svg') }}"> #}
+    {#    <link rel="icon" type="image/svg" href="{{ asset('build/images/64x64.svg') }}"> #}
+    {#    <link rel="icon" type="image/svg" href="{{ asset('build/images/128x128.svg') }}"> #}
+
+    <title>{% block title %}Сити Сервис{% endblock %}</title>
+    <meta name="description"
+          content="{% block description %}Компания «Сити Сервис» — это крупное аутсорсинговое предприятие, основной специализацией которого является предоставление клининговых услуг в Северо-Западном округе Российской Федерации.{% endblock %}">
+    {% block meta %}{% endblock %}
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+</head>
+<body>
+
+{% set isHome = isHome | default(false) %}
+{% set contacts = contact() %}
+{% set socials = socialNetworks() %}
+{% set menu = menuLinks() %}
+
+{% block header %}
+    {% include 'components/base/header.html.twig' %}
+{% endblock %}
+
+{% block content %}{% endblock %}
+
+{% block footer %}
+    {% include 'components/base/footer.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    {#    <script src="https://api-maps.yandex.ru/2.1/?apikey=e3c02e3a-d397-446f-8447-2bc2faffd9c9&lang=ru_RU" #}
+    {#            type="text/javascript"> #}
+    {#    </script> #}
+{% endblock %}
+</body>
+</html>

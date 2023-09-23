@@ -1,5 +1,5 @@
 @import "../vars";
-
+// typography
 @mixin base-title {
   font-family: $ff-secondary;
   font-weight: 300;
@@ -17,4 +17,11 @@
 @mixin base-transition {
   transition-duration: .4s;
   transition-timing-function: ease;
+}
+
+@mixin flex-center($gap) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $gap;
 }
