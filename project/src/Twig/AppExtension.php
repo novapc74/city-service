@@ -75,20 +75,8 @@ class AppExtension extends AbstractExtension
     {
         return [
             [
-                'name' => 'главная',
-                'link' => 'app_home',
-            ],
-            [
-                'name' => 'контакты',
-                'link' => 'app_contact',
-            ],
-            [
-                'name' => 'о нас',
+                'name' => 'О нас',
                 'link' => 'app_about',
-            ],
-            [
-                'name' => 'политика',
-                'link' => 'app_policy',
             ],
             [
                 'name' => 'Услуги',
@@ -97,6 +85,10 @@ class AppExtension extends AbstractExtension
                     'name' => $service->getTitle(),
                     'link' => "/service/{$service->getSlug()}",
                 ], $this->serviceRepository->findAll() ?? []),
+            ],
+            [
+                'name' => 'Контакты',
+                'link' => 'app_contact',
             ],
         ];
     }

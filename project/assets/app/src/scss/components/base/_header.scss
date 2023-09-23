@@ -1,0 +1,132 @@
+@import "../../vars";
+@import "../../mixins/base";
+
+.header {
+  padding: 5px 0;
+  @media screen and (min-width: 1366px) {
+    padding: 10px 0;
+  }
+
+  &__container {
+    @include flex-center(30px)
+  }
+
+  &__logo {
+    width: 91px;
+    height: 29px;
+    @media screen and (min-width: 1024px) {
+      width: 172px;
+      height: 56px;
+    }
+  }
+
+  &__menu {
+    display: none;
+    color: $blue-dark;
+    @media screen and (min-width: 1024px) {
+      @include flex-center(30px)
+    }
+  }
+
+  &__nav {
+    @media screen and (min-width: 1024px) {
+      @include flex-center(30px)
+    }
+  }
+
+  &__phone {
+  }
+
+  &__button {
+    @media screen and (min-width: 1024px) {
+      width: auto;
+    }
+    svg {
+      width: 19px;
+      height: 25px;
+    }
+  }
+
+  &__burger {
+    @media screen and (min-width: 1024px) {
+      display: none;
+    }
+  }
+}
+
+.nav-header {
+
+  &__list {
+    @media screen and (min-width: 1024px) {
+      @include flex-center(30px)
+    }
+  }
+
+  &__item_dropdown &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__item_dropdown:hover &__link-icon {
+    transform: rotate(180deg);
+    svg {
+      stroke: $blue;
+    }
+  }
+
+  &__item_dropdown:hover &__dropdown {
+    opacity: 1;
+    pointer-events: auto;
+    user-select: auto;
+    transform: translateY(0) scale(1);
+  }
+
+  &__link {
+    &-icon {
+      width: 24px;
+      height: 24px;
+      transform-origin: center;
+      transition: transform .4s ease;
+      svg {
+        fill: none;
+        width: 100%;
+        height: 100%;
+        stroke: $blue-dark;
+        transition: stroke .4s ease;
+      }
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transform: translateY(-20px) scale(0.9);
+    transition-property: opacity, transform;
+    @include base-transition;
+  }
+}
+
+.nav-dropdown {
+  padding: 20px;
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px 0 rgba(209, 209, 209, 0.25);
+
+  &__item {
+    color: $blue-dark;
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+    &:after {
+      content: none;
+    }
+  }
+
+  &__link {
+  }
+}

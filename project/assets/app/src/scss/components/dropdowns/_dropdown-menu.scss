@@ -1,0 +1,57 @@
+@import "../../vars";
+@import "../../mixins/base";
+
+.dropdown-menu {
+  &__header {
+    @include flex-center(10px);
+    transition: border-color .2s ease, margin-bottom .4s ease;
+  }
+
+  &__btn {
+    width: 44px;
+    height: 44px;
+    position: relative;
+    &::before, &::after {
+      content: '';
+      width: 50%;
+      height: 2px;
+      border-radius: 15px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition-property: opacity, transform;
+      @include base-transition;
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+  }
+
+  &__inner {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height .5s ease-out, opacity .4s ease, transform .4s ease;
+  }
+
+  // active
+  &.active &__header {
+    border-color: transparent;
+    margin-bottom: 10px;
+  }
+
+  &.active &__btn {
+    &::after {
+      transform: translate(-50%, -50%) rotate(90deg) scale(0);
+      opacity: 0;
+    }
+  }
+
+  &.active &__inner {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: calc(var(--count) * 35px);
+  }
+}

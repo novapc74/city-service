@@ -1,0 +1,65 @@
+@import "../vars";
+@import "../mixins/base";
+// headings
+.title-73 {
+  @include base-title;
+  font-size: 73px;
+}
+.title-24-53 {
+  @include base-title;
+  font-size: 24px;
+  @media screen and (min-width: 1024px) {
+    font-size: 35px;
+  }
+  @media screen and (min-width: 1366px) {
+    font-size: 53px;
+  }
+}
+
+.title-18 {
+  @include base-title;
+  font-size: 18px;
+}
+
+.title-18-28 {
+  @include base-title;
+  font-size: 18px;
+  @media screen and (min-width: 1024px) {
+    font-size: 24px;
+  }
+  @media screen and (min-width: 1366px) {
+    font-size: 28px;
+  }
+}
+
+.title-16-italic {
+  @include base-title;
+  font-size: 16px;
+  font-style: italic;
+}
+
+.text-14 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 140%;
+  &_300 {
+    font-weight: 300;
+    line-height: 130%;
+  }
+  &_italic {
+    font-weight: 300;
+    font-style: italic;
+  }
+}
+
+.text-16 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 130%;
+}
+
+.text-18 {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 120%;
+}

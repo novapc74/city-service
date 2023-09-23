@@ -1,0 +1,84 @@
+<footer class="footer text-14 text-14_300">
+    <div class="container footer__container">
+        <div class="footer__top">
+            {% if isHome %}
+                <div class="logo footer__logo">
+                    {% include 'components/base/logo.html.twig' %}
+                </div>
+            {% else %}
+                <a href="{{ path('app_home') }}" class="logo footer__logo">
+                    {% include 'components/base/logo.html.twig' %}
+                </a>
+            {% endif %}
+
+            <nav class="footer__nav">
+                <div class="dropdown-menu footer__menu footer-menu" data-dropdown="footer-menu">
+                    <div class="dropdown-menu__header footer-menu__header" data-open-dropdown data-name="footer-menu">
+                        <span class="text-16 footer-menu__title">Информация</span>
+                        <span class="dropdown-menu__btn footer-menu__btn"></span>
+                    </div>
+                    <ul class="dropdown-menu__inner footer-menu__list" style="--count: 2">
+                        <li class="default-link footer-menu__item"><a href="{{ path('app_about') }}" class="footer-menu__link">О нас</a></li>
+                        <li class="default-link footer-menu__item"><a href="{{ path('app_contact') }}" class="footer-menu__link">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown-menu footer__menu footer-menu" data-dropdown="footer-menu">
+                    <div class="dropdown-menu__header footer-menu__header" data-open-dropdown data-name="footer-menu">
+                        <span class="text-16 footer-menu__title">Услуги</span>
+                        <span class="dropdown-menu__btn footer-menu__btn"></span>
+                    </div>
+                    <ul class="dropdown-menu__inner footer-menu__list" style="--count: 3">
+                        <li class="default-link footer-menu__item"><a href="{{ path('app_about') }}" class="footer-menu__link">Клининг</a></li>
+                        <li class="default-link footer-menu__item"><a href="{{ path('app_contact') }}" class="footer-menu__link">Техническая эксплуатация</a></li>
+                        <li class="default-link footer-menu__item"><a href="{{ path('app_about') }}" class="footer-menu__link">Благоустройство и озеленение</a></li>
+                    </ul>
+                </div>
+                {% if socials %}
+                    <div class="dropdown-menu footer__menu footer-menu" data-dropdown="footer-menu">
+                        <div class="dropdown-menu__header footer-menu__header" data-open-dropdown data-name="footer-menu">
+                            <span class="text-16 footer-menu__title">Соцсети</span>
+                            <span class="dropdown-menu__btn footer-menu__btn"></span>
+                        </div>
+                        <ul class="dropdown-menu__inner footer-menu__list" style="--count: {{ socials | length }}">
+                            {% for social in socials %}
+                                <li class="default-link footer-menu__item"><a href="{{ social.link }}" class="footer-menu__link">{{ social.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                <address class="dropdown-menu footer__menu footer__menu_contacts footer-menu" data-dropdown="footer-menu">
+                    <div class="dropdown-menu__header footer-menu__header" data-open-dropdown data-name="footer-menu">
+                        <span class="text-16 footer-menu__title">Контакты</span>
+                        <span class="dropdown-menu__btn footer-menu__btn"></span>
+                    </div>
+                    <ul class="dropdown-menu__inner footer-menu__list" style="--count: {{ contacts.phone | length + 1 }}">
+                        {% if contacts.phone %}
+                            {% for phone in contacts.phone %}
+                                <li class="default-link footer-menu__item"><a href="tel:{{ phone }}" class="footer-menu__link">{{ phone }}</a></li>
+                            {% endfor %}
+                        {% endif %}
+
+                        {% set email = 'info@csclean.net' %}
+                        {% if email %}
+                            <li class="default-link footer-menu__item"><a href="mailto:{{ email }}" class="footer-menu__link">{{ email }}</a></li>
+                        {% endif %}
+                    </ul>
+                </address>
+            </nav>
+        </div>
+        <div class="footer__bottom footer-bottom">
+            <div class="footer-bottom__left">
+                <span class="footer__copyright">© Сити Сервис 2023</span>
+                <a href="{{ path('app_policy') }}" class="default-link footer__policy">Политика конфиденциальности</a>
+            </div>
+            <div class="footer-bottom__right">
+                <a href="#" class="footer__made-by">
+                    <span>Made by</span>
+                    <svg>
+                        <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#pf-logo"></use>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
