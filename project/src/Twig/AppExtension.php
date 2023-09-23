@@ -3,7 +3,9 @@
 namespace App\Twig;
 
 use App\Entity\Contact;
+use App\Entity\Service;
 use App\Repository\ContactRepository;
+use App\Repository\ServiceRepository;
 use App\Repository\SocialNetworkRepository;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Twig\Extension\AbstractExtension;
@@ -21,11 +23,13 @@ class AppExtension extends AbstractExtension
     ];
 
     public function __construct(private readonly ContactRepository       $contactRepository,
-                                private readonly SocialNetworkRepository $socialNetworkRepository)
+                                private readonly SocialNetworkRepository $socialNetworkRepository,
+                                private readonly ServiceRepository       $serviceRepository)
     {
     }
 
-    public function getFunctions(): array
+    public
+    function getFunctions(): array
     {
         return [
             new TwigFunction('contact', [$this, 'getContact']),
@@ -34,15 +38,18 @@ class AppExtension extends AbstractExtension
         ];
     }
 
-    public function getFilters(): array
+    public
+    function getFilters(): array
     {
         return [
             new TwigFilter('mimeTypeName', [$this, 'getMimeTypeName']),
         ];
     }
-    public function getMimeTypeName($mimeType = null): string
+
+    public
+    function getMimeTypeName($mimeType = null): string
     {
-        if(in_array($mimeType, self::VALID_EXTENSION)) {
+        if (in_array($mimeType, self::VALID_EXTENSION)) {
             $mimeType = explode('/', $mimeType);
 
             return strtoupper(end($mimeType));
@@ -51,17 +58,20 @@ class AppExtension extends AbstractExtension
         return 'FILE';
     }
 
-    public function getContact(): ?Contact
+    public
+    function getContact(): ?Contact
     {
         return $this->contactRepository->findOneBy([]);
     }
 
-    public function getSocialNetworks(): array
+    public
+    function getSocialNetworks(): array
     {
         return $this->socialNetworkRepository->findAll();
     }
 
-    public function getMenuLinks(): array
+    public
+    function getMenuLinks(): array
     {
         return [
             [
@@ -79,6 +89,13 @@ class AppExtension extends AbstractExtension
             [
                 'name' => 'политика',
                 'link' => 'app_policy',
+            ],
+            [
+                'name' => 'Услуги',
+                'subLinks' => array_map(fn(Service $service) => [
+                    'name' => $service->getTitle(),
+                    'link' => "/service/{$service->getSlug()}",
+                ], $this->serviceRepository->findAll() ?? []),
             ],
         ];
     }
