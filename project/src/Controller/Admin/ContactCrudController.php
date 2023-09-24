@@ -6,6 +6,7 @@ use App\Entity\Contact;
 use App\Repository\ContactRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -55,6 +56,11 @@ class ContactCrudController extends AbstractCrudController
 				->setTextAlign('center')
 				->setColumns('col-sm-6 col-lg-5 col-xxl-3')
 			,
+            FormField::addRow(),
+            EmailField::new('email', 'Почта')
+                ->setTextAlign('center')
+                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+            ,
 			FormField::addRow(),
 			TextField::new('coordinates', 'Координаты')
 				->setTextAlign('center')
