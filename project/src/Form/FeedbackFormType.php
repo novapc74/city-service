@@ -25,9 +25,9 @@ class FeedbackFormType extends AbstractType
 			])
 			->add('email', EmailType::class, [
 				'label' => 'Email',
-				'constraints' => [
-					new NotBlank(),
-				]
+//				'constraints' => [
+//					new NotBlank(),
+//				]
 			])
 			->add('phone', TelType::class, [
 				'label' => 'Номер телефона',
