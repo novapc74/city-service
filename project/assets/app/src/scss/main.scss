@@ -15,3 +15,7 @@
 // подключение базовых компонентов
 @import "components/base/header";
 @import "components/base/footer";
+
+// подключение компонентов страниц
+// home
+@import "pages/home/hero";

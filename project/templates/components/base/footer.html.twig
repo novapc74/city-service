@@ -57,10 +57,8 @@
                                 <li class="default-link footer-menu__item"><a href="tel:{{ phone| filterPhoneMask }}" class="footer-menu__link">{{ phone }}</a></li>
                             {% endfor %}
                         {% endif %}
-
-                        {% set email = 'info@csclean.net' %}
-                        {% if email %}
-                            <li class="default-link footer-menu__item"><a href="mailto:{{ email }}" class="footer-menu__link">{{ email }}</a></li>
+                        {% if contacts.email %}
+                            <li class="default-link footer-menu__item"><a href="mailto:{{ contacts.email }}" class="footer-menu__link">{{ contacts.email }}</a></li>
                         {% endif %}
                     </ul>
                 </address>

@@ -20,86 +20,85 @@
 
 {% block content %}
     <main class="main">
-        <div class="container main__container">
-            <h1>Домашняя страница</h1>
+        {% include 'components/sections/home/hero.html.twig' %}
+        <h1>Домашняя страница</h1>
 
-            <section>
-                <h2 style="color: #7c2d12">Контакты</h2>
-                <ul>
-                    <li>Адрес: {{ contacts.address }}</li>
-                    <li>
-                        <ul>
-                            Телефоны:
-                            {% for phone in contacts.phone %}
-                                <li>{{ phone }}</li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                    <li>ИНН: {{ contacts.inn }}</li>
-                    <li>Координаты на карте Яндекс: {{ contacts.coordinates }}</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2 style="color: #7c2d12">Соц.сети</h2>
-                <ul>
-                    {% for social in socials %}
-                        <li>{{ social.name }} - {{ social.link }}</li>
-                    {% endfor %}
-                </ul>
-            </section>
-
-            <section>
-                <h2 style="color: #7c2d12">Филиалы</h2>
-                <ul>
-                    {% for branch in branches %}
-                        <li>{{ branch.city }} - <a href="{{ branch.link }}">{{ branch.address }}</a></li>
-                    {% endfor %}
-                </ul>
-            </section>
-
-            <section>
-                <h2 style="color: #7c2d12">Отзывы</h2>
-                {% for review in reviews %}
+        <section>
+            <h2 style="color: #7c2d12">Контакты</h2>
+            <ul>
+                <li>Адрес: {{ contacts.address }}</li>
+                <li>
                     <ul>
-                        <li>{{ review.preview }}</li>
-                        <li>{{ review.author[0] }}</li>
-                        <li>{{ review.author[1] }}</li>
-                        {% if  review.file is not null %}
-                            <li><a href="{{ vich_uploader_asset(review.file, 'imageFile') }}">Смотреть оригинал</a></li>
-                        {% else %}
-                            <li style="color: #7c2d12">Файлов нет</li>
-                        {% endif %}
+                        Телефоны:
+                        {% for phone in contacts.phone %}
+                            <li>{{ phone }}</li>
+                        {% endfor %}
                     </ul>
-                {% endfor %}
-            </section>
+                </li>
+                <li>ИНН: {{ contacts.inn }}</li>
+                <li>Координаты на карте Яндекс: {{ contacts.coordinates }}</li>
+            </ul>
+        </section>
 
-            <section>
-                <h2 style="color: #7c2d12">Преимущества</h2>
-                {% for advantage in advantages %}
-                    <ul>
-                        <li>{{ advantage.title }}</li>
-                        <li>{{ advantage.description }}</li>
-                    </ul>
+        <section>
+            <h2 style="color: #7c2d12">Соц.сети</h2>
+            <ul>
+                {% for social in socials %}
+                    <li>{{ social.name }} - {{ social.link }}</li>
                 {% endfor %}
-            </section>
+            </ul>
+        </section>
 
-            <section>
-                <h2 style="color: #7c2d12">Сертификаты и Лицензии</h2>
-                {% for certificate in certificates %}
-                    <ul>
-                        <li>{{ certificate.title }}</li>
-                        <li>{{ certificate.description }}</li>
-                        {% if  certificate.file is not null %}
-                            <li><a href="{{ vich_uploader_asset(certificate.file, 'imageFile') }}">Смотреть оригинал</a>
-                            </li>
-                        {% else %}
-                            <li style="color: #7c2d12">Файлов нет</li>
-                        {% endif %}
-                    </ul>
+        <section>
+            <h2 style="color: #7c2d12">Филиалы</h2>
+            <ul>
+                {% for branch in branches %}
+                    <li>{{ branch.city }} - <a href="{{ branch.link }}">{{ branch.address }}</a></li>
                 {% endfor %}
-                certificates
-            </section>
-        </div>
+            </ul>
+        </section>
+
+        <section>
+            <h2 style="color: #7c2d12">Отзывы</h2>
+            {% for review in reviews %}
+                <ul>
+                    <li>{{ review.preview }}</li>
+                    <li>{{ review.author[0] }}</li>
+                    <li>{{ review.author[1] }}</li>
+                    {% if  review.file is not null %}
+                        <li><a href="{{ vich_uploader_asset(review.file, 'imageFile') }}">Смотреть оригинал</a></li>
+                    {% else %}
+                        <li style="color: #7c2d12">Файлов нет</li>
+                    {% endif %}
+                </ul>
+            {% endfor %}
+        </section>
+
+        <section>
+            <h2 style="color: #7c2d12">Преимущества</h2>
+            {% for advantage in advantages %}
+                <ul>
+                    <li>{{ advantage.title }}</li>
+                    <li>{{ advantage.description }}</li>
+                </ul>
+            {% endfor %}
+        </section>
+
+        <section>
+            <h2 style="color: #7c2d12">Сертификаты и Лицензии</h2>
+            {% for certificate in certificates %}
+                <ul>
+                    <li>{{ certificate.title }}</li>
+                    <li>{{ certificate.description }}</li>
+                    {% if  certificate.file is not null %}
+                        <li><a href="{{ vich_uploader_asset(certificate.file, 'imageFile') }}">Смотреть оригинал</a>
+                        </li>
+                    {% else %}
+                        <li style="color: #7c2d12">Файлов нет</li>
+                    {% endif %}
+                </ul>
+            {% endfor %}
+            certificates
+        </section>
     </main>
 {% endblock %}

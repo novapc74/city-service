@@ -1,0 +1,44 @@
+<section class="hero">
+    <div class="container hero__container">
+        <h1 class="title-35-73 hero__title">
+            Превосходство в уборке<br> <span>и технической эксплуатации</span>
+        </h1>
+        <div class="hero__thumbs hero-thumbs">
+            <div class="swiper hero-thumbs__swiper">
+                <div class="swiper-wrapper hero-thumbs__wrapper">
+                    <div class="swiper-slide hero-thumbs__slide">
+                        <p>
+                            Мы лидеры в области клининга и технической эксплуатации. Надежность и качество в каждой
+                            детали -
+                            это наша философия.
+                        </p>
+                    </div>
+                    <div class="swiper-slide hero-thumbs__slide">
+                        <p>
+                            Мы создаем пространства, где чистота и порядок становятся ключевыми составляющими успеха.
+                        </p>
+                    </div>
+                    <div class="swiper-slide hero-thumbs__slide">
+                        <p>
+                            Эксперты в клининге с 2006. Применяем передовые технологии для качественных услуг
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-thumbs__navigation">
+                <span class="text-18 hero-thumbs__fraction hero-thumbs__fraction_current">01</span>
+                <div class="hero-thumbs__pagination"></div>
+                <span class="text-18 hero-thumbs__fraction hero-thumbs__fraction_total">03</span>
+            </div>
+        </div>
+    </div>
+    <div class="swiper hero__bg hero-bg">
+        <div class="swiper-wrapper hero-bg__wrapper">
+            {% for i in 1..3 %}
+                <div class="swiper-slide hero-bg__slide"
+                     style="background-image: url({{ asset("build/images/hero-#{i}.png") }})"></div>
+            {% endfor %}
+        </div>
+        <div class="hero-bg__overlay"></div>
+    </div>
+</section>
