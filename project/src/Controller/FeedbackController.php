@@ -15,34 +15,33 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 class FeedbackController extends AbstractController
 {
-    public function __construct(private readonly Request             $request,
-                                private readonly ManagerRegistry     $managerRegistry,
+    public function __construct(private readonly ManagerRegistry     $managerRegistry,
                                 private readonly MessageBusInterface $bus)
     {
     }
 
     #[Route('/feedback/popup', name: 'app_feedback_footer', methods: ['GET', 'POST'])]
-    public function resolveFooterForm(): Response
+    public function resolveFooterForm(Request $request): Response
     {
-        return $this->resolveForm(PopupFeedbackFormType::class);
+        return $this->resolveForm($request, PopupFeedbackFormType::class);
     }
 
     #[Route('/feedback/footer', name: 'app_feedback_popup', methods: ['GET', 'POST'])]
-    public function resolvePopupForm(): Response
+    public function resolvePopupForm(Request $request): Response
     {
-        return $this->resolveForm(FooterFeedbackFormType::class);
+        return $this->resolveForm($request, FooterFeedbackFormType::class);
     }
 
-    private function resolveForm($formType): Response
+    private function resolveForm($request, $formType): Response
     {
-        if (!$this->request->isXmlHttpRequest()) {
+        if (!$request->isXmlHttpRequest()) {
             return $this->redirect('/');
         }
 
         $feedBack = new Feedback();
 
         $form = $this->createForm($formType, $feedBack);
-        $form->handleRequest($this->request);
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $feedBack = $form->getData();

@@ -10,73 +10,88 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
 class Contact
 {
-	#[ORM\Id]
-	#[ORM\GeneratedValue]
-	#[ORM\Column]
-	private ?int $id = null;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-	#[ORM\Column(type: Types::TEXT)]
-	private ?string $address = null;
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $address = null;
 
-	#[ORM\Column(length: 20)]
-	private ?string $inn = null;
+    #[ORM\Column(length: 20)]
+    private ?string $inn = null;
 
-	#[ORM\Column(type: Types::ARRAY, nullable: true)]
-	private ?array $phone = null;
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private ?array $phone = null;
 
-	#[ORM\Column(length: 255)]
-	private ?string $coordinates = null;
+    #[ORM\Column(length: 255)]
+    private ?string $coordinates = null;
 
-	public function getId(): ?int
-	{
-		return $this->id;
-	}
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $email = null;
 
-	public function getAddress(): ?string
-	{
-		return $this->address;
-	}
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
-	public function setAddress(string $address): static
-	{
-		$this->address = $address;
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
 
-		return $this;
-	}
+    public function setAddress(string $address): static
+    {
+        $this->address = $address;
 
-	public function getInn(): ?string
-	{
-		return $this->inn;
-	}
+        return $this;
+    }
 
-	public function setInn(string $inn): static
-	{
-		$this->inn = $inn;
+    public function getInn(): ?string
+    {
+        return $this->inn;
+    }
 
-		return $this;
-	}
+    public function setInn(string $inn): static
+    {
+        $this->inn = $inn;
 
-	public function getPhone(): ?array
-	{
-		return $this->phone;
-	}
+        return $this;
+    }
 
-	public function setPhone(?array $phone): static
-	{
-		$this->phone = $phone;
+    public function getPhone(): ?array
+    {
+        return $this->phone;
+    }
 
-		return $this;
-	}
+    public function setPhone(?array $phone): static
+    {
+        $this->phone = $phone;
 
-	public function getCoordinates(): ?string
-	{
-		return $this->coordinates;
-	}
+        return $this;
+    }
 
-	public function setCoordinates(string $coordinates): static
-	{
-		$this->coordinates = $coordinates;
+    public function getCoordinates(): ?string
+    {
+        return $this->coordinates;
+    }
 
-		return $this;
-	}
+    public function setCoordinates(string $coordinates): static
+    {
+        $this->coordinates = $coordinates;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): static
+    {
+        $this->email = $email;
+
+        return $this;
+    }
 }

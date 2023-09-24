@@ -84,7 +84,7 @@ class AppExtension extends AbstractExtension
                 'subLinks' => array_map(fn(Service $service) => [
                     'name' => $service->getTitle(),
                     'link' => "/service/{$service->getSlug()}",
-                ], $this->serviceRepository->findAll() ?? []),
+                ], $this->serviceRepository->findByParentService() ?? []),
             ],
             [
                 'name' => 'Контакты',
