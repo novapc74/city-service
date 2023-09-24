@@ -1,9 +1,18 @@
 @import "../vars";
 @import "../mixins/base";
 // headings
-.title-73 {
+.title-35-73 {
   @include base-title;
-  font-size: 73px;
+  font-size: 35px;
+  @media screen and (min-width: 768px) {
+    font-size: 55px;
+  }
+  @media screen and (min-width: 1024px) {
+    font-size: 45px;
+  }
+  @media screen and (min-width: 1366px) {
+    font-size: 73px;
+  }
 }
 .title-24-53 {
   @include base-title;

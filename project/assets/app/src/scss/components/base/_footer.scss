@@ -14,7 +14,7 @@
     @media screen and (min-width: 1024px) {
       display: flex;
       justify-content: space-between;
-      gap: 60px;
+      gap: 68px;
       margin-bottom: 22px;
       padding-bottom: 28px;
       border-bottom: 1px solid rgba(0, 0, 0, .3);
@@ -37,7 +37,7 @@
     @media screen and (min-width: 1024px) {
       margin: 0;
       display: flex;
-      justify-content: space-between;
+      flex: 1;
       gap: 68px;
     }
   }

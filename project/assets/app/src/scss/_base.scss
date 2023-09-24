@@ -15,7 +15,7 @@ body {
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $blue;
+    background-color: $blue-dark-2;
     border-radius: 60px;
   }
 
@@ -35,7 +35,6 @@ img {
 }
 
 .main {
-  background-color: $grey-light;
 }
 
 .container {
