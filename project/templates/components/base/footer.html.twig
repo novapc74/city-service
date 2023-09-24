@@ -54,7 +54,7 @@
                     <ul class="dropdown-menu__inner footer-menu__list" style="--count: {{ contacts.phone | length + 1 }}">
                         {% if contacts.phone %}
                             {% for phone in contacts.phone %}
-                                <li class="default-link footer-menu__item"><a href="tel:{{ phone }}" class="footer-menu__link">{{ phone }}</a></li>
+                                <li class="default-link footer-menu__item"><a href="tel:{{ phone| filterPhoneMask }}" class="footer-menu__link">{{ phone }}</a></li>
                             {% endfor %}
                         {% endif %}
 
@@ -68,7 +68,7 @@
         </div>
         <div class="footer__bottom footer-bottom">
             <div class="footer-bottom__left">
-                <span class="footer__copyright">© Сити Сервис 2023</span>
+                <span class="footer__copyright">© Сити Сервис {{ 'now' | date('Y') }}</span>
                 <a href="{{ path('app_policy') }}" class="default-link footer__policy">Политика конфиденциальности</a>
             </div>
             <div class="footer-bottom__right">

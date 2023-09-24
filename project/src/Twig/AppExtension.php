@@ -22,6 +22,8 @@ class AppExtension extends AbstractExtension
         'application/pdf',
     ];
 
+    private const REMOVABLE_CHAR = ['+', '(', ')', ' ', '  ', '-'];
+
     public function __construct(private readonly ContactRepository       $contactRepository,
                                 private readonly SocialNetworkRepository $socialNetworkRepository,
                                 private readonly ServiceRepository       $serviceRepository)
@@ -43,11 +45,16 @@ class AppExtension extends AbstractExtension
     {
         return [
             new TwigFilter('mimeTypeName', [$this, 'getMimeTypeName']),
+            new TwigFilter('filterPhoneMask', [$this, 'removePhoneMask']),
         ];
     }
 
-    public
-    function getMimeTypeName($mimeType = null): string
+    public function removePhoneMask(string $string): string
+    {
+        return str_replace(self::REMOVABLE_CHAR, '', $string);
+    }
+
+    public function getMimeTypeName($mimeType = null): string
     {
         if (in_array($mimeType, self::VALID_EXTENSION)) {
             $mimeType = explode('/', $mimeType);
