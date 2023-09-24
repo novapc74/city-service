@@ -14,44 +14,41 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class FeedbackFormType extends AbstractType
 {
-	public function buildForm(FormBuilderInterface $builder, array $options): void
-	{
-		$builder
-			->add('name', TextType::class, [
-				'label' => 'Ваше имя',
-				'constraints' => [
-					new NotBlank()
-				]
-			])
-			->add('email', EmailType::class, [
-				'label' => 'Email',
-//				'constraints' => [
-//					new NotBlank(),
-//				]
-			])
-			->add('phone', TelType::class, [
-				'label' => 'Номер телефона',
-				'constraints' => [
-					new NotBlank()
-				]
-			])
-			->add('comment', TextareaType::class, [
-				'label' => 'Комментарий',
-				'constraints' => [
-					new NotBlank()
-				]
-			])
-			->add('agreeTerm', CheckboxType::class, [
-				'label' => 'Пользовательское соглашение',
-				'label_html' => true,
-				'mapped' => false,
-			]);
-	}
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder
+            ->add('name', TextType::class, [
+                'label' => 'Ваше имя',
+                'constraints' => [
+                    new NotBlank()
+                ]
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'Email',
+            ])
+            ->add('phone', TelType::class, [
+                'label' => 'Номер телефона',
+                'constraints' => [
+                    new NotBlank()
+                ]
+            ])
+            ->add('comment', TextareaType::class, [
+                'label' => 'Комментарий',
+                'constraints' => [
+                    new NotBlank()
+                ]
+            ])
+            ->add('agreeTerm', CheckboxType::class, [
+                'label' => 'Пользовательское соглашение',
+                'label_html' => true,
+                'mapped' => false,
+            ]);
+    }
 
-	public function configureOptions(OptionsResolver $resolver): void
-	{
-		$resolver->setDefaults([
-			'inherit_data' => true,
-		]);
-	}
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'inherit_data' => true,
+        ]);
+    }
 }

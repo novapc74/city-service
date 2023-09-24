@@ -12,6 +12,10 @@
     {{ form_widget(form.feedback.phone, {'attr': {'class': 'name_field'}}) }}
     {{ form_errors(form.feedback.phone) }}
 
+    {{ form_label(form.feedback.comment, 'Телефон', {'label_attr': {'class': 'foo'}}) }}
+    {{ form_widget(form.feedback.comment, {'attr': {'class': 'name_field'}}) }}
+    {{ form_errors(form.feedback.comment) }}
+
     {{ form_label(form.feedback.agreeTerm, 'Согласен или нет', {'label_attr': {'class': 'foo'}}) }}
     {{ form_widget(form.feedback.agreeTerm, {'attr': {'class': 'name_field'}}) }}
     {{ form_errors(form.feedback.agreeTerm) }}
