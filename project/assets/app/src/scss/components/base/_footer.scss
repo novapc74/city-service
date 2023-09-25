@@ -104,9 +104,11 @@
 }
 
 .footer-menu {
-
+  border-bottom: 1px solid $blue-dark-2;
+  @media screen and (min-width: 1024px) {
+   border: none;
+  }
   &__header {
-    border-bottom: 1px solid $blue-dark-2;
     @media screen and (min-width: 1024px) {
       display: block;
       pointer-events: none;
@@ -132,17 +134,18 @@
   }
 
   &__list {
+    padding: 5px 0 10px;
     @media screen and (min-width: 1024px) {
       max-height: none;
       opacity: 1;
+      padding: 0;
     }
   }
 
   &__item {
     width: 100%;
-    &:not(:last-child) {
-      margin-bottom: 10px;
-    }
+    padding: 10px 0;
+    margin-bottom: 5px;
     @media screen and (min-width: 1024px) {
       white-space: nowrap;
       &:not(:last-child) {

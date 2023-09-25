@@ -4,7 +4,6 @@
 .dropdown-menu {
   &__header {
     @include flex-center(10px);
-    transition: border-color .2s ease, margin-bottom .4s ease;
   }
 
   &__btn {
@@ -37,11 +36,6 @@
   }
 
   // active
-  &.active &__header {
-    border-color: transparent;
-    margin-bottom: 10px;
-  }
-
   &.active &__btn {
     &::after {
       transform: translate(-50%, -50%) rotate(90deg) scale(0);
@@ -52,6 +46,6 @@
   &.active &__inner {
     opacity: 1;
     transform: translateY(0);
-    max-height: calc(var(--count) * 35px);
+    max-height: calc(var(--count) * 45px);
   }
 }

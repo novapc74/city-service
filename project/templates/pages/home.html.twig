@@ -21,84 +21,38 @@
 {% block content %}
     <main class="main">
         {% include 'components/sections/home/hero.html.twig' %}
-        <h1>Домашняя страница</h1>
 
-        <section>
-            <h2 style="color: #7c2d12">Контакты</h2>
-            <ul>
-                <li>Адрес: {{ contacts.address }}</li>
-                <li>
-                    <ul>
-                        Телефоны:
-                        {% for phone in contacts.phone %}
-                            <li>{{ phone }}</li>
-                        {% endfor %}
-                    </ul>
-                </li>
-                <li>ИНН: {{ contacts.inn }}</li>
-                <li>Координаты на карте Яндекс: {{ contacts.coordinates }}</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2 style="color: #7c2d12">Соц.сети</h2>
-            <ul>
-                {% for social in socials %}
-                    <li>{{ social.name }} - {{ social.link }}</li>
-                {% endfor %}
-            </ul>
-        </section>
-
-        <section>
-            <h2 style="color: #7c2d12">Филиалы</h2>
-            <ul>
-                {% for branch in branches %}
-                    <li>{{ branch.city }} - <a href="{{ branch.link }}">{{ branch.address }}</a></li>
-                {% endfor %}
-            </ul>
-        </section>
-
-        <section>
-            <h2 style="color: #7c2d12">Отзывы</h2>
-            {% for review in reviews %}
-                <ul>
-                    <li>{{ review.preview }}</li>
-                    <li>{{ review.author[0] }}</li>
-                    <li>{{ review.author[1] }}</li>
-                    {% if  review.file is not null %}
-                        <li><a href="{{ vich_uploader_asset(review.file, 'imageFile') }}">Смотреть оригинал</a></li>
-                    {% else %}
-                        <li style="color: #7c2d12">Файлов нет</li>
-                    {% endif %}
-                </ul>
-            {% endfor %}
-        </section>
-
-        <section>
-            <h2 style="color: #7c2d12">Преимущества</h2>
-            {% for advantage in advantages %}
-                <ul>
-                    <li>{{ advantage.title }}</li>
-                    <li>{{ advantage.description }}</li>
-                </ul>
-            {% endfor %}
-        </section>
-
-        <section>
-            <h2 style="color: #7c2d12">Сертификаты и Лицензии</h2>
-            {% for certificate in certificates %}
-                <ul>
-                    <li>{{ certificate.title }}</li>
-                    <li>{{ certificate.description }}</li>
-                    {% if  certificate.file is not null %}
-                        <li><a href="{{ vich_uploader_asset(certificate.file, 'imageFile') }}">Смотреть оригинал</a>
-                        </li>
-                    {% else %}
-                        <li style="color: #7c2d12">Файлов нет</li>
-                    {% endif %}
-                </ul>
-            {% endfor %}
-            certificates
-        </section>
+        {% set about = {
+            heading: 'Кто мы',
+            title: '<span>Эксперты в клининге с 2006.</span>
+        <span>Применяем <strong>передовые технологии</strong></span>
+        <span>для качественных услуг</span>',
+            description: 'Компания «Сити Сервис» —  крупное аутсорсинговое предприятие, основной специализацией которого является предоставление клининговых услуг в Северо-Западном округе Российской Федерации.<br>
+Главный офис «Сити Сервис» расположен в Санкт-Петербурге, а география предоставления услуг охватывает территорию от Мурманска до Волгограда и от Калининграда до Омска.',
+            list: [
+                {
+                    title: '222 чел',
+                    description: 'Описание'
+                },
+                {
+                    title: '222 чел',
+                    description: 'Описание'
+                },
+                {
+                    title: '222 чел',
+                    description: 'Описание'
+                },
+                {
+                    title: '222 чел',
+                    description: 'Описание'
+                },
+                {
+                    title: '222 чел',
+                    description: 'Описание'
+                }
+            ]
+        } %}
+        {% include 'components/sections/home/about.html.twig' with { heading: about.heading, title: about.title, description: about.description, list: about.list } %}
+        {% include'components/sections/home/info.html.twig' %}
     </main>
 {% endblock %}
