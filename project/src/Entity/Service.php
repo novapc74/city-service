@@ -49,6 +49,9 @@ class Service
     #[ORM\OneToMany(mappedBy: 'service', targetEntity: WorkCategory::class, cascade: ['persist'])]
     private Collection $workCategories;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $subTitle = null;
+
     public function __construct()
     {
         $this->gallery = new ArrayCollection();
@@ -251,5 +254,17 @@ class Service
                 $this->removeWorkCategory($workCategory);
             } , $workCategories->toArray());
         }
+    }
+
+    public function getSubTitle(): ?string
+    {
+        return $this->subTitle;
+    }
+
+    public function setSubTitle(?string $subTitle): static
+    {
+        $this->subTitle = $subTitle;
+
+        return $this;
     }
 }

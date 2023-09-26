@@ -56,6 +56,10 @@ class ServiceCrudController extends AbstractCrudController
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
+            TextField::new('subTitle', 'Описание для главной')
+                ->setTextAlign('center')
+                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+            ,
             FormField::addRow(),
             TextEditorField::new('description', 'Описание')
                 ->setFormType(CKEditorType::class)

@@ -65,6 +65,7 @@
                 <ul>
                     {% for service in services %}
                         <li>{{ service.title }}</li>
+                        <li>{{ service.subTitle }}</li>
                         <li>{{ service.slug }}</li>
                         <li>{{ service.description }}</li>
                         {% if service.gallery | length > 0 %}

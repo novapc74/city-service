@@ -27,6 +27,7 @@ class ServiceFixtures extends BaseFixture implements DependentFixtureInterface
 
             $service
                 ->setTitle('Клининг')
+                ->setSubTitle('Наши услуги — это ключ к безупречной чистоте и комфорту. Мы создаем и поддерживаем пространства, в которых каждая деталь сияет чистотой. Благодаря передовым методам и инновационным технологиям')
                 ->setDescription('<p>ПРОФЕССИОНАЛЬНАЯ УБОРКА ДЛЯ ВАШЕГО БИЗНЕСА</p>')
                 ->setExpertise(self::EXPERTIZE)
                 ->addAbout($this->setAboutService())
