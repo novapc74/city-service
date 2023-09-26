@@ -100,12 +100,13 @@
 
   &__dropdown {
     position: absolute;
-    top: 100%;
-    left: 0;
+    top: calc(100% - 2px);
+    left: -10px;
+    z-index: 10;
     opacity: 0;
     pointer-events: none;
     user-select: none;
-    transform: translateY(-20px) scale(0.9);
+    transform: translateY(15px) scale(0.9);
     transition-property: opacity, transform;
     @include base-transition;
   }
@@ -119,6 +120,7 @@
 
   &__item {
     color: $blue-dark;
+    white-space: nowrap;
     &:not(:last-child) {
       margin-bottom: 15px;
     }

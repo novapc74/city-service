@@ -1,0 +1,75 @@
+@import "../vars";
+@import "../mixins/base";
+.advantages {
+
+  &__container {
+    @media screen and (min-width: 1024px) {
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 20px;
+    }
+    @media screen and (min-width: 1366px) {
+      grid-template-columns: 447px 1fr;
+      gap: 40px;
+    }
+  }
+
+  &__inner {
+  }
+
+  &__title {
+    color: $blue-dark;
+    margin-bottom: 20px;
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 40px;
+    }
+    @media screen and (min-width: 1366px) {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__list {
+  }
+
+  &__advantage {
+    &:not(:last-child) {
+      margin-bottom: 40px;
+      @media screen and (min-width: 1024px) {
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
+
+.advantage {
+  padding-bottom: 20px;
+  border-bottom: 1px solid $blue-dark-2;
+  @media screen and (min-width: 1024px) {
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+  @media screen and (min-width: 1366px) {
+    padding-bottom: 60px;
+  }
+  &__title {
+    color: $blue-dark;
+    margin-bottom: 15px;
+    span {
+      opacity: 0.3;
+    }
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__description {
+    @media screen and (min-width: 1024px) {
+      width: 360px;
+    }
+    @media screen and (min-width: 1366px) {
+      width: 447px;
+    }
+  }
+}

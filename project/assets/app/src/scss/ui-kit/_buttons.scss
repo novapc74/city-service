@@ -44,6 +44,9 @@
     &:active {
       background-color: $blue-dark;
     }
+    &:visited {
+      color: $grey-light;
+    }
 
     @media screen and (min-width: 1024px) {
       &:hover {
@@ -62,6 +65,9 @@
 
     &:active {
       background-color: $white;
+    }
+    &:visited {
+      color: $blue-dark;
     }
 
     @media screen and (min-width: 1024px) {
@@ -89,6 +95,9 @@
       svg {
         fill: $grey-light;
       }
+    }
+    &:visited {
+      color: $blue;
     }
 
     @media screen and (min-width: 1024px) {
@@ -120,6 +129,9 @@
         fill: $grey-light;
       }
     }
+    &:visited {
+      color: $blue-dark;
+    }
 
     @media screen and (min-width: 1024px) {
       &:hover {
@@ -150,6 +162,9 @@
       svg {
         fill: $blue;
       }
+    }
+    &:visited {
+      color: $white;
     }
 
     @media screen and (min-width: 1024px) {
@@ -188,6 +203,9 @@
       opacity: 1;
       transform: scale(1);
     }
+  }
+  &:visited {
+    color: $blue;
   }
   @media screen and (min-width: 1024px) {
     &:hover {
