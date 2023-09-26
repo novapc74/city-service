@@ -1,0 +1,147 @@
+@import "../vars";
+
+.about {
+
+  &__header {
+    @media screen and (min-width: 1024px) {
+      position: relative;
+    }
+  }
+
+  &__heading {
+    @media screen and (min-width: 1024px) {
+      position: absolute;
+      top: 10px;
+      left: 0;
+    }
+  }
+
+  &__title {
+    strong {
+      font-weight: inherit;
+      color: $blue-dark;
+    }
+
+    @media screen and (min-width: 1024px) {
+      span {
+        display: block;
+
+        &:nth-child(1) {
+          padding-left: 160px;
+        }
+      }
+    }
+  }
+
+  &__image {
+  }
+
+  &__description {
+    @media screen and (min-width: 1024px) {
+      width: 50%;
+      margin: 0 auto;
+    }
+  }
+
+  &__numbers {
+    margin-top: 20px;
+    @media screen and (min-width: 1024px) {
+      margin-top: 50px;
+      position: relative;
+    }
+  }
+
+  &__list {
+    display: grid;
+    gap: 20px;
+    @media screen and (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (min-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media screen and (min-width: 1366px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__item {
+    @media screen and (min-width: 1366px) {
+      &:nth-child(1) {
+        grid-area: 1 / 1 / 2 / 2;
+      }
+      &:nth-child(2) {
+        grid-area: 1 / 2 / 2 / 3;
+      }
+      &:nth-child(3) {
+        grid-area: 1 / 4 / 2 / 5;
+      }
+      &:nth-child(4) {
+        grid-area: 2 / 2 / 3 / 3;
+      }
+      &:nth-child(5) {
+        grid-area: 2 / 3 / 3 / 4;
+      }
+    }
+  }
+
+  &__button {
+    margin-top: 20px;
+
+    svg {
+      width: 19px;
+      height: 25px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      width: 244px;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}
+
+.about-item {
+  padding: 15px;
+  border-radius: 5px;
+  border: 2px solid $blue;
+  position: relative;
+
+  &:before, &:after {
+    content: '';
+    width: 10px;
+    height: 104px;
+    background-color: $white;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &:before {
+    left: -5px;
+  }
+
+  &:after {
+    right: -5px;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__count {
+    margin-bottom: 50px;
+  }
+
+  &__title {
+    margin-bottom: 14px;
+    line-height: 100%;
+    color: $blue;
+  }
+
+  &__description {
+    line-height: 100%;
+  }
+}

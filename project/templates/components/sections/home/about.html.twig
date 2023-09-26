@@ -1,0 +1,37 @@
+{% set image = image | default(null) %}
+{% set list = list | default(null) %}
+<section class="section about">
+    <div class="container about__container">
+        <div class="section__header about__header">
+            <h2 class="section__heading about__heading">{{ heading }}</h2>
+            <h3 class="title-24-53 about__title">{{ title | raw }}</h3>
+        </div>
+        {% if image %}
+            <div class="about__image">
+                <img src="{{ image }}" alt="{{ heading }}">
+            </div>
+        {% endif %}
+        <p class="about__description">{{ description | raw }}</p>
+        {% if list %}
+            <div class="about__numbers">
+                <ul class="about__list">
+                    {% for item in list %}
+                        <li class="text-14 text-14_300 about__item about-item">
+                            <div class="about-item__inner">
+                                <span class="about-item__count">{{ loop.index + 1 }}</span>
+                                <span class="title-44 about-item__title">{{ item.title }}</span>
+                                <p class="about-item__description">{{ item.description }}</p>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <a href="{{ path('app_about') }}" class="default-button default-button_solid about__button">
+                    Подробнее о нас
+                    <svg>
+                        <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#arrow-top-right-icon"></use>
+                    </svg>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</section>

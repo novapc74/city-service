@@ -25,8 +25,40 @@
 {% block content %}
     <main class="main">
         {% include 'components/sections/home/hero.html.twig' %}
-        <h1>Домашняя страница</h1>
 
+        {% set about = {
+            heading: 'Кто мы',
+            title: '<span>Эксперты в клининге с 2006.</span>
+        <span>Применяем <strong>передовые технологии</strong></span>
+        <span>для качественных услуг</span>',
+            description: 'Компания «Сити Сервис» —  крупное аутсорсинговое предприятие, основной специализацией которого является предоставление клининговых услуг в Северо-Западном округе Российской Федерации.<br>
+Главный офис «Сити Сервис» расположен в Санкт-Петербурге, а география предоставления услуг охватывает территорию от Мурманска до Волгограда и от Калининграда до Омска.',
+            list: [
+                {
+                    title: '222 чел',
+                    description: 'Описание'
+                },
+                {
+                    title: '222 чел',
+                    description: 'Описание'
+                },
+                {
+                    title: '222 чел',
+                    description: 'Описание'
+                },
+                {
+                    title: '222 чел',
+                    description: 'Описание'
+                },
+                {
+                    title: '222 чел',
+                    description: 'Описание'
+                }
+            ]
+        } %}
+        {% include 'components/sections/home/about.html.twig' with { heading: about.heading, title: about.title, description: about.description, list: about.list } %}
+        {% include'components/sections/home/info.html.twig' %}
+        
         <section>
             <h2 style="color: #7c2d12">Услуги</h2>
             {% if services | length > 0 %}

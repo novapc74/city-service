@@ -14,6 +14,10 @@
     font-size: 73px;
   }
 }
+.title-44 {
+  @include base-title;
+  font-size: 44px;
+}
 .title-24-53 {
   @include base-title;
   font-size: 24px;
