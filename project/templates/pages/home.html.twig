@@ -7,8 +7,6 @@
 {# @var service \App\Entity\Service #}
 {# @var image \App\Entity\Gallery #}
 
-
-
 {% extends 'layouts/default.html.twig' %}
 
 {% block title %}Главная | Сити Сервис{% endblock %}
@@ -56,69 +54,18 @@
                 }
             ]
         } %}
-        {% include 'components/sections/home/about.html.twig' with { heading: about.heading, title: about.title, description: about.description, list: about.list } %}
+
+        {% include 'components/sections/about.html.twig' with { heading: about.heading, title: about.title, description: about.description, list: about.list } %}
+
+        {% if services | length %}
+            {% include 'components/sections/home/services.html.twig' with { services } %}
+        {% endif %}
+
         {% include'components/sections/home/info.html.twig' %}
-        
-        <section>
-            <h2 style="color: #7c2d12">Услуги</h2>
-            {% if services | length > 0 %}
-                <ul>
-                    {% for service in services %}
-                        <li>{{ service.title }}</li>
-                        <li>{{ service.subTitle }}</li>
-                        <li>{{ service.slug }}</li>
-                        <li>{{ service.description }}</li>
-                        {% if service.gallery | length > 0 %}
-                            {% for image in  service.gallery %}
-                                {% if image.sort == 2 %}
-                                    <li>
-                                        <img src="{{ vich_uploader_asset(image.image, 'imageFile') | imagine_filter_cache('middle_banner') }}"
-                                             alt="{{ service.title }}">
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
-                    {% endfor %}
-                </ul>
 
-            {% endif %}
-
-        </section>
-
-        <section>
-            <h2 style="color: #7c2d12">Контакты</h2>
-            <ul>
-                <li>Адрес: {{ contacts.address }}</li>
-                <li>
-                    <ul>
-                        Телефоны:
-                        {% for phone in contacts.phone %}
-                            <li>{{ phone }}</li>
-                        {% endfor %}
-                    </ul>
-                </li>
-                <li>ИНН: {{ contacts.inn }}</li>
-                <li>Координаты на карте Яндекс: {{ contacts.coordinates }}</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2 style="color: #7c2d12">Соц.сети</h2>
-            <ul>
-                {% for social in socials %}
-                    <li>{{ social.name }} - {{ social.link }}</li>
-                {% endfor %}
-            </ul>
-        </section>
-
-        <section>
-            <h2 style="color: #7c2d12">Филиалы</h2>
-            <ul>
-                {% for branch in branches %}
-                    <li>{{ branch.city }} - <a href="{{ branch.link }}">{{ branch.address }}</a></li>
-                {% endfor %}
-            </ul>
-        </section>
+        {% if advantages | length %}
+            {% include 'components/sections/advantages.html.twig' with { advantages } %}
+        {% endif %}
 
         <section>
             <h2 style="color: #7c2d12">Отзывы</h2>
@@ -132,16 +79,6 @@
                     {% else %}
                         <li style="color: #7c2d12">Файлов нет</li>
                     {% endif %}
-                </ul>
-            {% endfor %}
-        </section>
-
-        <section>
-            <h2 style="color: #7c2d12">Преимущества</h2>
-            {% for advantage in advantages %}
-                <ul>
-                    <li>{{ advantage.title }}</li>
-                    <li>{{ advantage.description }}</li>
                 </ul>
             {% endfor %}
         </section>

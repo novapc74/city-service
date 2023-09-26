@@ -1,0 +1,20 @@
+<section class="section advantages">
+    <div class="container advantages__container">
+        <div class="section__header">
+            <h2 class="section__heading">Преимущества</h2>
+        </div>
+        <div class="advantages__inner">
+            <h3 class="title-18-28 advantages__title">Наши работы отличаются высоким уровнем качества</h3>
+            <ul class="advantages__list">
+                {% for advantage in advantages %}
+                    <li class="advantages__advantage advantage">
+                        <h4 class="title-18 advantage__title">
+                            <span class="title-16-italic">({{ loop.index < 10 ? '0' ~ loop.index : loop.index }})</span> {{ advantage.title }}
+                        </h4>
+                        <div class="advantage__description">{{ advantage.description | raw }}</div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
