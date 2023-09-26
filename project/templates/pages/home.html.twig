@@ -4,6 +4,10 @@
 {# @var review \App\Entity\Review #}
 {# @var advantage \App\Entity\Advantage #}
 {# @var certificate \App\Entity\Certificate #}
+{# @var service \App\Entity\Service #}
+{# @var image \App\Entity\Gallery #}
+
+
 
 {% extends 'layouts/default.html.twig' %}
 
@@ -22,6 +26,31 @@
     <main class="main">
         {% include 'components/sections/home/hero.html.twig' %}
         <h1>Домашняя страница</h1>
+
+        <section>
+            <h2 style="color: #7c2d12">Услуги</h2>
+            {% if services | length > 0 %}
+                <ul>
+                    {% for service in services %}
+                        <li>{{ service.title }}</li>
+                        <li>{{ service.slug }}</li>
+                        <li>{{ service.description }}</li>
+                        {% if service.gallery | length > 0 %}
+                            {% for image in  service.gallery %}
+                                {% if image.sort == 2 %}
+                                    <li>
+                                        <img src="{{ vich_uploader_asset(image.image, 'imageFile') | imagine_filter_cache('middle_banner') }}"
+                                             alt="{{ service.title }}">
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+
+            {% endif %}
+
+        </section>
 
         <section>
             <h2 style="color: #7c2d12">Контакты</h2>
