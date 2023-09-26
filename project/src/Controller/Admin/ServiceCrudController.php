@@ -56,7 +56,7 @@ class ServiceCrudController extends AbstractCrudController
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
-            TextField::new('subTitle', 'Описание для главной')
+            TextField::new('subTitle', 'Заголовок для страницы')
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
@@ -88,7 +88,7 @@ class ServiceCrudController extends AbstractCrudController
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
                 ->setTemplatePath('admin/crud/assoc_description.html.twig')
             ,
-            FormField::addTab('О нас'),
+            FormField::addTab('Об услуге'),
             CollectionField::new('about', false)
                 ->setEntryType(AboutServiceFormType::class)
                 ->setTextAlign('center')
@@ -104,7 +104,7 @@ class ServiceCrudController extends AbstractCrudController
                 ->renderExpanded()
                 ->onlyOnForms()
             ,
-            FormField::addTab('Группа Услуг'),
+            FormField::addTab('Услуги'),
             AssociationField::new('product', 'Услуги')
                 ->setQueryBuilder(fn(QueryBuilder $queryBuilder) => $queryBuilder->where('entity.product is null'))
                 ->setTextAlign('center')
