@@ -45,7 +45,7 @@
             </nav>
 
             {% if contacts.phone %}
-                <a href="tel:{{ contacts.phone[0] }}" class="default-link header__phone">{{ contacts.phone[0] }}</a>
+                <a href="tel:{{ contacts.phone[0] | filterPhoneMask }}" class="default-link header__phone">{{ contacts.phone[0] }}</a>
             {% endif %}
 
             <button class="default-button default-button_solid_dark header__button">
