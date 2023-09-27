@@ -67,21 +67,10 @@
             {% include 'components/sections/advantages.html.twig' with { advantages } %}
         {% endif %}
 
-        <section>
-            <h2 style="color: #7c2d12">Отзывы</h2>
-            {% for review in reviews %}
-                <ul>
-                    <li>{{ review.preview }}</li>
-                    <li>{{ review.author[0] }}</li>
-                    <li>{{ review.author[1] }}</li>
-                    {% if  review.file is not null %}
-                        <li><a href="{{ vich_uploader_asset(review.file, 'imageFile') }}">Смотреть оригинал</a></li>
-                    {% else %}
-                        <li style="color: #7c2d12">Файлов нет</li>
-                    {% endif %}
-                </ul>
-            {% endfor %}
-        </section>
+        {% if reviews | length %}
+            {% include 'components/sections/reviews.html.twig' with { reviews } %}
+        {% endif %}
+
 
         <section>
             <h2 style="color: #7c2d12">Сертификаты и Лицензии</h2>
