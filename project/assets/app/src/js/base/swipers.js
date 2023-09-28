@@ -7,7 +7,7 @@ export default function swipers() {
             speed: 1000,
             navigation: {
                 nextEl: '.reviews__controls .swiper-button_next',
-                prevEl: '.reviews__controls .swiper-button_next'
+                prevEl: '.reviews__controls .swiper-button_prev'
             }
         })
     }
