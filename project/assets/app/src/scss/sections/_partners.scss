@@ -15,6 +15,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 156px;
+    img {
+      width: 200px;
+      object-fit: contain;
+    }
     @media screen and (min-width: 768px) {
       flex: 1;
       flex-basis: 45%;

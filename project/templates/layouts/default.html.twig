@@ -18,7 +18,10 @@
     <meta name="description"
           content="{% block description %}Компания «Сити Сервис» — это крупное аутсорсинговое предприятие, основной специализацией которого является предоставление клининговых услуг в Северо-Западном округе Российской Федерации.{% endblock %}">
     {% block meta %}{% endblock %}
-
+    <meta property="og:url" content="{{ app.request.uri }}">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Сити Сервис"/>
+    <meta property="og:image" content="{{ asset('build/images/logo.svg') }}">
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
@@ -35,7 +38,10 @@
     {% include 'components/base/header.html.twig' %}
 {% endblock %}
 
-{% block content %}{% endblock %}
+<main class="main">
+    {% block content %}{% endblock %}
+    {% include 'components/sections/feedback.html.twig' %}
+</main>
 
 {% block footer %}
     {% include 'components/base/footer.html.twig' %}

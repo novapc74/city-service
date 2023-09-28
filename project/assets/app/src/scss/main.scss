@@ -8,6 +8,7 @@
 // ui
 @import "ui-kit/buttons";
 @import "ui-kit/typography";
+@import "ui-kit/inputs";
 
 //dropdowns
 @import "components/dropdowns/dropdown-menu";
@@ -17,6 +18,9 @@
 @import "components/base/footer";
 @import "components/base/section";
 
+// формы
+@import "components/forms/feedback-form";
+
 // подключение компонентов страниц
 // base
 @import "sections/about";
@@ -24,6 +28,7 @@
 @import "components/review";
 @import "sections/reviews";
 @import "sections/partners";
+@import "sections/feedback";
 // home
 @import "sections/home/hero";
 @import "sections/home/services";

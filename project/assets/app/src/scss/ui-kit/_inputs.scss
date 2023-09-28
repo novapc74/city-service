@@ -1,0 +1,146 @@
+@import "../vars";
+@import "../mixins/base";
+
+.default-input {
+  display: block;
+  position: relative;
+
+  input, textarea {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 25px;
+    border-bottom: 1px solid $blue-dark;
+    @include text-16;
+    color: $blue-dark;
+    transition-property: border-color, color;
+    @include base-transition;
+
+    &::placeholder {
+      opacity: 0.5;
+      text-transform: uppercase;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    &:hover {
+      input, textarea {
+        border-color: $blue-dark;
+      }
+    }
+  }
+
+  &.empty {
+    input, textarea {
+      border-color: $blue-dark-2;
+    }
+  }
+
+  &__error-icon, &__success-icon {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity .4s ease;
+  }
+
+  &__error-icon {
+    fill: $red;
+  }
+
+  &__error-text {
+    position: absolute;
+    left: 0;
+    bottom: -34px;
+    @include text-14_300;
+    color: $red;
+    opacity: 0;
+    transition: opacity .4s ease;
+  }
+
+  &.error {
+    input {
+      color: $red;
+      border-color: $red;
+    }
+  }
+
+  &.error &__error-icon, &.error &__error-text {
+    opacity: 1;
+  }
+
+  &__success-icon {
+    fill: $blue-dark;
+  }
+
+  &.success &__success-icon {
+    opacity: 1;
+  }
+
+  &_textarea {
+    height: 92px;
+  }
+
+  &_dark {
+    input, textarea {
+      border-bottom: 1px solid $grey-light;
+      color: $grey-light;
+    }
+
+    @media screen and (min-width: 1024px) {
+      &:hover {
+        input, textarea {
+          border-color: $grey-light;
+        }
+      }
+    }
+
+    &__success-icon {
+      fill: $grey-light;
+    }
+  }
+}
+
+.default-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  @include text-14_300;
+  color: $blue-dark-2;
+  cursor: pointer;
+
+  input {
+    display: none;
+  }
+
+  &__checkbox {
+    width: 20px;
+    height: 20px;
+    border: 1px solid $grey-light;
+    transition-property: border-color, color;
+    @include base-transition;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      stroke: $yellow;
+      opacity: 0;
+      transition-property: fill, opacity;
+      @include base-transition;
+    }
+  }
+
+  input:checked ~ &__checkbox {
+    border-color: $yellow;
+    svg {
+      opacity: 1;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    &:hover &__checkbox {
+      border-color: $yellow;
+    }
+  }
+}

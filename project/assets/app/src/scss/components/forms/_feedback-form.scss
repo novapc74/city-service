@@ -1,0 +1,26 @@
+@import "../../vars";
+@import "../../mixins/base";
+.feedback-form {
+  display: grid;
+  gap: 30px;
+  &__inputs {
+    display: grid;
+    gap: 35px;
+  }
+
+  &__input {
+  }
+
+  &__checkbox {
+  }
+
+  &__policy {
+    a {
+      color: $yellow;
+    }
+  }
+
+  &__submit {
+    width: 100%;
+  }
+}
