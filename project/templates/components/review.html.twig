@@ -1,0 +1,12 @@
+<div class="review">
+    <h3 class="title-18-28 review__preview">
+        «{{ review.preview }}»
+    </h3>
+    <div class="review__author review-author">
+        <span class="title-18 review-author__name">{{ review.author[0] }}</span>
+        <span class="text-16 review-author__position">{{ review.author[1] }}</span>
+    </div>
+    {% if  review.file is not null %}
+        <button class="text-button review__button" data-image="{{ vich_uploader_asset(review.file, 'imageFile') }}" data-open-modal="document"></button>
+    {% endif %}
+</div>

@@ -44,6 +44,9 @@ input,
 button,
 textarea {
   font-family: $ff-main;
+  background-color: transparent;
+  border: none;
+  resize: none;
 }
 input::-ms-clear {
   display: none;

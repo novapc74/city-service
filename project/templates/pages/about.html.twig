@@ -1,0 +1,31 @@
+{# @var socialNetwork \App\Entity\SocialNetwork #}
+{# @var contact \App\Entity\Contact #}
+{# @var branch \App\Entity\Branch #}
+{# @var review \App\Entity\Review #}
+{# @var advantage \App\Entity\Advantage #}
+{# @var certificate \App\Entity\Certificate #}
+{# @var service \App\Entity\Service #}
+{# @var image \App\Entity\Gallery #}
+
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}О нас | Сити Сервис{% endblock %}
+{% block meta %}
+    <meta property="og:title" content="ООО Сити Сервис - клиниговые услуги для бизнеса">
+    <meta property="og:description"
+          content="Мы создаем пространства, где чистота и порядок становятся ключевыми составляющими успеха.">
+{% endblock %}
+
+{% block content %}
+
+        {% if advantages | length %}
+            {% include 'components/sections/advantages.html.twig' with { advantages } %}
+        {% endif %}
+
+        {% if reviews | length %}
+            {% include 'components/sections/reviews.html.twig' with { reviews } %}
+        {% endif %}
+
+        {% include 'components/sections/partners.html.twig' %}
+
+{% endblock %}

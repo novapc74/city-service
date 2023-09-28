@@ -41,9 +41,6 @@
       fill: $grey-light;
     }
 
-    &:active {
-      background-color: $blue-dark;
-    }
     &:visited {
       color: $grey-light;
     }
@@ -52,6 +49,10 @@
       &:hover {
         background-color: $blue-dark;
       }
+    }
+
+    &:active {
+      background-color: $blue-dark;
     }
   }
 
@@ -63,9 +64,6 @@
       fill: $blue-dark;
     }
 
-    &:active {
-      background-color: $white;
-    }
     &:visited {
       color: $blue-dark;
     }
@@ -75,6 +73,10 @@
         color: $grey-light;
         background-color: $blue-dark-2;
       }
+    }
+
+    &:active {
+      background-color: $white;
     }
   }
 
@@ -87,15 +89,6 @@
       fill: $blue;
     }
 
-    &:active {
-      color: $grey-light;
-      background-color: $blue-dark;
-      border-color: $blue-dark;
-
-      svg {
-        fill: $grey-light;
-      }
-    }
     &:visited {
       color: $blue;
     }
@@ -110,6 +103,16 @@
         }
       }
     }
+
+    &:active {
+      color: $grey-light;
+      background-color: $blue-dark;
+      border-color: $blue-dark;
+
+      svg {
+        fill: $grey-light;
+      }
+    }
   }
 
   &_solid_dark {
@@ -121,14 +124,6 @@
       fill: $blue-dark;
     }
 
-    &:active {
-      color: $grey-light;
-      background-color: $blue-dark;
-
-      svg {
-        fill: $grey-light;
-      }
-    }
     &:visited {
       color: $blue-dark;
     }
@@ -144,6 +139,15 @@
         }
       }
     }
+
+    &:active {
+      color: $grey-light;
+      background-color: $blue-dark;
+
+      svg {
+        fill: $grey-light;
+      }
+    }
   }
 
   &_solid_white {
@@ -155,14 +159,6 @@
       fill: $white;
     }
 
-    &:active {
-      color: $blue;
-      background-color: $white;
-
-      svg {
-        fill: $blue;
-      }
-    }
     &:visited {
       color: $white;
     }
@@ -177,6 +173,35 @@
         }
       }
     }
+
+    &:active {
+      color: $blue;
+      background-color: $white;
+
+      svg {
+        fill: $blue;
+      }
+    }
+  }
+}
+
+.text-button {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 100%;
+  padding-bottom: 5px;
+  border-bottom: 1px solid $yellow;
+  transition-property: color, border-color;
+
+  @media screen and (min-width: 1024px) {
+    &:hover {
+      color: $yellow;
+    }
+  }
+
+  &:active {
+    color: $blue;
+    border-color: $blue;
   }
 }
 
@@ -184,6 +209,7 @@
   position: relative;
   cursor: pointer;
   transition: color .4s ease;
+
   &:after {
     content: '';
     position: absolute;
@@ -197,19 +223,15 @@
     transition-property: opacity, transform;
     @include base-transition;
   }
-  &:active {
-    color: $blue;
-    &:after {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
+
   &:visited {
     color: $blue;
   }
+
   @media screen and (min-width: 1024px) {
     &:hover {
       color: $blue;
+
       &:after {
         opacity: 1;
         transform: scale(1);
@@ -217,6 +239,14 @@
     }
   }
 
+  &:active {
+    color: $blue;
+
+    &:after {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 }
 
 .swiper-button {
@@ -228,33 +258,35 @@
   background-color: transparent;
   border-radius: 50%;
   border: 2px solid $blue-dark-2;
+  transform-origin: center;
   transition-property: background-color, border-color;
   @include base-transition;
 
   svg {
     width: 26px;
     height: 26px;
+    margin-left: -2px;
     fill: $blue-dark;
     transition: fill .4s ease;
   }
 
-  &:active {
-    background-color: $blue;
-    border-color: $blue;
-
-    svg {
-      fill: $grey-light;
-    }
-  }
-
   @media screen and (min-width: 1024px) {
     &:hover {
-      background-color: $blue-dark;
-      border-color: $blue-dark;
+      background-color: $blue;
+      border-color: $blue;
 
       svg {
         fill: $grey-light;
       }
+    }
+  }
+
+  &:active {
+    background-color: $blue-dark;
+    border-color: $blue-dark;
+
+    svg {
+      fill: $grey-light;
     }
   }
 
@@ -264,6 +296,10 @@
     svg {
       fill: #94a2a6;
     }
+  }
+
+  &_next {
+    transform: rotate(180deg);
   }
 }
 
@@ -279,17 +315,17 @@
     transition: fill .4s ease;
   }
 
-  &:active {
-    svg {
-      fill: $blue-dark;
-    }
-  }
-
   @media screen and (min-width: 1024px) {
     &:hover {
       svg {
         fill: $blue-dark-2;
       }
+    }
+  }
+
+  &:active {
+    svg {
+      fill: $blue-dark;
     }
   }
 }

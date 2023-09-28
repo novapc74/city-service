@@ -1,0 +1,16 @@
+<section class="section section_light partners">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__heading">
+                Партнеры
+            </h2>
+        </div>
+        <ul class="partners__list">
+            {% for i in 1..9 %}
+                <li class="partners__item">
+                    <img src="{{ asset("build/images/partner-#{i}.svg") }}" alt="partner">
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

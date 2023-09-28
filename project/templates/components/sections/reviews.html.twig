@@ -1,0 +1,22 @@
+<section class="section section_light reviews">
+    <div class="container reviews__container">
+        <div class="reviews__inner">
+            <div class="section__header reviews__header">
+                <h2 class="section__heading">Отзывы</h2>
+                <div class="reviews__controls">
+                    {% include 'components/swiper-button.html.twig' %}
+                    {% include 'components/swiper-button.html.twig' with { direction: 'next' } %}
+                </div>
+            </div>
+            <div class="swiper reviews__swiper reviews-swiper">
+                <ul class="swiper-wrapper reviews-swiper__wrapper">
+                    {% for review in reviews %}
+                        <li class="swiper-slide reviews-swiper__slide">
+                            {% include 'components/review.html.twig' with { review } %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

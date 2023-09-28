@@ -1,0 +1,45 @@
+@import "../vars";
+@import "../mixins/base";
+
+.reviews {
+
+  &__inner {
+    @media screen and (min-width: 1024px) {
+      position: relative;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 20px;
+    @media screen and (min-width: 1024px) {
+      position: absolute;
+      flex-direction: column;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+    }
+  }
+
+  &__swiper {
+    @media screen and (min-width: 1024px) {
+      margin-right: 155px;
+    }
+  }
+}
+
+.reviews-swiper {
+
+  &__wrapper {
+  }
+
+  &__slide {
+  }
+}
