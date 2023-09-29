@@ -147,6 +147,7 @@
     padding: 10px 0;
     margin-bottom: 5px;
     @media screen and (min-width: 1024px) {
+      padding: 0;
       white-space: nowrap;
       &:not(:last-child) {
         margin-bottom: 15px;
