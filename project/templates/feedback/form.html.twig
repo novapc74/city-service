@@ -1,93 +1,28 @@
 {{ form_start(form) }}
 
-    {{ form_label(form.feedback.name, 'Название', {'label_attr': {'class': 'foo'}}) }}
-    {{ form_widget(form.feedback.name, {'attr': {'class': 'name_field'}}) }}
-    {{ form_errors(form.feedback.name) }}
+<div class="feedback-form__inputs">
+    <label class="default-input default-input_dark feedback-form__input empty">
+        {{ form_widget(form.feedback.name) }}
+    </label>
+    <label class="default-input default-input_dark feedback-form__input empty">
+        {{ form_widget(form.feedback.phone) }}
+    </label>
+    <label class="default-input default-input_dark default-input_textarea feedback-form__input empty">
+        {{ form_widget(form.feedback.comment) }}
+    </label>
+</div>
 
-    {{ form_label(form.feedback.email, 'Почта', {'label_attr': {'class': 'foo'}}) }}
-    {{ form_widget(form.feedback.email, {'attr': {'class': 'name_field'}}) }}
-    {{ form_errors(form.feedback.email) }}
-
-    {{ form_label(form.feedback.phone, 'Телефон', {'label_attr': {'class': 'foo'}}) }}
-    {{ form_widget(form.feedback.phone, {'attr': {'class': 'name_field'}}) }}
-    {{ form_errors(form.feedback.phone) }}
-
-    {{ form_label(form.feedback.comment, 'Телефон', {'label_attr': {'class': 'foo'}}) }}
-    {{ form_widget(form.feedback.comment, {'attr': {'class': 'name_field'}}) }}
-    {{ form_errors(form.feedback.comment) }}
-
-    {{ form_label(form.feedback.agreeTerm, 'Согласен или нет', {'label_attr': {'class': 'foo'}}) }}
-    {{ form_widget(form.feedback.agreeTerm, {'attr': {'class': 'name_field'}}) }}
-    {{ form_errors(form.feedback.agreeTerm) }}
-
-{{ form_row(form) }}
-
-<button type="submit">Отправить</button>
+<label class="default-checkbox feedback-form__checkbox">
+    {{ form_widget(form.feedback.agreeTerm }}
+    <span class="default-checkbox__checkbox">
+            <svg>
+            <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#check-icon"></use>
+            </svg>
+        </span>
+    <span class="feedback-form__policy">
+            Даю согласие на обработку <a href="{{ path('app_policy') }}">Персональных данных</a>
+        </span>
+</label>
+<button type="submit" class="default-button default-button_grey feedback-form__submit">Отправить</button>
 
 {{ form_end(form) }}
-
-
-{#
-
-{{ form_start(feedbackForm, {
-    'attr': {
-        'class': 'feedback-form'
-    },
-}) }}
-<div class="feedback-form__control base-input">
-    {{ form_widget(feedbackForm.name, {
-        'attr': {
-            'class': 'feedback-form__input',
-        }}) }}
-    {{ form_label(feedbackForm.name, null, { 'label_attr': {'class': 'feedback-form__label'} }) }}
-</div>
-<div class="feedback-form__control base-input">
-    {{ form_widget(feedbackForm.phone, {
-        'attr': {
-            'class': 'feedback-form__input text-number',
-        }}) }}
-    {{ form_label(feedbackForm.phone, null, { 'label_attr': {'class': 'feedback-form__label'} }) }}
-</div>
-<div class="feedback-form__control base-input">
-    {{ form_widget(feedbackForm.email, {
-        'attr': {
-            'class': 'feedback-form__input',
-        }}) }}
-    {{ form_label(feedbackForm.email, null, { 'label_attr': {'class': 'feedback-form__label'} }) }}
-</div>
-<div class="feedback-form__control base-input">
-    {{ form_widget(feedbackForm.comment, {
-        'attr': {
-            'class': 'feedback-form__input',
-        }}) }}
-    {{ form_label(feedbackForm.comment, null, { 'label_attr': {'class': 'feedback-form__label'} }) }}
-</div>
-<label for="{{ feedbackForm.agreeTerm.vars.id }}" class="feedback-form__checkbox">
-    {{ form_widget(feedbackForm.agreeTerm) }}
-    <span class="feedback-form__check">
-        <svg>
-            <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#check-input"></use>
-        </svg>
-    </span>
-    <div class="feedback-form__policy">
-        <span>
-            Я принимаю условия
-        </span>
-        <a href="/policy">
-            Политики конфиденциальности
-        </a>
-    </div>
-</label>
-
-{{ form_widget(feedbackForm._token) }}
-
-<button class="feedback-form__btn">
-    Отправить
-</button>
-
-{{ form_errors(feedbackForm) }}
-{{ form_end(feedbackForm,{'render_rest': false}) }}
-
-
-#}
-
