@@ -26,10 +26,10 @@ class FeedbackFormType extends AbstractType
                     'placeholder' => 'Имя*'
                 )
             ])
-            ->add('email', EmailType::class, [
-                'label' => 'Email',
-                'required' => false,
-            ])
+//            ->add('email', EmailType::class, [
+//                'label' => 'Email',
+//                'required' => false,
+//            ])
             ->add('phone', TelType::class, [
                 'label' => 'Телефон',
                 'constraints' => [
