@@ -18,14 +18,25 @@
 
 {% block content %}
 
-        {% if advantages | length %}
-            {% include 'components/sections/advantages.html.twig' with { advantages } %}
-        {% endif %}
+    {% include 'components/base/breadcrumbs.html.twig' with { breadcrumbs: [
+        {title : 'Главная', url : '/'},
+        {title :  'О Нас' },
+    ] } %}
 
-        {% if reviews | length %}
-            {% include 'components/sections/reviews.html.twig' with { reviews } %}
-        {% endif %}
+    <div class="container">
+        <h1 class="title-24-53 main__title">
+            Мы создаем пространства, где чистота и порядок становятся ключевыми составляющими успеха
+        </h1>
+    </div>
 
-        {% include 'components/sections/partners.html.twig' %}
+    {% if advantages | length %}
+        {% include 'components/sections/advantages.html.twig' with { advantages } %}
+    {% endif %}
+
+    {% if reviews | length %}
+        {% include 'components/sections/reviews.html.twig' with { reviews } %}
+    {% endif %}
+
+    {% include 'components/sections/partners.html.twig' %}
 
 {% endblock %}

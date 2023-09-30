@@ -18,7 +18,7 @@
     a {
       color: $yellow;
       opacity: 0.75;
-      transition: opacity .4s ease;
+      transition: opacity .3s ease;
       @media screen and (min-width: 1366px) {
         &:hover {
           opacity: 1;

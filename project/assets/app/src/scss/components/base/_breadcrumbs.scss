@@ -1,0 +1,35 @@
+@import "../../vars";
+.breadcrumbs {
+  padding: 10px 0 20px;
+  @media screen and (min-width: 768px) {
+    padding: 20px 0;
+  }
+  @media screen and (min-width: 1366px) {
+    padding: 25px 0;
+  }
+  &__container {
+    display: flex;
+    gap: 9px;
+  }
+  &__item {
+    &_current {
+      display: flex;
+      color: $blue-dark;
+      pointer-events: none;
+      &::before {
+        content: '/';
+        margin-right: 9px;
+      }
+    }
+    a {
+      transition: color .3s ease;
+    }
+    @media screen and (min-width: 1024px) {
+      &:hover {
+        a {
+          color: $blue-dark;
+        }
+      }
+    }
+  }
+}

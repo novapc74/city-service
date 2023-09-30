@@ -1,0 +1,28 @@
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}Hello PolicyController!{% endblock %}
+
+{% block content %}
+    {% include 'components/base/breadcrumbs.html.twig' with { breadcrumbs: [
+        {title : 'Главная', url : '/'},
+        {title :  'Политика конфеденциальности' },
+    ] } %}
+
+    <div class="container">
+        <h1 class="title-24-53 main__title">
+            Политика конфеденциальности
+        </h1>
+    </div>
+
+    <div class="example-wrapper">
+        <h1>Hello {{ controller_name }}! ✅</h1>
+
+        This friendly message is coming from:
+        <ul>
+            <li>Your controller at <code><a href="{{ '/project/src/Controller/PolicyController.php'|file_link(0) }}">src/Controller/PolicyController.php</a></code>
+            </li>
+            <li>Your template at <code><a href="{{ '/project/templates/policy/contacts.html.twig'|file_link(0) }}">templates/policy/index.html.twig</a></code>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

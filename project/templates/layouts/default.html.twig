@@ -40,7 +40,9 @@
 
 <main class="main">
     {% block content %}{% endblock %}
-    {% include 'components/sections/feedback.html.twig' %}
+    {% block feedaback %}
+        {% include 'components/sections/feedback.html.twig' %}
+    {% endblock %}
 </main>
 
 {% block footer %}

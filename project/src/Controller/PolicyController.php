@@ -11,7 +11,7 @@ class PolicyController extends AbstractController
     #[Route('/policy', name: 'app_policy')]
     public function index(): Response
     {
-        return $this->render('policy/index.html.twig', [
+        return $this->render('pages/policy.html.twig', [
             'controller_name' => 'PolicyController',
         ]);
     }

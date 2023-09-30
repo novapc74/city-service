@@ -14,7 +14,7 @@ class ServiceController extends AbstractController
     #[Route('/service', name: 'app_service')]
     public function index(ServiceRepository $serviceRepository): Response
     {
-        return $this->render('service/index.html.twig', [
+        return $this->render('service/policy.html.twig', [
             'services' => $serviceRepository->findByParentService(null),
         ]);
     }
