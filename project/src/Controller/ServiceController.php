@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Gallery;
 use App\Entity\Service;
 use App\Repository\ServiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,12 +22,18 @@ class ServiceController extends AbstractController
     #[Route('/service/{slug}', name: 'app_service_show')]
     public function show(Service $service = null): Response
     {
-        if ($service) {
-            return $this->render('pages/service.html.twig', [
-                'service' => $service,
-            ]);
+        $image_main = $image_preview = null;
+
+        if (null === $service) {
+            return $this->redirectToRoute('app_home');
         }
 
-        return $this->redirectToRoute('app_home');
+        if ($service->getGallery()->count()) {
+            $image_main = $service->getGallery()->filter(fn(Gallery $galleryItem) => $galleryItem->getSort() == 1)->current()?->getImage();
+            $image_preview = $service?->getGallery()->filter(fn(Gallery $galleryItem) => $galleryItem->getSort() == 2)->current()->getImage();
+        }
+
+        return $this->render('pages/service.html.twig', compact('service', 'image_main', 'image_preview'));
+
     }
 }
