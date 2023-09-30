@@ -7,15 +7,12 @@
         </div>
         <ul class="services__list">
             {% for service in services %}
+                {% set image_preview = service | filterServiceImage(2) %}
                 <li class="services__card services-card">
                     <div class="services-card__image">
-                        {% if service.gallery | length > 0 %}
-                            {% for image in service.gallery %}
-                                {% if image.sort == 2 %}
-                                    <img src="{{ vich_uploader_asset(image.image, 'imageFile') | imagine_filter_cache('middle_banner') }}"
-                                         alt="{{ service.title }}">
-                                {% endif %}
-                            {% endfor %}
+                        {% if image_preview %}
+                            <img src="{{ vich_uploader_asset(image_preview.image, 'imageFile') | imagine_filter_cache('middle_banner') }}"
+                                 alt="{{ service.title }}">
                         {% else %}
                             <img src="{{ asset('build/images/default-service-image.png') }}"
                                  alt="{{ service.title }}">

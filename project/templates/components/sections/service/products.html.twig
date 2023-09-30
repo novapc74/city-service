@@ -1,0 +1,39 @@
+<section class="section section_light products">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__heading">
+                Услуги
+            </h2>
+        </div>
+        <div class="products__inner">
+            <h3 class="title-18-28 products__title">{{ product.title }}</h3>
+            <div class="products__content">
+                <div class="products__description">
+                    {{ product.description | raw }}
+                </div>
+                <ul class="products__list">
+                    {% for item in product.products %}
+                        <li class="dropdown products__dropdown products-dropdown" data-dropdown>
+                            <div class="dropdown__header products-dropdown__header" data-open-dropdown>
+                                <span class="products-dropdown__btn">
+                                    <svg>
+                                        <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#triangle-icon"></use>
+                                    </svg>
+                                </span>
+                                <h4 class="title-18-28 products-dropdown__title">{{ item.title }}</h4>
+                            </div>
+                            <div class="dropdown__inner products-dropdown__inner" data-dropdown-inner>
+                                <div class="products-dropdown__content" data-dropdown-content>
+                                    <div>
+                                        {{ item.description | raw }}
+                                    </div>
+                                    <button class="default-button default-button_blue products-dropdown__service-btn" data-open-modal="feedback" data-service="{{ item.title }}">Заказать услугу</button>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

@@ -9,8 +9,10 @@
 @import "ui-kit/buttons";
 @import "ui-kit/typography";
 @import "ui-kit/inputs";
+@import "ui-kit/swiper";
 
 //dropdowns
+@import "components/dropdowns/dropdown";
 @import "components/dropdowns/dropdown-menu";
 
 // подключение базовых компонентов
@@ -35,3 +37,5 @@
 @import "sections/home/info";
 //service
 @import "sections/service/expertise";
+@import "sections/service/cases";
+@import "sections/service/products";

@@ -249,60 +249,6 @@
   }
 }
 
-.swiper-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 66px;
-  height: 66px;
-  background-color: transparent;
-  border-radius: 50%;
-  border: 2px solid $blue-dark-2;
-  transform-origin: center;
-  transition-property: background-color, border-color;
-  @include base-transition;
-
-  svg {
-    width: 26px;
-    height: 26px;
-    margin-left: -2px;
-    fill: $blue-dark;
-    transition: fill .4s ease;
-  }
-
-  @media screen and (min-width: 1024px) {
-    &:hover {
-      background-color: $blue;
-      border-color: $blue;
-
-      svg {
-        fill: $grey-light;
-      }
-    }
-  }
-
-  &:active {
-    background-color: $blue-dark;
-    border-color: $blue-dark;
-
-    svg {
-      fill: $grey-light;
-    }
-  }
-
-  &_disabled {
-    border-color: #94a2a6;
-
-    svg {
-      fill: #94a2a6;
-    }
-  }
-
-  &_next {
-    transform: rotate(180deg);
-  }
-}
-
 .close-button {
   width: 44px;
   height: 44px;
