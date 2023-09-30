@@ -6,6 +6,7 @@ export default function swipers() {
             slidesPerView: 1,
             speed: 1000,
             navigation: {
+                disabledClass: 'swiper-button_disabled',
                 nextEl: '.reviews__controls .swiper-button_next',
                 prevEl: '.reviews__controls .swiper-button_prev'
             }

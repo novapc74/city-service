@@ -13,26 +13,23 @@
 
 {% block content %}
 
-    {% set image_main = service | filterServiceImage(1) %}
-    {% set image_preview = service | filterServiceImage(2) %}
-
-    {% if image_main is not null %}
-        <img src="{{ vich_uploader_asset(image_main, 'imageFile') | imagine_filter_cache('banner_md') }}"
-             alt="главная картинка услуги">
-    {% endif %}
-
-    {% if image_preview is not null %}
-        <img src="{{ vich_uploader_asset(image_preview, 'imageFile') | imagine_filter_cache('banner_md') }}"
-             alt="главная картинка услуги">
-    {% endif %}
-
     {% set about = service.about.current %}
     {% if about %}
-        {% include 'components/sections/about.html.twig' with { heading: 'Об услуге', title: about.title, description: about.description, image: null } %}
+        {% set image_main = service | filterServiceImage(1) %}
+        {% set title = "<strong>#{about.title}</strong>" %}
+        {% include 'components/sections/about.html.twig' with { heading: 'Об услуге', title, description: about.description, image: image_main } %}
     {% endif %}
 
     {% if service.expertise | length %}
         {% include 'components/sections/service/expertise.html.twig' with { expertise: service.expertise } %}
+    {% endif %}
+
+    {% if service.product and service.product.products | length %}
+        {% include 'components/sections/service/products.html.twig' with { product: service.product } %}
+    {% endif %}
+
+    {% if service.workCategories | length %}
+        {% include'components/sections/service/cases.html.twig' with { categories: service.workCategories } %}
     {% endif %}
 
 {% endblock %}

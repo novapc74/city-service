@@ -1,0 +1,112 @@
+@import "../../vars";
+@import "../../mixins/base";
+.products {
+
+  &__inner {
+    @media screen and (min-width: 1024px) {
+      display: grid;
+      grid-template-columns: 1fr 644px;
+      gap: 26px;
+    }
+    @media screen and (min-width: 1366px) {
+      grid-template-columns: 1fr 796px;
+      gap: 44px;
+    }
+  }
+
+  &__title {
+    color: $blue-dark;
+    margin-bottom: 20px;
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 0;
+    }
+    @media screen and (max-width: 1365px) {
+      font-size: 24px;
+    }
+  }
+
+  &__description {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 30px;
+    @media screen and (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (min-width: 1024px) {
+      gap: 60px;
+    }
+    @media screen and (min-width: 1366px) {
+      margin-bottom: 50px;
+    }
+  }
+
+  &__dropdown {
+    &:not(:last-child) {
+      margin-bottom: 45px;
+    }
+  }
+}
+
+.products-dropdown {
+
+  &__header {
+    display: flex;
+    align-items: center;
+    transition: margin-bottom .4s ease;
+  }
+
+  &__btn {
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+    transform-origin: center;
+    transition: transform .4s ease;
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: $blue-dark;
+      transition: fill .4s ease;
+    }
+  }
+
+  &__title {
+    color: $blue-dark;
+    line-height: 100%;
+    transition: color .4s ease;
+  }
+
+  &__service-btn {
+    width: 100%;
+    margin-top: 15px;
+    @media screen and (min-width: 1024px) {
+      width: 223px;
+      margin-top: 25px;
+    }
+  }
+
+  &.active &__header {
+    margin-bottom: 15px;
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 25px;
+    }
+  }
+  &.active &__btn {
+    transform: rotate(90deg);
+    svg {
+      fill: $blue;
+    }
+  }
+  &.active &__title {
+    color: $blue;
+  }
+  @media screen and (min-width: 1024px) {
+    &__header:hover &__btn {
+      svg {
+        fill: $blue;
+      }
+    }
+    &__header:hover &__title {
+      color: $blue;
+    }
+  }
+}

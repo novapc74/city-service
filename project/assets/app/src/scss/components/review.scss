@@ -1,8 +1,10 @@
 @import "../vars";
 @import "../mixins/base";
+
 .review {
 
   &__preview {
+    color: $blue-dark;
     margin-bottom: 20px;
     @media screen and (min-width: 1366px) {
       margin-bottom: 60px;
@@ -22,6 +24,7 @@
 .review-author {
 
   &__name {
+    color: $blue-dark;
     margin-bottom: 5px;
   }
 

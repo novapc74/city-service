@@ -1,0 +1,41 @@
+<section class="section section_light cases">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__heading">
+                Выполненные работы
+            </h2>
+        </div>
+        <ul class="cases__categories">
+            {% for category in categories %}
+                {% if category.completedWorks | length %}
+                    <li class="cases__category cases-category">
+                        <div class="cases-category__header">
+                            <h3 class="title-24-53 cases-category__title">{{ category.title }}</h3>
+                            <div class="cases-category__controls">
+                                {% include 'components/swiper-button.html.twig' %}
+                                {% include 'components/swiper-button.html.twig' with { direction: 'next' } %}
+                            </div>
+                        </div>
+                        <div class="swiper cases-category__swiper cases-swiper">
+                            <ul class="swiper-wrapper cases-swiper__wrapper">
+                                {% for case in category.completedWorks %}
+                                    <li class="swiper-slide cases-swiper__slide">
+                                        {% if case.gallery | length > 0 %}
+                                            <img src="{{ vich_uploader_asset(case.gallery[0].image, 'imageFile') | imagine_filter_cache('middle_banner') }}"
+                                                 alt="{{ case.title }}">
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="default-swiper-navigation cases-category__navigation">
+                            <span class="default-swiper-navigation__fraction cases-category__fraction cases-category__fraction_current">01</span>
+                            <div class="cases-category__pagination"></div>
+                            <span class="default-swiper-navigation__fraction cases-category__fraction cases-category__fraction_total">03</span>
+                        </div>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</section>

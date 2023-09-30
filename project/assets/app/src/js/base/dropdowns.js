@@ -2,17 +2,16 @@ import {addClass, removeClass} from "../utils/classMethods";
 
 export default function dropdowns() {
 
-    // const dropdowns = [...document.querySelectorAll('.base-dropdown')]
-    // dropdowns.length && dropdowns.forEach(item => {
-    //     const content = item.querySelector('.base-dropdown__inner'),
-    //         contentHeight = item.querySelector('.base-dropdown__content').offsetHeight
-    //     content.style = `--height:${contentHeight}px`
-    // })
+    const dropdownInners = [...document.querySelectorAll('[data-dropdown-inner]')]
+    dropdownInners.length && dropdownInners.forEach(item => {
+        const contentHeight = item.querySelector('[data-dropdown-content]').offsetHeight
+        item.style = `--height:${contentHeight}px`
+    })
 
     document.addEventListener('click', (evt) => {
         const target = evt.target.closest('[data-open-dropdown]')
         if (target) {
-            const dropdown = target.closest(`[data-dropdown="${target.dataset.name}"]`)
+            const dropdown = target.closest('[data-dropdown]')
 
             if (dropdown.classList.contains('active')) {
                 removeClass(dropdown, 'active')
