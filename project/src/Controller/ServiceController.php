@@ -28,9 +28,9 @@ class ServiceController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
 
-        if ($service->getGallery()->count()) {
-            $image_main = $service->getGallery()->filter(fn(Gallery $galleryItem) => $galleryItem->getSort() == 1)->current()?->getImage();
-            $image_preview = $service?->getGallery()->filter(fn(Gallery $galleryItem) => $galleryItem->getSort() == 2)->current()->getImage();
+        if ($service->getGallery()->count() >= 2) {
+            $image_main = $service->getGallery()->filter(fn(Gallery $galleryItem) => $galleryItem->getSort() == 1)->current()->getImage();
+            $image_preview = $service->getGallery()->filter(fn(Gallery $galleryItem) => $galleryItem->getSort() == 2)->current()->getImage();
         }
 
         return $this->render('pages/service.html.twig', compact('service', 'image_main', 'image_preview'));
