@@ -33,7 +33,8 @@ class ServiceController extends AbstractController
             $image_preview = $service->getGallery()->filter(fn(Gallery $galleryItem) => $galleryItem->getSort() == 2)->current()->getImage();
         }
 
-        return $this->render('pages/service.html.twig', compact('service', 'image_main', 'image_preview'));
+        $page = $service->isIsActive() ? 'pages/service.html.twig' : 'pages/in_developing.html.twig';
 
+        return $this->render($page, compact('service', 'image_main', 'image_preview'));
     }
 }
