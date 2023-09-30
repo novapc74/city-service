@@ -48,12 +48,12 @@
 
   &__bg {
     width: 100%;
-    height: calc(100% - 168px / 2 - 25px - 42px);
+    height: calc(100% - 168px / 2 - 25px - 52px);
     position: absolute;
     left: 0;
-    bottom: 42px;
+    bottom: 52px;
     @media screen and (min-width: 768px) {
-      height: calc(100% - 264px / 2 - 15px - 42px);
+      height: calc(100% - 264px / 2 - 15px - 52px);
     }
     @media screen and (min-width: 1024px) {
       bottom: 0;
@@ -76,9 +76,6 @@
       margin-bottom: 70px;
       padding-top: 14px;
     }
-  }
-
-  &__wrapper {
   }
 
   &__slide {
@@ -106,6 +103,10 @@
         opacity: 1;
       }
     }
+  }
+
+  &__navigation {
+    padding-bottom: 10px;
   }
 
   &__fraction {

@@ -52,7 +52,7 @@
   &__header {
     display: flex;
     align-items: center;
-    transition: margin-bottom .4s ease;
+    transition: margin-bottom .3s ease;
   }
 
   &__btn {
@@ -60,19 +60,19 @@
     height: 24px;
     margin-right: 15px;
     transform-origin: center;
-    transition: transform .4s ease;
+    transition: transform .3s ease;
     svg {
       width: 100%;
       height: 100%;
       fill: $blue-dark;
-      transition: fill .4s ease;
+      transition: fill .3s ease;
     }
   }
 
   &__title {
     color: $blue-dark;
     line-height: 100%;
-    transition: color .4s ease;
+    transition: color .3s ease;
   }
 
   &__service-btn {

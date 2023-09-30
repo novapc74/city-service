@@ -34,10 +34,8 @@ img {
   object-fit: cover;
 }
 
-.main {
-}
-
 .container {
+  width: 100%;
   min-width: 320px;
   max-width: 940px;
   padding-left: 20px;
@@ -52,5 +50,38 @@ img {
   svg {
     width: 100%;
     height: 100%;
+  }
+}
+
+.main {
+  &__title {
+    width: 100%;
+    margin-bottom: 30px;
+    color: $blue-dark;
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 40px;
+      &_short {
+        width: 585px;
+      }
+    }
+    @media screen and (min-width: 1366px) {
+      margin-bottom: 32px;
+      &_short {
+        width: 693px;
+      }
+    }
+  }
+
+  &__image {
+    position: relative;
+    padding-top: 80%;
+
+    img {
+      @include absolute-100;
+    }
+
+    @media screen and (min-width: 1024px) {
+      padding-top: 60vh;
+    }
   }
 }

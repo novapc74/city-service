@@ -12,12 +12,31 @@
 {% endblock %}
 
 {% block content %}
+    {% include 'components/base/breadcrumbs.html.twig' with { breadcrumbs: [
+        {title : 'Главная', url : '/'},
+        {title :  service.title },
+    ] } %}
+    <div class="container">
+        <h1 class="title-24-53 main__title main__title_short">
+            Профессиональная Уборка для Вашего Бизнеса
+        </h1>
+    </div>
+    {% set image_main = service | filterServiceImage(2) %}
+    <div class="main__image">
+        {% if image_main %}
+            <img src="{{ vich_uploader_asset(image_main, 'imageFile') | imagine_filter_cache('middle_banner') }}"
+                 alt="{{ service.title }}">
+        {% else %}
+            <img src="{{ asset('build/images/default-service-page-image.jpg') }}"
+                 alt="{{ service.title }}">
+        {% endif %}
+    </div>
 
     {% set about = service.about.current %}
     {% if about %}
-        {% set image_main = service | filterServiceImage(1) %}
+        {% set image_preview = service | filterServiceImage(2) %}
         {% set title = "<strong>#{about.title}</strong>" %}
-        {% include 'components/sections/about.html.twig' with { heading: 'Об услуге', title, description: about.description, image: image_main } %}
+        {% include 'components/sections/about.html.twig' with { heading: 'Об услуге', title, description: about.description, image: image_preview } %}
     {% endif %}
 
     {% if service.expertise | length %}

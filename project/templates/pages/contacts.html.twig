@@ -1,0 +1,49 @@
+{# @var contact \App\Entity\Contact #}
+{# @var socialNetwork \App\Entity\SocialNetwork #}
+
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}Контакты | Сити Сервис{% endblock %}
+
+{% block content %}
+
+    {% include 'components/base/breadcrumbs.html.twig' with { breadcrumbs: [
+        {title : 'Главная', url : '/'},
+        {title :  'Контакты' },
+    ] } %}
+
+    <div class="container">
+        <h1 class="title-24-53 main__title">
+            Контакты
+        </h1>
+    </div>
+
+    <a style="color: #7c2d12" href="{{ path('app_home') }}">ДОМОЙ</a>
+    <section>
+        <h2>Контакты</h2>
+        {% if contact is not null %}
+            <ul>
+                {% if contact.phone | length %}
+                    <ul>
+                        {% for phone in contact.phone %}
+                            <li>Телефон: {{ phone }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <li>адрес: {{ contact.address }}</li>
+                <li>ИНН: {{ contact.inn }}</li>
+                <li>Координаты: {{ contact.coordinates }}</li>
+            </ul>
+        {% endif %}
+    </section>
+
+    <section>
+        <h2>Соц.сети</h2>
+        <ul>
+            {% for socialNetwork in socialNetworks %}
+                <li><a href="{{ socialNetwork.link }}">{{ socialNetwork.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+
+{% endblock %}

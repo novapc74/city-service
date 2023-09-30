@@ -13,7 +13,7 @@ export default function swipers() {
             speed: 1000,
             effect: 'fade',
             autoplay: {
-                delay: 7500,
+                delay: 4500,
             },
             allowTouchMove: false,
             pagination: {
@@ -49,7 +49,7 @@ export default function swipers() {
             loop: true,
             speed: 1000,
             autoplay: {
-                delay: 7500,
+                delay: 4500,
             },
             effect: "fade",
             allowTouchMove: false
