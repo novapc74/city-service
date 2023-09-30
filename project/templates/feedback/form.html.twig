@@ -1,11 +1,27 @@
-{{ form_start(form) }}
+{{ form_start(form, {
+    'attr': {
+        'class': 'feedback-form'
+    },
+}) }}
 
 <div class="feedback-form__inputs">
     <label class="default-input default-input_dark feedback-form__input empty">
         {{ form_widget(form.feedback.name) }}
+        <svg class="default-input__success-icon">
+            <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#check-icon"></use>
+        </svg>
+        <svg class="default-input__error-icon">
+            <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#error-icon"></use>
+        </svg>
     </label>
     <label class="default-input default-input_dark feedback-form__input empty">
         {{ form_widget(form.feedback.phone) }}
+        <svg class="default-input__success-icon">
+            <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#check-icon"></use>
+        </svg>
+        <svg class="default-input__error-icon">
+            <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#error-icon"></use>
+        </svg>
     </label>
     <label class="default-input default-input_dark default-input_textarea feedback-form__input empty">
         {{ form_widget(form.feedback.comment) }}
@@ -13,16 +29,19 @@
 </div>
 
 <label class="default-checkbox feedback-form__checkbox">
-    {{ form_widget(form.feedback.agreeTerm }}
+    {{ form_widget(form.feedback.agreeTerm) }}
     <span class="default-checkbox__checkbox">
-            <svg>
+        <svg>
             <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#check-icon"></use>
-            </svg>
-        </span>
+        </svg>
+    </span>
     <span class="feedback-form__policy">
-            Даю согласие на обработку <a href="{{ path('app_policy') }}">Персональных данных</a>
-        </span>
+        Даю согласие на обработку <a href="{{ path('app_policy') }}">Персональных данных</a>
+    </span>
 </label>
+
+{{ form_widget(form._token) }}
+
 <button type="submit" class="default-button default-button_grey feedback-form__submit">Отправить</button>
 
 {{ form_end(form) }}

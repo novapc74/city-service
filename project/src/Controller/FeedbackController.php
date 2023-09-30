@@ -20,14 +20,14 @@ class FeedbackController extends AbstractController
     {
     }
 
-    #[Route('/feedback/footer', name: 'app_feedback_footer', methods: ['GET', 'POST'])]
-    public function resolveFooterForm(Request $request): Response
+    #[Route('/feedback/popup', name: 'app_feedback_popup', methods: ['GET', 'POST'])]
+    public function resolvePopupForm(Request $request): Response
     {
         return $this->resolveForm($request, PopupFeedbackFormType::class);
     }
 
-    #[Route('/feedback/popup', name: 'app_feedback_popup', methods: ['GET', 'POST'])]
-    public function resolvePopupForm(Request $request): Response
+    #[Route('/feedback/footer', name: 'app_feedback_footer', methods: ['GET', 'POST'])]
+    public function resolveFooterForm(Request $request): Response
     {
         return $this->resolveForm($request, FooterFeedbackFormType::class);
     }

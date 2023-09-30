@@ -17,6 +17,13 @@
   &__policy {
     a {
       color: $yellow;
+      opacity: 0.75;
+      transition: opacity .4s ease;
+      @media screen and (min-width: 1366px) {
+        &:hover {
+          opacity: 1;
+        }
+      }
     }
   }
 

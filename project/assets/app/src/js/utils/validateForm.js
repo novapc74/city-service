@@ -1,25 +1,22 @@
 import JustValidate from 'just-validate';
 import phoneMask from "./phoneMask";
-import sendForm from "./sendForm";
 import {addClass, removeClass} from "./classMethods";
 
-export const validateForm = (form, url, popup = null) => {
+export const validateForm = (form) => {
     const validation = new JustValidate(form, {
-        errorFieldCssClass: ['error-input'],
-        errorLabelCssClass: ['error-input-message'],
-        successFieldCssClass: ['success-input'],
-        validateBeforeSubmitting: true,
-        errorLabelStyle: {
-            color: "#ff0000",
-        }
+        errorFieldCssClass: ['error'],
+        errorLabelCssClass: ['default-input__error-text'],
+        successFieldCssClass: ['success'],
+        validateBeforeSubmitting: false,
     });
     const inputs = [...form.querySelectorAll('input')]
 
     inputs.forEach(input => {
 
-        input.closest('.base-input') && input.addEventListener('blur', (evt) => {
-            const target = evt.currentTarget
-            target.value !== '' ? addClass(target, 'fill-input') : removeClass(target, 'fill-input')
+        input.closest('.default-input') && input.addEventListener('blur', (evt) => {
+            const target = evt.currentTarget,
+                parent = target.closest('.default-input')
+            target.value === '' ? addClass(parent, 'empty') : removeClass(parent, 'empty')
         } )
 
         if (input.type === 'tel') {
@@ -43,35 +40,18 @@ export const validateForm = (form, url, popup = null) => {
                 }
             ],)
         }
-        if (input.type === 'email') {
-            validation.addField(input, [
-                {
-                    rule: 'function',
-                    validator: () => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(input.value),
-                    errorMessage: 'Некорректный email',
-                },
-                {
-                    rule: 'required',
-                    errorMessage: 'Обязательное поле',
-                }
-            ],)
-        }
         if (input.type === 'checkbox') {
             validation.addField(input, [
                 {
                     rule: 'required',
-                    errorFieldCssClass: ['error-checkbox'],
-                    errorLabelCssClass: ['hidden-error-message'],
-                    errorLabelStyle: {
-                        display: "none",
-                    }
+                },
+            ], {
+                errorLabelStyle: {
+                    display: "none",
                 }
-            ],)
+            })
         }
     })
 
-    validation.onSuccess(() => {
-        sendForm(form, url, popup)
-        validation.refresh()
-    })
+    return validation
 };

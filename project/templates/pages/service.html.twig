@@ -1,0 +1,24 @@
+{# @var service \App\Entity\Service #}
+{# @var image \App\Entity\Gallery #}
+
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}{{ service.title }} | Сити Сервис{% endblock %}
+{% block meta %}
+    <meta property="og:title" content="{{ service.title }}">
+    <meta property="og:description"
+          content="{{ service.description | striptags }}">
+{% endblock %}
+
+{% block content %}
+
+    {% set about = service.about.current %}
+    {% if about %}
+        {% include 'components/sections/about.html.twig' with { heading: 'Об услуге', title: about.title, description: about.description, image: null } %}
+    {% endif %}
+
+    {% if service.expertise | length %}
+        {% include 'components/sections/service/expertise.html.twig' with { expertise: service.expertise } %}
+    {% endif %}
+
+{% endblock %}

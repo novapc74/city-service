@@ -1,5 +1,5 @@
 @import "../vars";
-
+@import "../mixins/base";
 .about {
 
   &__header {
@@ -23,17 +23,38 @@
     }
 
     @media screen and (min-width: 1024px) {
+      text-indent: 155px;
       span {
         display: block;
-
-        &:nth-child(1) {
-          padding-left: 160px;
+      }
+      &_static {
+        text-indent: initial;
+        span {
+          &:nth-child(1) {
+            padding-left: 160px;
+          }
         }
       }
     }
   }
 
   &__image {
+    position: relative;
+    width: 100%;
+    padding-top: 70%;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    img {
+      @include absolute-100;
+    }
+    @media screen and (min-width: 1024px) {
+      padding-top: 50%;
+      margin-bottom: 30px;
+    }
+    @media screen and (min-width: 1366px) {
+      margin-bottom: 50px;
+    }
   }
 
   &__description {
