@@ -22,7 +22,7 @@ class ServiceController extends AbstractController
     public function show(Service $service = null): Response
     {
         if ($service) {
-            return $this->render('service/show.html.twig', [
+            return $this->render('pages/service.html.twig', [
                 'service' => $service,
             ]);
         }

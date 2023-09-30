@@ -1,0 +1,12 @@
+<section class="section section_dark expertise">
+    <div class="container expertise__container">
+        <div class="section__header">
+            <h2 class="section__heading">Наша экспертиза</h2>
+        </div>
+        <ul class="expertise__list">
+            {% for item in expertise %}
+                <li class="title-18-28 expertise__item{% if loop.index % 2 == 0 %} expertise__item_light{% endif %}">{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

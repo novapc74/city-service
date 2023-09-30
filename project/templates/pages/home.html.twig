@@ -51,7 +51,7 @@
             ]
         } %}
 
-        {% include 'components/sections/about.html.twig' with { heading: about.heading, title: about.title, description: about.description, list: about.list } %}
+        {% include 'components/sections/about.html.twig' with { heading: about.heading, title: about.title, description: about.description, list: about.list, static: true } %}
 
         {% if services | length %}
             {% include 'components/sections/home/services.html.twig' with { services } %}

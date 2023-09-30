@@ -5,11 +5,11 @@
 {# @var workCategory \App\Entity\WorkCategory #}
 {# @var work \App\Entity\WorkCategory #}
 
-{% extends 'base.html.twig' %}
+{% extends 'layouts/default.html.twig' %}
 
 {% block title %}{{ service.title }}{% endblock %}
 
-{% block body %}
+{% block content %}
     <h1>{{ service.title }}</h1>
     <p>{{ service.description | raw }}</p>
 

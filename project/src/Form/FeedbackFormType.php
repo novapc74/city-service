@@ -18,25 +18,36 @@ class FeedbackFormType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Ваше имя',
+                'label' => 'Имя',
                 'constraints' => [
                     new NotBlank()
-                ]
+                ],
+                'attr' => array(
+                    'placeholder' => 'Имя*'
+                )
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Email',
+                'required' => false,
             ])
             ->add('phone', TelType::class, [
-                'label' => 'Номер телефона',
+                'label' => 'Телефон',
                 'constraints' => [
                     new NotBlank()
-                ]
+                ],
+                'attr' => array(
+                    'placeholder' => 'Телефон*'
+                )
             ])
             ->add('comment', TextareaType::class, [
-                'label' => 'Комментарий',
+                'label' => 'Сообщение',
+                'required' => false,
                 'constraints' => [
                     new NotBlank()
-                ]
+                ],
+                'attr' => array(
+                    'placeholder' => 'Сообщение'
+                )
             ])
             ->add('agreeTerm', CheckboxType::class, [
                 'label' => 'Пользовательское соглашение',
