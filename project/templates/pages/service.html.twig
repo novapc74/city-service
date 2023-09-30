@@ -13,13 +13,18 @@
 
 {% block content %}
 
-    {% if image_main is not null and image_preview is not null %}
+    {% set image_main = service | filterServiceImage(1) %}
+    {% set image_preview = service | filterServiceImage(2) %}
+
+    {% if image_main is not null %}
         <img src="{{ vich_uploader_asset(image_main, 'imageFile') | imagine_filter_cache('banner_md') }}"
              alt="главная картинка услуги">
-        <img src="{{ vich_uploader_asset(image_preview, 'imageFile') | imagine_filter_cache('banner_md') }}"
-             alt="превью главной картинки услуги">
     {% endif %}
 
+    {% if image_preview is not null %}
+        <img src="{{ vich_uploader_asset(image_preview, 'imageFile') | imagine_filter_cache('banner_md') }}"
+             alt="главная картинка услуги">
+    {% endif %}
 
     {% set about = service.about.current %}
     {% if about %}

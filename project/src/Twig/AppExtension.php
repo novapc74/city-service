@@ -3,6 +3,8 @@
 namespace App\Twig;
 
 use App\Entity\Contact;
+use App\Entity\Gallery;
+use App\Entity\Media;
 use App\Entity\Service;
 use App\Repository\ContactRepository;
 use App\Repository\ServiceRepository;
@@ -46,7 +48,22 @@ class AppExtension extends AbstractExtension
         return [
             new TwigFilter('mimeTypeName', [$this, 'getMimeTypeName']),
             new TwigFilter('filterPhoneMask', [$this, 'removePhoneMask']),
+            new TwigFilter('filterServiceImage', [$this, 'filterServiceImage']),
         ];
+    }
+
+    public function filterServiceImage(Service $service, string $imageSort): ?Media
+    {
+        $galleryItem = null;
+        if ($service->getGallery()->count()) {
+           $galleryItem = $service->getGallery()->filter(fn(Gallery $galleryItem) => $galleryItem->getSort() == $imageSort)->current();
+        }
+
+        if ($galleryItem) {
+            return $galleryItem->getImage();
+        }
+
+        return null;
     }
 
     public function removePhoneMask(string $string): string

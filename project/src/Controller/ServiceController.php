@@ -22,19 +22,12 @@ class ServiceController extends AbstractController
     #[Route('/service/{slug}', name: 'app_service_show')]
     public function show(Service $service = null): Response
     {
-        $image_main = $image_preview = null;
-
         if (null === $service) {
             return $this->redirectToRoute('app_home');
         }
 
-        if ($service->getGallery()->count() >= 2) {
-            $image_main = $service->getGallery()->filter(fn(Gallery $galleryItem) => $galleryItem->getSort() == 1)->current()->getImage();
-            $image_preview = $service->getGallery()->filter(fn(Gallery $galleryItem) => $galleryItem->getSort() == 2)->current()->getImage();
-        }
-
         $page = $service->isIsActive() ? 'pages/service.html.twig' : 'pages/in_developing.html.twig';
 
-        return $this->render($page, compact('service', 'image_main', 'image_preview'));
+        return $this->render($page, compact('service'));
     }
 }
