@@ -6,7 +6,6 @@ use App\Entity\Feedback;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -39,11 +38,6 @@ class FeedbackCrudController extends AbstractCrudController
 				->setTextAlign('center')
 				->setColumns('col-sm-6 col-lg-5 col-xxl-3')
 			,
-//			FormField::addRow(),
-//			EmailField::new('email', 'Почта')
-//				->setTextAlign('center')
-//				->setColumns('col-sm-6 col-lg-5 col-xxl-3')
-//			,
 			FormField::addRow(),
 			TextareaField::new('comment', 'Комментарий')
 				->setTextAlign('center')
