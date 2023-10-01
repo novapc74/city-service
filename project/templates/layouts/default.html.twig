@@ -49,6 +49,9 @@
     {% include 'components/base/footer.html.twig' %}
 {% endblock %}
 
+{% include 'components/popups/feedback-popup.html.twig' %}
+{% include 'components/popups/response-popup.html.twig' %}
+
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
     {#    <script src="https://api-maps.yandex.ru/2.1/?apikey=e3c02e3a-d397-446f-8447-2bc2faffd9c9&lang=ru_RU" #}

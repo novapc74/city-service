@@ -18,63 +18,55 @@
 
 {% block content %}
 
-    <ul>
-        {% for service in serviceList() %}
-            <li>
-                {{ service.title }}
-            </li>
-        {% endfor %}
-    </ul>
+    {% include 'components/sections/home/hero.html.twig' %}
 
-        {% include 'components/sections/home/hero.html.twig' %}
-
-        {% set about = {
-            heading: 'Кто мы',
-            title: '<span>Эксперты в клининге с 2006.</span>
+    {% set about = {
+        heading: 'Кто мы',
+        title: '<span>Эксперты в клининге с 2006.</span>
         <span>Применяем <strong>передовые технологии</strong></span>
         <span>для качественных услуг</span>',
-            description: 'Компания «Сити Сервис» —  крупное аутсорсинговое предприятие, основной специализацией которого является предоставление клининговых услуг в Северо-Западном округе Российской Федерации.<br>
+        description: 'Компания «Сити Сервис» —  крупное аутсорсинговое предприятие, основной специализацией которого является предоставление клининговых услуг в Северо-Западном округе Российской Федерации.<br>
 Главный офис «Сити Сервис» расположен в Санкт-Петербурге, а география предоставления услуг охватывает территорию от Мурманска до Волгограда и от Калининграда до Омска.',
-            list: [
-                {
-                    title: '222 чел',
-                    description: 'Описание'
-                },
-                {
-                    title: '222 чел',
-                    description: 'Описание'
-                },
-                {
-                    title: '222 чел',
-                    description: 'Описание'
-                },
-                {
-                    title: '222 чел',
-                    description: 'Описание'
-                },
-                {
-                    title: '222 чел',
-                    description: 'Описание'
-                }
-            ]
-        } %}
+        list: [
+            {
+                title: '222 чел',
+                description: 'Описание'
+            },
+            {
+                title: '222 чел',
+                description: 'Описание'
+            },
+            {
+                title: '222 чел',
+                description: 'Описание'
+            },
+            {
+                title: '222 чел',
+                description: 'Описание'
+            },
+            {
+                title: '222 чел',
+                description: 'Описание'
+            }
+        ]
+    } %}
 
-        {% include 'components/sections/about.html.twig' with { heading: about.heading, title: about.title, description: about.description, list: about.list, static: true } %}
+    {% include 'components/sections/about.html.twig' with { heading: about.heading, title: about.title, description: about.description, list: about.list, static: true } %}
 
-        {% if services | length %}
-            {% include 'components/sections/home/services.html.twig' with { services } %}
-        {% endif %}
+    {% if serviceList() | length %}
+        {% include 'components/sections/home/services.html.twig' with { services: serviceList() } %}
+    {% endif %}
 
-        {% include'components/sections/home/info.html.twig' %}
+    {% include'components/sections/home/info.html.twig' %}
 
-        {% if advantages | length %}
-            {% include 'components/sections/advantages.html.twig' with { advantages } %}
-        {% endif %}
+    {% if advantages | length %}
+        {% include 'components/sections/advantages.html.twig' with { advantages } %}
+    {% endif %}
 
-        {% if reviews | length %}
-            {% include 'components/sections/reviews.html.twig' with { reviews } %}
-        {% endif %}
+    {% if reviews | length %}
+        {% include 'components/sections/reviews.html.twig' with { reviews } %}
+    {% endif %}
 
-        {% include 'components/sections/partners.html.twig' %}
+    {% include 'components/sections/partners.html.twig' %}
 
 {% endblock %}

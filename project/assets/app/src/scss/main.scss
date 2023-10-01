@@ -24,6 +24,11 @@
 // формы
 @import "components/forms/feedback-form";
 
+// popups
+@import "components/popups/default-popup";
+@import "components/popups/feedback-popup";
+@import "components/popups/response-popup";
+
 // подключение компонентов страниц
 // base
 @import "sections/about";

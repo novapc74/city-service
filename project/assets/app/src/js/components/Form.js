@@ -1,10 +1,13 @@
 import axios from "axios";
 import {validateForm} from "../utils/validateForm";
+import Popup from "./Popup";
+import {addClass, removeClass} from "../utils/classMethods";
+
 export default class Form {
-    constructor(parent, popups = null) {
+    constructor(parent) {
         this.parent = parent
-        this.formPopup = popups?.form
-        this.responsePopup = popups?.response
+        this.formPopup = null
+        this.responsePopup = null
         this.url = `/feedback/${this.parent.dataset.form}`
         this.options = {
             headers: {
@@ -13,13 +16,40 @@ export default class Form {
         }
         this.form = null
         this.validation = null
-        this.successMessage = 'Спасибо! Заявка отправлена.'
-        this.errorMessage = 'Пожалуйста, проверьте введенные данные и повторите попытку позже. Если проблема сохраняется, свяжитесь с нами напрямую для получения дополнительной помощи.'
+        this.isError = false
         this.init()
     }
 
     init() {
         this.getForm()
+        const formPopup = document.querySelector(`[data-modal="${this.parent.dataset.popupName}"]`)
+        const responsePopup = document.querySelector(`[data-modal="${this.parent.dataset.responsePopupName}"]`)
+        if (formPopup) {
+            const openFn = (evt) => {
+                if(evt.target.closest('[data-service]')) {
+                    const service = evt.target.closest('[data-service]').dataset.service
+                    this.form.querySelector('textarea').value = service
+                }
+            }
+            this.formPopup = new Popup(formPopup, { openFn })
+        }
+        if (responsePopup) {
+            const responseTitle = responsePopup.querySelector('.response-popup__title'),
+                responseText = responsePopup.querySelector('.response-popup__text')
+            const openFn = () => {
+                if (this.isError) {
+                    addClass(responseTitle, 'hidden')
+                    responseText.textContent = 'Что-то пошло не так. Пожалуйста, проверьте введенные данные и попробуйте еще раз. Если ошибка повторяется, пожалуйста, свяжитесь с нами напрямую по телефону для получения дальнейшей помощи. Наша команда будет рада вам помочь!'
+                }
+            }
+            const closeFn = () => {
+                if (this.isError) {
+                    removeClass(responseTitle, 'hidden')
+                    responseText.textContent = 'Мы готовы предоставить вам высококачественные услуги, которые превратят ваши пространства в источник вдохновения и эффективности. Доверьтесь нам, и мы сделаем ваше окружение лучше.'
+                }
+            }
+            this.responsePopup = new Popup(responsePopup, {openFn, closeFn})
+        }
     }
 
     getForm() {
@@ -33,30 +63,22 @@ export default class Form {
     validate(form) {
         this.validation = validateForm(form)
         this.validation.onSuccess(() => {
-            this.send()
-            this.validation.refresh()
+            this.send().then(() => {
+                this.formPopup && this.formPopup.close()
+                this.responsePopup && this.responsePopup.open()
+                this.validation.refresh()
+            })
         })
     }
 
-    send() {
+    async send() {
         const formData = new FormData(this.form)
-        axios.post(this.url, formData, this.options).then(({data}) => {
-            if (data.success) {
-                console.log(this.successMessage)
-
-                // message.textContent = messageSuccess
-            } else {
-                console.log(this.errorMessage)
-                // message.textContent = messageError
-            }
-
+        await axios.post(this.url, formData, this.options).then(({data}) => {
+            this.isError = !data.success;
             this.getForm()
         }).catch((e) => {
+            this.isError = true
             console.log(e)
-            console.log(this.errorMessage)
-            // message.textContent = messageError
         })
-        this.formPopup && this.formPopup.close()
-        this.responsePopup && this.responsePopup.open()
     }
 }

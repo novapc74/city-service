@@ -1,16 +1,16 @@
 import toggleWindowScroll from "../utils/toggleWindowScroll";
 import {addClass, removeClass} from "../utils/classMethods";
 
-export class Popup {
-    constructor(classname, initiator) {
-        this.popup = document.querySelector(classname)
+export default class Popup {
+    constructor(popup, callback = null) {
+        this.popup = popup
+        this.name = this.popup.dataset.modal
         this.overlay = this.popup.querySelector('.default-popup__overlay')
         this.closeBtn = this.popup.querySelector('.default-popup__close-btn')
         this.cancelBtn = this.popup.querySelector('.default-popup__cancel-btn')
-        this.initiator = initiator
 
-        this.openFn = null
-        this.closeFn = null
+        this.openFn = callback && callback?.openFn
+        this.closeFn = callback && callback?.openFn
 
         this.init()
     }
@@ -19,14 +19,14 @@ export class Popup {
         const closeItems = [this.overlay, this.closeBtn, this.cancelBtn]
 
         document.addEventListener('click', evt => {
-            if(evt.target.closest(`[data-open-modal="${this.initiator}"]`)) this.#handleOpenPopup(evt)
+            if(evt.target.closest(`[data-open-modal="${this.name}"]`)) this.#handleOpenPopup(evt)
+            if(evt.target.closest(`[data-close-modal="${this.name}"]`)) this.#handleClosePopup(evt)
         })
 
         closeItems.forEach(el => {
-            el && el.addEventListener('click', this.#handleClosePopup)
+            el && el.addEventListener('click', evt => this.#handleClosePopup(evt))
         })
     }
-
     #handleOpenPopup(evt) {
         evt.preventDefault()
         this.open(evt)

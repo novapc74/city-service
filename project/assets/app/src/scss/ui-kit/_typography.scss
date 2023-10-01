@@ -28,7 +28,16 @@
     font-size: 53px;
   }
 }
-
+.title-24-45 {
+  @include base-title;
+  font-size: 24px;
+  @media screen and (min-width: 1024px) {
+    font-size: 35px;
+  }
+  @media screen and (min-width: 1366px) {
+    font-size: 45px;
+  }
+}
 .title-18 {
   @include base-title;
   font-size: 18px;
