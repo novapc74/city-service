@@ -18,6 +18,14 @@
 
 {% block content %}
 
+    <ul>
+        {% for service in serviceList() %}
+            <li>
+                {{ service.title }}
+            </li>
+        {% endfor %}
+    </ul>
+
         {% include 'components/sections/home/hero.html.twig' %}
 
         {% set about = {

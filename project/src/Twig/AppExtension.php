@@ -39,6 +39,7 @@ class AppExtension extends AbstractExtension
             new TwigFunction('contact', [$this, 'getContact']),
             new TwigFunction('socialNetworks', [$this, 'getSocialNetworks']),
             new TwigFunction('menuLinks', [$this, 'getMenuLinks']),
+            new TwigFunction('serviceList', [$this, 'getServiceList']),
         ];
     }
 
@@ -52,11 +53,16 @@ class AppExtension extends AbstractExtension
         ];
     }
 
+    public function getServiceList(): array
+    {
+        return $this->serviceRepository->findByParentService() ?? [];
+    }
+
     public function filterServiceImage(Service $service, string $imageSort): ?Media
     {
         $galleryItem = null;
         if ($service->getGallery()->count()) {
-           $galleryItem = $service->getGallery()->filter(fn(Gallery $galleryItem) => $galleryItem->getSort() == $imageSort)->current();
+            $galleryItem = $service->getGallery()->filter(fn(Gallery $galleryItem) => $galleryItem->getSort() == $imageSort)->current();
         }
 
         if ($galleryItem) {
@@ -108,7 +114,7 @@ class AppExtension extends AbstractExtension
                 'subLinks' => array_map(fn(Service $service) => [
                     'name' => $service->getTitle(),
                     'link' => "/service/{$service->getSlug()}",
-                ], $this->serviceRepository->findByParentService() ?? []),
+                ], $this->getServiceList()),
             ],
             [
                 'name' => 'Контакты',
