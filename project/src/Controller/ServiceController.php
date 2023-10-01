@@ -11,14 +11,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ServiceController extends AbstractController
 {
-    #[Route('/service', name: 'app_service')]
-    public function index(ServiceRepository $serviceRepository): Response
-    {
-        return $this->render('service/policy.html.twig', [
-            'services' => $serviceRepository->findByParentService(null),
-        ]);
-    }
-
     #[Route('/service/{slug}', name: 'app_service_show')]
     public function show(Service $service = null): Response
     {
