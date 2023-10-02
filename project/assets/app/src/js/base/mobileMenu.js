@@ -5,7 +5,6 @@ export default function mobileMenu() {
         menu = document.querySelector('[data-mobile-menu]'),
         logo = document.querySelector('[data-logo]')
 
-    console.log(burger, menu)
     if(burger && menu) {
         window.mobileMenu = new Menu(menu, burger, logo)
     }

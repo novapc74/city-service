@@ -53,11 +53,12 @@
     font-size: 28px;
   }
 }
-
-.title-16-italic {
+.title-16 {
   @include base-title;
   font-size: 16px;
-  font-style: italic;
+  &_italic {
+    font-style: italic;
+  }
 }
 
 .text-14 {

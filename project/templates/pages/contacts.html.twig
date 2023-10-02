@@ -17,33 +17,74 @@
             Контакты
         </h1>
     </div>
-
-    <a style="color: #7c2d12" href="{{ path('app_home') }}">ДОМОЙ</a>
-    <section>
-        <h2>Контакты</h2>
-        {% if contact is not null %}
-            <ul>
-                {% if contact.phone | length %}
-                    <ul>
-                        {% for phone in contact.phone %}
-                            <li>Телефон: {{ phone }}</li>
+    {% if contact %}
+        <section class="contacts">
+            <div class="container contacts__container">
+                <ul class="contacts__list">
+                    {% if contact.phone %}
+                        <li class="contacts__item contacts-item">
+                            <h2 class="title-16 contacts-item__title">Телефон</h2>
+                            <ul class="title-18-28 contacts-item__list">
+                                {% for phone in contact.phone %}
+                                    <li class="title-18-28 contacts-item__contact">
+                                        <a href="tel:{{ phone | filterPhoneMask }}">{{ phone }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endif %}
+                    {% if contact.address %}
+                        <li class="contacts__item contacts-item">
+                            <h2 class="title-16 contacts-item__title">Адрес</h2>
+                            <div class="title-18-28 contacts-item__contact">
+                                {{ contact.address }}
+                            </div>
+                        </li>
+                    {% endif %}
+                    {% if contact.inn %}
+                        <li class="contacts__item contacts-item">
+                            <h2 class="title-16 contacts-item__title">ИНН</h2>
+                            <div class="title-18-28 contacts-item__contact contacts-item__contact_copy">
+                                <span>{{ contact.inn }}</span>
+                                <button class="contacts-item__icon" data-copy="{{ contact.inn }}">
+                                    <svg>
+                                        <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#copy-icon"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </section>
+    {% endif %}
+    <section class="map">
+        <div class="container map__container" id="map" data-coords="{{ contact.coordinates }}"></div>
+    </section>
+    {% if branches | length %}
+        <section class="section section_light branches">
+            <div class="container branches__container">
+                <div class="dropdown branches__dropdown" data-dropdown>
+                    <h2 class="title-18-28 branches__title">Адреса наших филиалов</h2>
+                    <ul class="dropdown__inner branches__list">
+                        {% for branch in branches %}
+                            <li class="branches__item branch{% if loop.index > 4 %} hidden{% endif %}">
+                                <h3 class="title-18 branch__title">
+                                    <span class="title-16 title-16_italic">({{ loop.index < 10 ? '0' ~ loop.index : loop.index }})</span> {{ branch.city }}
+                                </h3>
+                                <div class="branch__address branch-address">
+                                    <span class="text-14 branch-address__heading">Адрес</span>
+                                    <a href="{{ branch.link }}" target="_blank" class="branch-address__name">{{ branch.address }}</a>
+                                </div>
+                            </li>
                         {% endfor %}
                     </ul>
-                {% endif %}
-                <li>адрес: {{ contact.address }}</li>
-                <li>ИНН: {{ contact.inn }}</li>
-                <li>Координаты: {{ contact.coordinates }}</li>
-            </ul>
-        {% endif %}
-    </section>
-
-    <section>
-        <h2>Соц.сети</h2>
-        <ul>
-            {% for socialNetwork in socialNetworks %}
-                <li><a href="{{ socialNetwork.link }}">{{ socialNetwork.name }}</a></li>
-            {% endfor %}
-        </ul>
-    </section>
+                    {% if branches | length > 4 %}
+                        <button class="default-button default-button_solid branches__button" data-open-dropdown data-open-text="Показать еще" data-hide-text="Скрыть">Показать еще</button>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
 
 {% endblock %}

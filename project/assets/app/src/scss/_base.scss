@@ -95,3 +95,32 @@ img {
     }
   }
 }
+
+.map {
+  &__container {
+    height: 290px;
+    @media screen and (min-width: 768px) {
+      height: 630px;
+    }
+    @media screen and (max-width: 1023px) {
+      padding: 0;
+      width: 100vw;
+    }
+    @media screen and (min-width: 1024px) {
+      height: 551px;
+    }
+    @media screen and (min-width: 1366px) {
+      height: 570px;
+    }
+  }
+}
+
+.policy {
+  max-width: 773px;
+  &__block {
+    margin-bottom: 40px;
+  }
+  &__title {
+    margin-bottom: 20px;
+  }
+}

@@ -1,0 +1,114 @@
+@import "../../vars";
+@import "../../mixins/base";
+
+.branches {
+
+  &__dropdown {
+    @media screen and (min-width: 1366px) {
+      width: 895px;
+      margin-left: auto;
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    color: $blue-dark;
+    margin-bottom: 20px;
+    @media screen and (min-width: 768px) {
+      margin-bottom: 40px;
+    }
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 50px;
+    }
+    @media screen and (min-width: 1366px) {
+      margin-bottom: 70px;
+    }
+  }
+
+  &__list {
+    max-height: none;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &__item {
+    margin-bottom: 40px;
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 50px;
+    }
+
+    &.hidden {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      transition: all .4s ease;
+    }
+  }
+
+  &__dropdown.active &__item.hidden {
+    opacity: 1;
+    max-height: 175px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 50px;
+      padding-bottom: 40px;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    @media screen and (min-width: 1024px) {
+      width: 249px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.branch {
+  padding-bottom: 20px;
+  border-bottom: 1px solid $blue-dark-2;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+  }
+  @media screen and (min-width: 1024px) {
+    padding-bottom: 40px;
+  }
+
+  &__title {
+    color: $blue-dark;
+    margin-bottom: 20px;
+
+    span {
+      opacity: 0.3;
+    }
+
+    @media screen and (min-width: 768px) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.branch-address {
+
+  &__heading {
+    display: block;
+    margin-bottom: 5px;
+    @media screen and (min-width: 1024px) {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__name {
+    @media screen and (min-width: 1024px) {
+      transition: color .4s ease;
+      &:hover {
+        color: $blue;
+      }
+    }
+  }
+}
