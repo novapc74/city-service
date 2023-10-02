@@ -42,9 +42,9 @@ class FeedbackFormType extends AbstractType
             ->add('comment', TextareaType::class, [
                 'label' => 'Сообщение',
                 'required' => false,
-                'constraints' => [
-                    new NotBlank()
-                ],
+//                'constraints' => [
+//                    new NotBlank()
+//                ],
                 'attr' => array(
                     'placeholder' => 'Сообщение'
                 )

@@ -40,7 +40,9 @@
     </span>
 </label>
 
-{{ form_widget(form._token) }}
+<div class="my-custom-class-for-errors">
+    {{ form_errors(form) }}
+</div>
 
 <button type="submit" class="default-button default-button_blue feedback-form__submit">Отправить</button>
 

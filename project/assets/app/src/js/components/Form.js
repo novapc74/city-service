@@ -26,7 +26,7 @@ export default class Form {
         const responsePopup = document.querySelector(`[data-modal="${this.parent.dataset.responsePopupName}"]`)
         if (formPopup) {
             const openFn = (evt) => {
-                if(evt.target.closest('[data-service]')) {
+                if(evt && evt.target.closest('[data-service]')) {
                     const service = evt.target.closest('[data-service]').dataset.service
                     this.form.querySelector('textarea').value = service
                 }
