@@ -8,7 +8,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 
-    {#    <link rel="icon" type="image/svg" href="{{ asset('build/images/8x8.svg') }}"> #}
+        <link rel="icon" type="image/svg" href="{{ asset('favicon/32x32.svg') }}">
     {#    <link rel="icon" type="image/svg" href="{{ asset('build/images/16x16.svg') }}"> #}
     {#    <link rel="icon" type="image/svg" href="{{ asset('build/images/32x32.svg') }}"> #}
     {#    <link rel="icon" type="image/svg" href="{{ asset('build/images/64x64.svg') }}"> #}
@@ -55,9 +55,9 @@
 
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
-    {#    <script src="https://api-maps.yandex.ru/2.1/?apikey=e3c02e3a-d397-446f-8447-2bc2faffd9c9&lang=ru_RU" #}
-    {#            type="text/javascript"> #}
-    {#    </script> #}
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=66e7f852-a2c4-46fc-b4f3-254ece42aa13&lang=ru_RU"
+            type="text/javascript">
+    </script>
 {% endblock %}
 </body>
 </html>

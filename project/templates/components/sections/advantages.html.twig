@@ -9,7 +9,7 @@
                 {% for advantage in advantages %}
                     <li class="advantages__advantage advantage">
                         <h4 class="title-18 advantage__title">
-                            <span class="title-16-italic">({{ loop.index < 10 ? '0' ~ loop.index : loop.index }})</span> {{ advantage.title }}
+                            <span class="title-16 title-16_italic">({{ loop.index < 10 ? '0' ~ loop.index : loop.index }})</span> {{ advantage.title }}
                         </h4>
                         <div class="advantage__description">{{ advantage.description | raw }}</div>
                     </li>
