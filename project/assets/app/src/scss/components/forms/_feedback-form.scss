@@ -1,8 +1,10 @@
 @import "../../vars";
 @import "../../mixins/base";
+
 .feedback-form {
   display: grid;
   gap: 30px;
+
   &__inputs {
     display: grid;
     gap: 35px;
@@ -29,5 +31,62 @@
 
   &__submit {
     width: 100%;
+  }
+}
+
+.feedback-wrapper {
+  &_dark {
+    .default-input {
+
+      input, textarea {
+        color: $grey-light;
+      }
+
+      @media screen and (min-width: 1024px) {
+        &:hover {
+          input, textarea {
+            border-color: $grey-light;
+          }
+        }
+      }
+
+      &__success-icon {
+        stroke: $grey-light;
+      }
+    }
+
+    .default-checkbox {
+      color: $blue-dark-2;
+
+      &__checkbox {
+        svg {
+          stroke: $grey-light;
+        }
+      }
+    }
+
+    .default-button {
+      color: $blue-dark;
+      background-color: $grey-light;
+
+      svg {
+        fill: $blue-dark;
+      }
+
+      &:visited {
+        color: $blue-dark;
+      }
+
+      @media screen and (min-width: 1024px) {
+        &:hover {
+          color: $grey-light;
+          background-color: $blue-dark-2;
+        }
+      }
+
+      &:active {
+        background-color: $white;
+      }
+    }
   }
 }

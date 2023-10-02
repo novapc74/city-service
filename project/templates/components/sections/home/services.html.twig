@@ -6,7 +6,7 @@
             </h2>
         </div>
         <ul class="services__list">
-            {% for service in services %}
+            {% for service in serviceList() %}
                 {% set image_preview = service | filterServiceImage(2) %}
                 <li class="services__card services-card">
                     <div class="services-card__image">
@@ -21,7 +21,7 @@
                     <div class="services-card__inner">
                         <h3 class="title-18-28 services-card__title">{{ service.title }}</h3>
                         <div class="services-card__description">{{ service.description | raw }}</div>
-                        <a href="{{ path('app_service') }}/{{ service.slug }}"
+                        <a href="/service/{{ service.slug }}"
                            class="default-button default-button_solid services-card__button">Подробнее об услуге</a>
                     </div>
                 </li>

@@ -50,6 +50,16 @@ img {
   svg {
     width: 100%;
     height: 100%;
+    path {
+      transition: fill .3s ease;
+    }
+  }
+  &.active &__icon {
+    fill: $white;
+  }
+
+  &.active &__text {
+    fill: $white;
   }
 }
 

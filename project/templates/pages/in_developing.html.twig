@@ -1,0 +1,24 @@
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}{{ service.title }} | Сити Сервис{% endblock %}
+{% block meta %}
+    <meta property="og:title" content="{{ service.title }}">
+    <meta property="og:description"
+          content="{{ service.description | striptags }}">
+{% endblock %}
+
+{% block content %}
+    {% include 'components/base/breadcrumbs.html.twig' with { breadcrumbs: [
+        {title : 'Главная', url : '/'},
+        {title :  service.title },
+    ] } %}
+    <div class="container">
+        <h1 class="title-24-53 main__title">
+            Приносим извинения за неудобства. Эта страница находится в стадии разработки и скоро будет доступна.
+        </h1>
+    </div>
+    <div class="main__image">
+        <img src="{{ asset('build/images/in-developing-image.png') }}"
+             alt="Страница в разработке">
+    </div>
+{% endblock %}

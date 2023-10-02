@@ -22,19 +22,19 @@
                         <li class="default-link footer-menu__item"><a href="{{ path('app_contact') }}" class="footer-menu__link">Контакты</a></li>
                     </ul>
                 </div>
-{#                {% if services | length %}#}
-{#                    <div class="dropdown-menu footer__menu footer-menu" data-dropdown>#}
-{#                        <div class="dropdown-menu__header footer-menu__header" data-open-dropdown>#}
-{#                            <span class="text-16 footer-menu__title">Услуги</span>#}
-{#                            <span class="dropdown-menu__btn footer-menu__btn"></span>#}
-{#                        </div>#}
-{#                        <ul class="dropdown-menu__inner footer-menu__list" style="--count: 3">#}
-{#                            {% for service in services %}#}
-{#                                <li class="default-link footer-menu__item"><a href="/service/{{ service.slug }}" class="footer-menu__link">{{ service.title }}</a></li>#}
-{#                            {% endfor %}#}
-{#                        </ul>#}
-{#                    </div>#}
-{#                {% endif %}#}
+                {% if serviceList() | length %}
+                    <div class="dropdown-menu footer__menu footer-menu" data-dropdown>
+                        <div class="dropdown-menu__header footer-menu__header" data-open-dropdown>
+                            <span class="text-16 footer-menu__title">Услуги</span>
+                            <span class="dropdown-menu__btn footer-menu__btn"></span>
+                        </div>
+                        <ul class="dropdown-menu__inner footer-menu__list" style="--count: {{ serviceList() | length }}">
+                            {% for service in serviceList() %}
+                                <li class="default-link footer-menu__item"><a href="/service/{{ service.slug }}" class="footer-menu__link">{{ service.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
                 {% if socials %}
                     <div class="dropdown-menu footer__menu footer-menu" data-dropdown>
                         <div class="dropdown-menu__header footer-menu__header" data-open-dropdown>
