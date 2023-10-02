@@ -1,11 +1,11 @@
 <header class="header">
     <div class="container header__container">
         {% if isHome %}
-            <div class="logo header__logo">
+            <div class="logo header__logo" data-logo>
                 {% include 'components/base/logo.html.twig' with { withTitle: true } %}
             </div>
         {% else %}
-            <a href="{{ path('app_home') }}" class="logo header__logo">
+            <a href="{{ path('app_home') }}" class="logo header__logo" data-logo>
                 {% include 'components/base/logo.html.twig' with { withTitle: true } %}
             </a>
         {% endif %}
@@ -55,7 +55,7 @@
                 </svg>
             </button>
         </div>
-        <div class="burger header__burger" data-open-modal="menu">
+        <div class="burger header__burger" data-burger>
             <div class="burger__body">
                 <span></span>
                 <span></span>

@@ -2,6 +2,8 @@
 @import "../../mixins/base";
 
 .header {
+  position: relative;
+  z-index: 95;
   padding: 5px 0;
   @media screen and (min-width: 1366px) {
     padding: 10px 0;
@@ -38,12 +40,13 @@
   }
 
   &__button {
-    @media screen and (min-width: 1024px) {
-      width: auto;
-    }
     svg {
       width: 19px;
       height: 25px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      width: auto;
     }
   }
 
@@ -70,6 +73,7 @@
 
   &__item_dropdown:hover &__link-icon {
     transform: rotate(180deg);
+
     svg {
       stroke: $blue;
     }
@@ -88,6 +92,7 @@
       height: 24px;
       transform-origin: center;
       transition: transform .3s ease;
+
       svg {
         fill: none;
         width: 100%;
@@ -121,9 +126,11 @@
   &__item {
     color: $blue-dark;
     white-space: nowrap;
+
     &:not(:last-child) {
       margin-bottom: 15px;
     }
+
     &:after {
       content: none;
     }

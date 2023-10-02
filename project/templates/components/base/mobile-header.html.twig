@@ -1,9 +1,9 @@
-<div class="mobile-header" data-modal="menu">
-    <div class="container mobile-header__container">
+<div class="mobile-header" data-mobile-menu>
+    <div class="mobile-header__inner">
         <nav class="mobile-header__nav">
             <div class="dropdown-menu mobile-header__menu mobile-menu" data-dropdown>
                 <div class="dropdown-menu__header mobile-menu__header" data-open-dropdown>
-                    <span class="text-16 mobile-menu__title">Информация</span>
+                    <span class="title-18 mobile-menu__title">Информация</span>
                     <span class="dropdown-menu__btn mobile-menu__btn"></span>
                 </div>
                 <ul class="dropdown-menu__inner mobile-menu__list" style="--count: 2">
@@ -14,10 +14,10 @@
             {% if serviceList() | length %}
                 <div class="dropdown-menu mobile-header__menu mobile-menu" data-dropdown>
                     <div class="dropdown-menu__header mobile-menu__header" data-open-dropdown>
-                        <span class="text-16 mobile-menu__title">Услуги</span>
+                        <span class="title-18 mobile-menu__title">Услуги</span>
                         <span class="dropdown-menu__btn mobile-menu__btn"></span>
                     </div>
-                    <ul class="dropdown-menu__inner mobile-menu__list" style="--count: 3">
+                    <ul class="dropdown-menu__inner mobile-menu__list" style="--count: {{ serviceList() | length }}">
                         {% for service in serviceList() %}
                             <li class="default-link mobile-menu__item"><a href="/service/{{ service.slug }}" class="mobile-menu__link">{{ service.title }}</a></li>
                         {% endfor %}
@@ -27,7 +27,7 @@
             {% if socials %}
                 <div class="dropdown-menu mobile-header__menu mobile-menu" data-dropdown>
                     <div class="dropdown-menu__header mobile-menu__header" data-open-dropdown>
-                        <span class="text-16 mobile-menu__title">Соцсети</span>
+                        <span class="title-18 mobile-menu__title">Соцсети</span>
                         <span class="dropdown-menu__btn mobile-menu__btn"></span>
                     </div>
                     <ul class="dropdown-menu__inner mobile-menu__list" style="--count: {{ socials | length }}">
@@ -39,7 +39,7 @@
             {% endif %}
             <address class="dropdown-menu mobile-header__menu mobile-menu" data-dropdown>
                 <div class="dropdown-menu__header mobile-menu__header" data-open-dropdown>
-                    <span class="text-16 mobile-menu__title">Контакты</span>
+                    <span class="title-18 mobile-menu__title">Контакты</span>
                     <span class="dropdown-menu__btn mobile-menu__btn"></span>
                 </div>
                 <ul class="dropdown-menu__inner mobile-menu__list" style="--count: {{ contacts.phone | length + 1 }}">
@@ -55,7 +55,7 @@
             </address>
         </nav>
 
-        <button class="default-button default-button_solid_white mobile-header__button">
+        <button class="default-button default-button_solid_white mobile-header__button" data-open-modal="feedback">
             Оставить заявку
             <svg>
                 <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#arrow-top-right-icon"></use>
