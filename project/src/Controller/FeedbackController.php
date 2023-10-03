@@ -52,7 +52,9 @@ class FeedbackController extends AbstractController
 
             $this->bus->dispatch(new SendEmail($feedBack));
 
-            return $this->json(['success' => true], 201);
+			return new Response('success', 201);
+
+//            return $this->json(['success' => true], 201);
         }
 
         return $this->render("feedback/form.html.twig", [
