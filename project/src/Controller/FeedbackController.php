@@ -51,7 +51,7 @@ class FeedbackController extends AbstractController
 			$em->persist($feedBack);
 			$em->flush();
 
-//			$this->bus->dispatch(new SendEmail($feedBack));
+			$this->bus->dispatch(new SendEmail($feedBack));
 
 			return $this->json(['success' => true], 201);
 
