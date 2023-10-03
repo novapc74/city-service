@@ -38,10 +38,11 @@
 @import "sections/reviews";
 @import "sections/partners";
 @import "sections/feedback";
+@import "sections/info";
+@import "sections/swiper-section";
 // home
 @import "sections/home/hero";
 @import "sections/home/services";
-@import "sections/home/info";
 // service
 @import "sections/service/expertise";
 @import "sections/service/cases";
@@ -49,3 +50,5 @@
 // contacts
 @import "sections/contacts/contacts";
 @import "sections/contacts/branches";
+// about
+@import "sections/about/about-info";

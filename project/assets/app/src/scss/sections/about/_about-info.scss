@@ -1,0 +1,26 @@
+@import "../../vars";
+.about-info {
+
+  &__container {
+    @media screen and (min-width: 1024px) {
+      display: grid;
+      grid-template-columns: 1fr 50%;
+      gap: 20px;
+    }
+    @media screen and (min-width: 1366px) {
+      grid-template-columns: 447px 1fr;
+      gap: 40px;
+    }
+  }
+
+  &__title {
+    color: $blue-dark;
+    margin-bottom: 20px;
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 0;
+    }
+    @media screen and (max-width: 1365px) {
+      font-size: 24px;
+    }
+  }
+}

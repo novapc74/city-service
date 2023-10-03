@@ -1,5 +1,5 @@
-@import "../../vars";
-@import "../../mixins/base";
+@import "../vars";
+@import "../mixins/base";
 .info {
   color: $blue-dark;
   &__header {

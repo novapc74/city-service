@@ -46,6 +46,6 @@
   &.active &__inner {
     opacity: 1;
     transform: translateY(0);
-    max-height: calc(var(--count) * 45px);
+    max-height: calc(var(--count) * 60px);
   }
 }

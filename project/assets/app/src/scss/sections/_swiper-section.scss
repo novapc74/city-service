@@ -1,0 +1,68 @@
+@import "../vars";
+@import "../mixins/base";
+.swiper-section {
+
+  &__header {
+    margin-bottom: 20px;
+    @media screen and (min-width: 1024px) {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 26px;
+    }
+  }
+
+  &__title {
+    color: $blue-dark;
+  }
+
+  &__controls {
+    display: none;
+    @media screen and (min-width: 1024px) {
+      display: flex;
+      gap: 20px;
+    }
+  }
+
+  &__navigation {
+    width: 100%;
+    margin-top: 20px;
+    @media screen and (min-width: 1024px) {
+      width: 667px;
+      margin: 26px auto 0;
+    }
+  }
+}
+.swiper-section-swiper {
+
+  &__image {
+    position: relative;
+    padding-top: 75%;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: $grey-light;
+    @media screen and (min-width: 768px) {
+      padding-top: 260px;
+    }
+    @media screen and (min-width: 1024px) {
+      padding-top: 350px;
+    }
+    @media screen and (min-width: 1366px) {
+      padding-top: 437px;
+    }
+    img {
+      @include absolute-100;
+    }
+  }
+
+  &__text {
+    color: $blue-dark;
+    margin-top: 20px;
+    @media screen and (max-width: 1023px) {
+      font-size: 14px;
+    }
+    @media screen and (min-width: 1366px) {
+      margin-top: 30px;
+    }
+  }
+}
