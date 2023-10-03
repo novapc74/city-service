@@ -11,7 +11,6 @@
   }
 
   &__title {
-    font-size: 24px;
     color: $blue-dark;
     margin-bottom: 20px;
     @media screen and (min-width: 768px) {
@@ -19,6 +18,9 @@
     }
     @media screen and (min-width: 1024px) {
       margin-bottom: 50px;
+    }
+    @media screen and (max-width: 1365px) {
+      font-size: 24px;
     }
     @media screen and (min-width: 1366px) {
       margin-bottom: 70px;

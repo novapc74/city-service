@@ -224,10 +224,6 @@
     @include base-transition;
   }
 
-  &:visited {
-    color: $blue;
-  }
-
   @media screen and (min-width: 1024px) {
     &:hover {
       color: $blue;

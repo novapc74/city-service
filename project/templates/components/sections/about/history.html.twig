@@ -1,0 +1,36 @@
+<section class="section section_light history">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__heading">
+                История компании
+            </h2>
+        </div>
+        <div class="swiper-section history__content history-content">
+            <div class="swiper-section__header history-content__header">
+                <h3 class="title-24-53 swiper-section__title history-content__title">2006 — 2023    </h3>
+                <div class="swiper-section__controls history-content__controls">
+                    {% include 'components/swiper-button.html.twig' %}
+                    {% include 'components/swiper-button.html.twig' with { direction: 'next' } %}
+                </div>
+            </div>
+            <div class="swiper swiper-section__swiper swiper-section-swiper history-content__swiper history-swiper">
+                <ul class="swiper-wrapper swiper-section-swiper__wrapper history-swiper__wrapper">
+                    {% for item in history %}
+                        <li class="swiper-slide swiper-section-swiper__slide history-swiper__slide">
+                            <div class="swiper-section-swiper__image">
+                                <img src="{{ item.image }}"
+                                     alt="history image">
+                            </div>
+                            <p class="swiper-section-swiper__text">{{ item.text }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="default-swiper-navigation swiper-section__navigation history-content__navigation">
+                <span class="default-swiper-navigation__fraction swiper-section__fraction swiper-section__fraction_current">01</span>
+                <div class="swiper-section__pagination history-content__pagination"></div>
+                <span class="default-swiper-navigation__fraction swiper-section__fraction swiper-section__fraction_total">03</span>
+            </div>
+        </div>
+    </div>
+</section>
