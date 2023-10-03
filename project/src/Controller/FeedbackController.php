@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Feedback;
 use App\Message\SendEmail;
-use PharIo\Version\Exception;
 use App\Form\PopupFeedbackFormType;
 use App\Form\FooterFeedbackFormType;
 use Doctrine\Persistence\ManagerRegistry;
@@ -52,7 +51,7 @@ class FeedbackController extends AbstractController
 			$em->persist($feedBack);
 			$em->flush();
 
-			$this->bus->dispatch(new SendEmail($feedBack));
+//			$this->bus->dispatch(new SendEmail($feedBack));
 
 			return $this->json(['success' => true], 201);
 
