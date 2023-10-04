@@ -1,9 +1,23 @@
 {# @var feedback \App\Entity\Feedback #}
+{% apply inline_css %}
 
-<p>Письмо для клиента</p>
+    <style>
+        {# here, define your CSS styles as usual #}
+        h3 {
+            color: darkred;
+        }
 
-<ul>
-    <li style="color: red">Имя: {{ feedback.name }}</li>
-    <li>Телефон: {{ feedback.phone }}</li>
-    <li>Сообщение: {{ feedback.comment ?? 'no comment' }}</li>
-</ul>
+        span {
+            color: red;
+        }
+    </style>
+
+    <h3>Письмо для клиента</h3>
+
+    <ul>
+        <li>Имя: {{ feedback.name }}</li>
+        <li>Телефон: {{ feedback.phone }}</li>
+        <li>Сообщение: {{ feedback.comment ?? 'no comment' }}</li>
+    </ul>
+
+{% endapply %}
