@@ -17,9 +17,9 @@ class AboutController extends AbstractController
                           CertificateRepository $certificateRepository): Response
     {
         return $this->render('pages/about.html.twig', [
-            'reviews' => $reviewRepository->findBy([], [], 6),
-            'advantages' => $advantageRepository->findBy([], [], 3),
-            'certificates' => $certificateRepository->findBy([], [], 3),
+            'reviews' => $reviewRepository->findBy([], []),
+            'advantages' => $advantageRepository->findBy([], []),
+            'certificates' => $certificateRepository->findBy([], []),
         ]);
     }
 }

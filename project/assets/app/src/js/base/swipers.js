@@ -64,4 +64,55 @@ export default function swipers() {
             })
         })
     }
+
+    if(document.querySelector('.licenses__swiper')) {
+        const currentFraction = document.querySelector('.licenses__fraction_current'),
+            totalFraction =  document.querySelector('.licenses__fraction_total')
+
+        new Swiper('.licenses__swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: false,
+            speed: 1000,
+            pagination: {
+                el: '.licenses__pagination',
+                type: 'progressbar',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 40,
+                },
+                1024: {
+                    slidesPerView: 5,
+                    spaceBetween: 20
+                }
+            },
+
+            on: {
+                realIndexChange: function (evt) {
+                    currentFraction.textContent = evt.realIndex + 1 < 10 ? `0${evt.realIndex + 1}` : evt.realIndex + 1
+                },
+                init: function (evt) {
+                    currentFraction.textContent = evt.realIndex + 1 < 10 ? `0${evt.realIndex + 1}` : evt.realIndex + 1
+                    totalFraction.textContent = evt.slides.length < 10 ? `0${evt.slides.length}` : evt.slides.length
+                },
+            }
+        })
+    }
+
+    if(document.querySelector('.partners__swiper')) {
+        new Swiper('.partners__swiper', {
+            slidesPerView: 1,
+            centeredSlides: true,
+            spaceBetween: 20,
+            loop: true,
+            speed: 1000,
+            breakpoints: {
+                768: {
+                    enabled: false
+                },
+            },
+        })
+    }
 }

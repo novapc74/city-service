@@ -29,8 +29,8 @@ export default class Popup {
     }
     #handleOpenPopup(evt) {
         evt.preventDefault()
-        this.open(evt)
         window.mobileMenu && window.mobileMenu.close()
+        this.open(evt)
     }
     #handleClosePopup(evt) {
         evt.preventDefault()

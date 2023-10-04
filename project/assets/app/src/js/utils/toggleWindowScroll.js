@@ -1,5 +1,5 @@
 import {addClass, removeClass} from "./classMethods";
 
 export default function toggleWindowScroll(state) {
-    state ? removeClass(document.body, 'no-scroll') : addClass(document.body, 'no-scroll')
+    state ? removeClass(document.documentElement, 'no-scroll') : addClass(document.documentElement, 'no-scroll')
 }
