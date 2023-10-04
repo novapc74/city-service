@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Entity\Trait;
+namespace App\Entity\Features;
 
-use App\Entity\Media;
 use TypeError;
+use App\Entity\Media;
 
 trait HasMediaTrait
 {

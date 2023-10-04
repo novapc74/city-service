@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity\Interface;
+namespace App\Entity\Features;
 
 use App\Entity\Media;
 

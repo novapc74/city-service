@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Entity\Trait\HasMediaTrait;
-use App\Repository\GalleryRepository;
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\Interface\HasMediaInterface;
+use App\Repository\GalleryRepository;
+use App\Entity\Features\HasMediaTrait;
+use App\Entity\Features\HasMediaInterface;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: GalleryRepository::class)]
