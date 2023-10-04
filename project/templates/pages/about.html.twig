@@ -70,6 +70,10 @@
         {% include 'components/sections/advantages.html.twig' with { advantages } %}
     {% endif %}
 
+    {% if certificates | length %}
+        {% include 'components/sections/about/licenses.html.twig' with { licenses: certificates } %}
+    {% endif %}
+
     {% if reviews | length %}
         {% include 'components/sections/reviews.html.twig' with { reviews } %}
     {% endif %}

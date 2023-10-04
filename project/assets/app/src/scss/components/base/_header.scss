@@ -2,9 +2,18 @@
 @import "../../mixins/base";
 
 .header {
-  position: relative;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 95;
   padding: 5px 0;
+  transform: translateY(0);
+  opacity: 1;
+  transition-property: opacity, transform, background-color;
+  background-color: $white;
+  @include base-transition;
+
   @media screen and (min-width: 1366px) {
     padding: 10px 0;
   }
@@ -53,6 +62,23 @@
   &__burger {
     @media screen and (min-width: 1024px) {
       display: none;
+    }
+  }
+
+  &.hidden {
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+  }
+  &.active {
+    background-color: transparent;
+  }
+  &.active &__logo {
+    .logo__icon {
+      fill: $white;
+    }
+    .logo__text {
+      fill: $white;
     }
   }
 }

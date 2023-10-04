@@ -1,58 +1,40 @@
 <div class="mobile-header" data-mobile-menu>
     <div class="mobile-header__inner">
         <nav class="mobile-header__nav">
-            <div class="dropdown-menu mobile-header__menu mobile-menu" data-dropdown>
-                <div class="dropdown-menu__header mobile-menu__header" data-open-dropdown>
-                    <span class="title-18 mobile-menu__title">Информация</span>
-                    <span class="dropdown-menu__btn mobile-menu__btn"></span>
-                </div>
-                <ul class="dropdown-menu__inner mobile-menu__list" style="--count: 2">
-                    <li class="default-link mobile-menu__item"><a href="{{ path('app_about') }}" class="mobile-menu__link">О нас</a></li>
-                    <li class="default-link mobile-menu__item"><a href="{{ path('app_contact') }}" class="mobile-menu__link">Контакты</a></li>
-                </ul>
-            </div>
-            {% if serviceList() | length %}
-                <div class="dropdown-menu mobile-header__menu mobile-menu" data-dropdown>
-                    <div class="dropdown-menu__header mobile-menu__header" data-open-dropdown>
-                        <span class="title-18 mobile-menu__title">Услуги</span>
-                        <span class="dropdown-menu__btn mobile-menu__btn"></span>
-                    </div>
-                    <ul class="dropdown-menu__inner mobile-menu__list" style="--count: {{ serviceList() | length }}">
-                        {% for service in serviceList() %}
-                            <li class="default-link mobile-menu__item"><a href="/service/{{ service.slug }}" class="mobile-menu__link">{{ service.title }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            {% endif %}
-            {% if socials %}
-                <div class="dropdown-menu mobile-header__menu mobile-menu" data-dropdown>
-                    <div class="dropdown-menu__header mobile-menu__header" data-open-dropdown>
-                        <span class="title-18 mobile-menu__title">Соцсети</span>
-                        <span class="dropdown-menu__btn mobile-menu__btn"></span>
-                    </div>
-                    <ul class="dropdown-menu__inner mobile-menu__list" style="--count: {{ socials | length }}">
-                        {% for social in socials %}
-                            <li class="default-link mobile-menu__item"><a href="{{ social.link }}" class="mobile-menu__link">{{ social.name }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            {% endif %}
-            <address class="dropdown-menu mobile-header__menu mobile-menu" data-dropdown>
-                <div class="dropdown-menu__header mobile-menu__header" data-open-dropdown>
-                    <span class="title-18 mobile-menu__title">Контакты</span>
-                    <span class="dropdown-menu__btn mobile-menu__btn"></span>
-                </div>
-                <ul class="dropdown-menu__inner mobile-menu__list" style="--count: {{ contacts.phone | length + 1 }}">
-                    {% if contacts.phone %}
-                        {% for phone in contacts.phone %}
-                            <li class="default-link mobile-menu__item"><a href="tel:{{ phone | filterPhoneMask }}" class="mobile-menu__link">{{ phone }}</a></li>
-                        {% endfor %}
-                    {% endif %}
-                    {% if contacts.email %}
-                        <li class="default-link mobile-menu__item"><a href="mailto:{{ contacts.email }}" class="mobile-menu__link">{{ contacts.email }}</a></li>
-                    {% endif %}
-                </ul>
-            </address>
+            <ul class="nav-header__list">
+                {% if menu %}
+                    {% for item in menu %}
+                        {% if item.subLinks is defined %}
+                            <li class="dropdown-menu mobile-header__menu mobile-menu" data-dropdown>
+                                <div class="dropdown-menu__header mobile-menu__header" data-open-dropdown>
+                                    <span class="title-18 mobile-menu__title">{{ item.name }} <span
+                                                class="title-16_italic">({{ item.subLinks | length }})</span></span>
+                                    <span class="dropdown-menu__btn mobile-menu__btn"></span>
+                                </div>
+                                <ul class="dropdown-menu__inner mobile-menu__list"
+                                    style="--count: {{ serviceList() | length }}">
+                                    {% for sublink in item.subLinks %}
+                                        <li class="default-link mobile-menu__item">
+                                            <a href="{{ sublink.link }}"
+                                               class="mobile-menu__link">{{ sublink.name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li class="mobile-header__menu mobile-menu">
+                                <a href="{{ path(item.link) }}" class="title-18 mobile-menu__title">{{ item.name }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% if contacts.phone %}
+                    <li class="mobile-header__menu mobile-menu">
+                        <a href="tel:{{ contacts.phone[0] | filterPhoneMask }}"
+                           class="title-18 mobile-menu__title">{{ contacts.phone[0] }}</a>
+                    </li>
+                {% endif %}
+            </ul>
         </nav>
 
         <button class="default-button default-button_solid_white mobile-header__button" data-open-modal="feedback">

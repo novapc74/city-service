@@ -1,0 +1,45 @@
+<section class="section section_light licenses">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__heading">
+                Лицензии и сертификаты
+            </h2>
+        </div>
+        <div class="licenses__content">
+            <h3 class="title-18-28 licenses__title">
+                Гарантия надежности и качества предоставляемых услуг
+            </h3>
+            <p class="licenses__text">
+                Доказательство профессионализма и соответствия стандартам. Мы обладаем официальными документами, подтверждающими качество наших услуг и высокие стандарты безопасности. Доверьтесь нам для надежного обслуживания ваших объектов.
+            </p>
+        </div>
+        <div class="licenses__swiper-wrapper">
+            <div class="swiper licenses__swiper licenses-swiper">
+                <ul class="swiper-wrapper licenses-swiper__wrapper">
+                    {% for license in licenses %}
+                        <li class="swiper-slide licenses-swiper__slide license">
+                            <a href="{{ license.file }}" class="license__image">
+                                <svg>
+                                    <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#pdf-icon"></use>
+                                </svg>
+                            </a>
+                            <div class="license__bottom">
+                                <a href="{{ license.file }}" class="text-16 license__link">{{ license.title }}</a>
+                                <a href="{{ license.file }}" class="license__download" download="">
+                                    <svg>
+                                        <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#download-icon"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="default-swiper-navigation licenses__navigation">
+                <span class="default-swiper-navigation__fraction licenses__fraction_current">01</span>
+                <div class="swiper-section__pagination licenses__pagination"></div>
+                <span class="default-swiper-navigation__fraction licenses__fraction_total">03</span>
+            </div>
+        </div>
+    </div>
+</section>

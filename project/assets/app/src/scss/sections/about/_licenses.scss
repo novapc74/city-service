@@ -1,0 +1,109 @@
+@import "../../vars";
+@import "../../mixins/base";
+.licenses {
+
+  &__content {
+    margin-bottom: 40px;
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 30px;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+    }
+    @media screen and (min-width: 1366px) {
+      margin-bottom: 50px;
+      grid-template-columns: 1fr 447px;
+    }
+  }
+
+  &__title {
+    color: $blue-dark;
+    margin-bottom: 20px;
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__navigation {
+    margin-top: 15px;
+    @media screen and (min-width: 1024px) {
+     display: none;
+    }
+  }
+}
+
+.license {
+  &__image {
+    height: 390px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: $grey-light;
+    svg {
+      width: 179px;
+      height: 179px;
+      fill: $blue-dark-2;
+      transition-property: fill, transform;
+      @include base-transition;
+    }
+    @media screen and (min-width: 768px) {
+      height: 400px;
+    }
+    @media screen and (min-width: 1024px) {
+      height: 230px;
+      svg {
+        width: 88px;
+        height: 88px;
+      }
+    }
+    @media screen and (min-width: 1366px) {
+      height: 300px;
+      svg {
+        width: 115px;
+        height: 115px;
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+    color: $blue-dark;
+  }
+
+  &__link {
+    transition: color .3s ease;
+  }
+
+  &__download {
+    width: 24px;
+    height: 24px;
+    svg {
+      fill: $blue-dark;
+      width: 100%;
+      height: 100%;
+      transition: fill .3s ease;
+    }
+    @media screen and (min-width: 1024px) {
+     &:hover {
+       svg {
+         fill: $blue;
+       }
+     }
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    &:hover &__image {
+      svg {
+        transform: scale(1.05);
+        fill: $blue;
+      }
+    }
+    &:hover &__link {
+      color: $blue;
+    }
+  }
+}

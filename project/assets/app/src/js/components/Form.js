@@ -27,8 +27,7 @@ export default class Form {
         if (formPopup) {
             const openFn = (evt) => {
                 if(evt && evt.target.closest('[data-service]')) {
-                    const service = evt.target.closest('[data-service]').dataset.service
-                    this.form.querySelector('textarea').value = service
+                    this.form.querySelector('textarea').value = evt.target.closest('[data-service]').dataset.service
                 }
             }
             this.formPopup = new Popup(formPopup, { openFn })

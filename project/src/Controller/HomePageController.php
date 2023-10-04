@@ -19,10 +19,10 @@ class HomePageController extends AbstractController
                           CertificateRepository $certificateRepository): Response
     {
         return $this->render('pages/home.html.twig', [
-            'branches' => $branchRepository->findBy([], [], 6),
-            'reviews' => $reviewRepository->findBy([], [], 6),
-            'advantages' => $advantageRepository->findBy([], [], 3),
-            'certificates' => $certificateRepository->findBy([], [], 3),
+            'branches' => $branchRepository->findBy([], []),
+            'reviews' => $reviewRepository->findBy([], []),
+            'advantages' => $advantageRepository->findBy([], []),
+            'certificates' => $certificateRepository->findBy([], []),
             'isHome' => true,
         ]);
     }
