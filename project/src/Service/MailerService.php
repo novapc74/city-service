@@ -20,9 +20,9 @@ class MailerService
 	public function resolveMailer(Feedback $feedback): void
 	{
 		array_map(
-        /**
-         * @throws TransportException
-         */ fn(TemplatedEmail $email) => $this->sendEmail($email),
+		/**
+		 * @throws TransportException
+		 */ fn(TemplatedEmail $email) => $this->sendEmail($email),
 			array_map(fn($type) => $this->makeEmail($feedback, $type), ['client', 'feedback'])
 		);
 	}
@@ -41,30 +41,30 @@ class MailerService
 		}
 	}
 
-	private function makeEmail(Feedback $feedback, string $type): TemplatedEmail
+	private function makeEmail(Feedback $feedback, string $recipient): TemplatedEmail
 	{
 		$email = (new TemplatedEmail())
 			->from($this->mailSender)
-			->htmlTemplate('mailer/client_email.html.twig')
+//			->htmlTemplate('mailer/client_email.html.twig')
 			->context([
 				'feedback' => $feedback
 			]);
 
-		if ($type == 'client') {
-			$email
-				->addTo($feedback->getEmail())
-				->subject('СПКК - Ваша заявка принята.')
-				->htmlTemplate('mailer/client_email.html.twig');
-		} else {
-			$email
-				->subject('СПКК - новая заявка с сайта.')
-				->htmlTemplate('mailer/feedback_email.html.twig');
+//		if ($recipient == 'client') {
+//			$email
+//				->addTo($feedback->getEmail())
+//				->subject('СПКК - Ваша заявка принята.')
+//				->htmlTemplate('mailer/client_email.html.twig');
+//		} else {
+		$email
+			->subject('Новая заявка с сайта.')
+			->htmlTemplate('mailer/feedback_email.html.twig');
 
-			array_map(
-				fn(string $recipient) => $email->addTo($recipient),
-				$this->getRecipientsEmail()
-			);
-		}
+		array_map(
+			fn(string $recipient) => $email->addTo($recipient),
+			$this->getRecipientsEmail()
+		);
+//		}
 
 		return $email;
 	}
