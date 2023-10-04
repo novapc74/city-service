@@ -23,7 +23,7 @@ class MailerService
 		/**
 		 * @throws TransportException
 		 */ fn(TemplatedEmail $email) => $this->sendEmail($email),
-			array_map(fn($type) => $this->makeEmail($feedback, $type), ['client', 'feedback'])
+			array_map(fn($type) => $this->makeEmail($feedback, $type), ['feedback'])
 		);
 	}
 
