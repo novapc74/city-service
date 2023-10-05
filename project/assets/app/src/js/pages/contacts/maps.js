@@ -5,8 +5,7 @@ export default function maps() {
     if (mapWrapper) {
         if (typeof ymaps === 'object') {
             ymaps.ready(function () {
-                // const mapWrapper = document.querySelector('.geography-section__map'),
-                //     iconPath = mapWrapper.dataset.icon;
+                const iconPath = mapWrapper.dataset.icon;
 
                 const map = new ymaps.Map("map", {
                     center: mapWrapper.dataset.coords.split(','),
@@ -21,9 +20,8 @@ export default function maps() {
                     {},
                     {
                         iconLayout: "default#image",
-                        // iconImageHref: iconPath,
-                        // iconImageOffset: [-20, -60],
-                        // iconImageSize: [38, 38]
+                        iconImageHref: iconPath,
+                        iconImageSize: [50, 50]
                     }
                 )
 

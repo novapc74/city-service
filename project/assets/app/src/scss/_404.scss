@@ -1,0 +1,29 @@
+.error {
+  &__container {
+    height: 100%;
+  }
+  &__image {
+    height: 100%;
+    img {
+      object-fit: contain;
+    }
+  }
+  &__bottom {
+    text-align: center;
+  }
+  &__title {
+    margin-bottom: 20px;
+  }
+  &__text {
+    margin-bottom: 30px;
+  }
+  &__button {
+    width: 100%;
+    padding-bottom: 40px;
+    @media screen and (min-width: 1366px) {
+      width: 231px;
+      margin: 0 auto;
+      padding-bottom: 80px;
+    }
+  }
+}

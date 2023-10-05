@@ -4,9 +4,11 @@ import forms from "./forms";
 import mobileMenu from "./mobileMenu";
 import copy from "./copy";
 import {addClass, removeClass} from "../utils/classMethods";
+import reviews from "./reviews";
 document.addEventListener('DOMContentLoaded', () => {
     mobileMenu()
     dropdowns()
+    reviews()
     swipers()
     forms()
     copy()

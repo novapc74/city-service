@@ -73,11 +73,14 @@
   padding-bottom: 20px;
   border-bottom: 1px solid $blue-dark-2;
   @media screen and (min-width: 768px) {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 354px 1fr;
+    gap: 20px;
   }
   @media screen and (min-width: 1024px) {
     padding-bottom: 40px;
+    grid-template-columns: 422px 1fr;
+    gap: 25px;
   }
 
   &__title {
@@ -97,6 +100,7 @@
 .branch-address {
 
   &__heading {
+    color: $blue-dark;
     display: block;
     margin-bottom: 5px;
     @media screen and (min-width: 1024px) {

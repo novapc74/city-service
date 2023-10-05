@@ -22,8 +22,8 @@ export default class Form {
 
     init() {
         this.getForm()
-        const formPopup = document.querySelector(`[data-modal="${this.parent.dataset.popupName}"]`)
-        const responsePopup = document.querySelector(`[data-modal="${this.parent.dataset.responsePopupName}"]`)
+        const formPopup = this.parent.dataset.popupName && document.querySelector(`[data-modal="${this.parent.dataset.popupName}"]`)
+        const responsePopup = this.parent.dataset.responsePopupName && document.querySelector(`[data-modal="${this.parent.dataset.responsePopupName}"]`)
         if (formPopup) {
             const openFn = (evt) => {
                 if(evt && evt.target.closest('[data-service]')) {
