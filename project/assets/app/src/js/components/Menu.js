@@ -17,11 +17,11 @@ export default class Menu {
         })
     }
 
-    close() {
+    close(scroll = true) {
         removeClass(this.burger, 'active')
         removeClass(this.menu, 'active')
         removeClass(this.header, 'active')
-        toggleWindowScroll(1)
+        scroll && toggleWindowScroll(1)
         this.opened = false
     }
 

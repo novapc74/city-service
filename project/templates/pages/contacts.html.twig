@@ -59,7 +59,7 @@
         </section>
     {% endif %}
     <section class="map">
-        <div class="container map__container" id="map" data-coords="{{ contact.coordinates }}"></div>
+        <div class="container map__container" id="map" data-coords="{{ contact.coordinates }}" data-icon="{{ asset('build/images/map-icon.svg') }}"></div>
     </section>
     {% if branches | length %}
         <section class="section section_light branches">

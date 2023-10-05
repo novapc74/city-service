@@ -29,6 +29,7 @@
 @import "components/popups/default-popup";
 @import "components/popups/feedback-popup";
 @import "components/popups/response-popup";
+@import "components/popups/review-popup";
 
 // подключение компонентов страниц
 // base
@@ -53,3 +54,5 @@
 // about
 @import "sections/about/about-info";
 @import "sections/about/licenses";
+// 404
+@import "404";

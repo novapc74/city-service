@@ -10,7 +10,7 @@ export default class Popup {
         this.cancelBtn = this.popup.querySelector('.default-popup__cancel-btn')
 
         this.openFn = callback && callback?.openFn
-        this.closeFn = callback && callback?.openFn
+        this.closeFn = callback && callback?.closeFn
 
         this.init()
     }
@@ -29,7 +29,7 @@ export default class Popup {
     }
     #handleOpenPopup(evt) {
         evt.preventDefault()
-        window.mobileMenu && window.mobileMenu.close()
+        window.mobileMenu && window.mobileMenu.close(false)
         this.open(evt)
     }
     #handleClosePopup(evt) {

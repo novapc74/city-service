@@ -1,12 +1,14 @@
-.partners-swiper {
-  &__wrapper {
+.partners {
+  &__list {
+    display: none;
     @media screen and (min-width: 768px) {
       display: flex;
       flex-wrap: wrap;
       gap: 30px;
     }
   }
-  &__slide {
+
+  &__item {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,6 +25,24 @@
     @media screen and (min-width: 1366px) {
       flex: 1;
       flex-basis: 30%;
+    }
+  }
+}
+
+.partners-swiper {
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+  &__slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 156px;
+    user-select: none;
+
+    img {
+      width: 200px;
+      object-fit: contain;
     }
   }
 }

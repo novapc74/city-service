@@ -22,7 +22,7 @@ export default function swipers() {
                 buttonPrev = swiper.querySelector('.swiper-section__controls .swiper-button_prev'),
                 buttonNext = swiper.querySelector('.swiper-section__controls .swiper-button_next'),
                 currentFraction = swiper.querySelector('.swiper-section__fraction_current'),
-                totalFraction =  swiper.querySelector('.swiper-section__fraction_total')
+                totalFraction = swiper.querySelector('.swiper-section__fraction_total')
 
             new Swiper(swiperContainer, {
                 slidesPerView: 1,
@@ -65,9 +65,9 @@ export default function swipers() {
         })
     }
 
-    if(document.querySelector('.licenses__swiper')) {
+    if (document.querySelector('.licenses__swiper')) {
         const currentFraction = document.querySelector('.licenses__fraction_current'),
-            totalFraction =  document.querySelector('.licenses__fraction_total')
+            totalFraction = document.querySelector('.licenses__fraction_total')
 
         new Swiper('.licenses__swiper', {
             slidesPerView: 1,
@@ -101,18 +101,13 @@ export default function swipers() {
         })
     }
 
-    if(document.querySelector('.partners__swiper')) {
+    if (document.querySelector('.partners__swiper')) {
         new Swiper('.partners__swiper', {
             slidesPerView: 1,
             centeredSlides: true,
             spaceBetween: 20,
             loop: true,
             speed: 1000,
-            breakpoints: {
-                768: {
-                    enabled: false
-                },
-            },
         })
     }
 }

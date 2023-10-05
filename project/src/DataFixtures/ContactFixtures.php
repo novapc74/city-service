@@ -12,10 +12,11 @@ class ContactFixtures extends BaseFixture implements DependentFixtureInterface
 	{
 		$this->createEntity(Contact::class, 1, function (Contact $contact) {
 			$contact
-				->setPhone(['+7 (812) 363-01-08', '+7 (812) 363-01-09'])
-				->setAddress('Санкт-Петербург пл. Карла Фаберже, 8')
-				->setInn('6546376172')
-				->setCoordinates('59.939864, 30.314565');
+				->setPhone(['+7 (812) 363-01-09'])
+                ->setEmail('info@csclean.net')
+				->setAddress('г. Санкт-Петербург, пл. Карла Фаберже, д. 8, литер Б')
+				->setInn('7842335089')
+				->setCoordinates('59.935574, 30.436045');
 		});
 
 		$manager->flush();
