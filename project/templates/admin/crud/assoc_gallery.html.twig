@@ -5,7 +5,7 @@
 {% endif %}
 
 {% for item in gallery %}
-    {% if item.image is not null %}
+    {% if item.image is not null and item.image.imageName is not null%}
         <img src="{{ vich_uploader_asset(item.image, 'imageFile') | imagine_filter_cache('admin_thumbnail') }}"
              alt="{{ item.image.mimeType }}">
     {% endif %}
