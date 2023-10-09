@@ -11,7 +11,7 @@ class BranchFixtures extends BaseFixture implements DependentFixtureInterface
 	private const BRANCH_DATA = [
 		[
 			'city' => 'Санкт-Петербург',
-			'address' => 'Санкт-Петербург, пл. Карла Фаберже, д.8, литер Б',
+			'address' => 'Санкт-Петербург, пл. Карла Фаберже, д.8, лит. Б',
 			'link' => 'https://yandex.ru/maps/-/CDUt646n',
 		],
 		[
@@ -23,12 +23,6 @@ class BranchFixtures extends BaseFixture implements DependentFixtureInterface
 			'city' => 'Великий Новгород',
 			'address' => 'Великий Новгород, пр-т Мира, д. 32, корпус 1, каб. 337',
 			'link' => 'https://yandex.ru/maps/-/CDUt68oJ',
-		],
-		[
-			'city' => 'Мурманск',
-			'address' => 'Мурманск, пр-т Кольский, д. 178, офис 1, ДБ «Жемчуг»',
-			'link' => 'https://yandex.ru/maps/-/CDUt68-V',
-
 		],
 		[
 			'city' => 'Петрозаводск',
@@ -79,7 +73,7 @@ class BranchFixtures extends BaseFixture implements DependentFixtureInterface
 
 	public function loadData(ObjectManager $manager): void
 	{
-		$this->createEntity(Branch::class, 13, function (Branch $branch, $count) {
+		$this->createEntity(Branch::class, 12, function (Branch $branch, $count) {
 			$branch
 				->setCity(self::BRANCH_DATA[$count]['city'])
 				->setAddress(self::BRANCH_DATA[$count]['address'])
