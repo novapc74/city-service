@@ -18,16 +18,16 @@
     ] } %}
     <div class="container">
         <h1 class="title-24-53 main__title main__title_short">
-            Профессиональная Уборка для Вашего Бизнеса
+            {{ service.subTitle }}
         </h1>
     </div>
     {% set image_main = service | filterServiceImage(2) %}
     <div class="main__image">
         {% if image_main %}
-            <img src="{{ vich_uploader_asset(image_main, 'imageFile') | imagine_filter_cache('middle_banner') }}"
+            <img src="{{ vich_uploader_asset(image_main, 'imageFile') | imagine_filter_cache('banner_md') }}"
                  alt="{{ service.title }}">
         {% else %}
-            <img src="{{ asset('build/images/default-service-page-image.jpg') }}"
+            <img src="{{ asset('build/images/default-service-page-image.jpg') | imagine_filter_cache('banner_md') }}"
                  alt="{{ service.title }}">
         {% endif %}
     </div>

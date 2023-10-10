@@ -8,19 +8,17 @@
                 <div class="swiper-wrapper hero-thumbs__wrapper">
                     <div class="swiper-slide hero-thumbs__slide">
                         <p>
-                            Мы лидеры в области клининга и технической эксплуатации. Надежность и качество в каждой
-                            детали -
-                            это наша философия.
+                            Мы - профессионалы в сфере клининга и технической эксплуатации зданий.
+                        </p>
+                    </div>
+                    <div class="swiper-slide hero-thumbs__slide">
+                        <p>
+                            Эксперты в клининге с 2006 года. Применяем передовые технологии для качественных услуг.
                         </p>
                     </div>
                     <div class="swiper-slide hero-thumbs__slide">
                         <p>
                             Мы создаем пространства, где чистота и порядок становятся ключевыми составляющими успеха.
-                        </p>
-                    </div>
-                    <div class="swiper-slide hero-thumbs__slide">
-                        <p>
-                            Эксперты в клининге с 2006. Применяем передовые технологии для качественных услуг
                         </p>
                     </div>
                 </div>
@@ -36,7 +34,7 @@
         <div class="swiper-wrapper hero-bg__wrapper">
             {% for i in 1..3 %}
                 <div class="swiper-slide hero-bg__slide"
-                     style="background-image: url({{ asset("build/images/hero-#{i}.png") }})"></div>
+                     style="background-image: url({{ asset("build/images/hero-#{i}.jpg") | imagine_filter_cache('banner_md') }})"></div>
             {% endfor %}
         </div>
         <div class="hero-bg__overlay"></div>

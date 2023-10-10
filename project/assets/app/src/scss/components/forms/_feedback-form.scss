@@ -40,6 +40,13 @@
 
       input, textarea {
         color: $grey-light;
+        border-color: $grey-light;
+      }
+
+      &.empty {
+        input, textarea {
+          border-color: $blue-dark-2;
+        }
       }
 
       @media screen and (min-width: 1024px) {

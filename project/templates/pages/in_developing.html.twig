@@ -18,7 +18,7 @@
         </h1>
     </div>
     <div class="main__image">
-        <img src="{{ asset('build/images/in-developing-image.png') }}"
+        <img src="{{ asset('build/images/in-developing-image.jpg') | imagine_filter_cache('banner_md') }}"
              alt="Страница в разработке">
     </div>
 {% endblock %}
