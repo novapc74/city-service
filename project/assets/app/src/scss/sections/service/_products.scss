@@ -58,6 +58,7 @@
   &__btn {
     width: 24px;
     height: 24px;
+    flex-shrink: 0;
     margin-right: 15px;
     transform-origin: center;
     transition: transform .3s ease;
@@ -71,7 +72,6 @@
 
   &__title {
     color: $blue-dark;
-    line-height: 100%;
     transition: color .3s ease;
   }
 
@@ -82,6 +82,10 @@
       width: 223px;
       margin-top: 25px;
     }
+  }
+
+  &__inner {
+    padding-left: 39px;
   }
 
   &.active &__header {
