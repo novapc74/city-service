@@ -7,6 +7,9 @@
     @media screen and (min-width: 1024px) {
       height: calc(100vh - 66px);
     }
+    @media screen and (min-width: 1366px) {
+      height: calc(100vh - 76px);
+    }
   }
   &__image {
     flex: 1;

@@ -10,7 +10,9 @@
                 Гарантия надежности и качества предоставляемых услуг
             </h3>
             <p class="licenses__text">
-                Доказательство профессионализма и соответствия стандартам. Мы обладаем официальными документами, подтверждающими качество наших услуг и высокие стандарты безопасности. Доверьтесь нам для надежного обслуживания ваших объектов.
+                Доказательство профессионализма и соответствия стандартам. Мы обладаем официальными документами,
+                подтверждающими качество наших услуг и высокие стандарты безопасности. Доверьтесь нам для надежного
+                обслуживания ваших объектов.
             </p>
         </div>
         <div class="licenses__swiper-wrapper">
@@ -18,14 +20,19 @@
                 <ul class="swiper-wrapper licenses-swiper__wrapper">
                     {% for license in licenses %}
                         <li class="swiper-slide licenses-swiper__slide license">
-                            <a href="{{ license.file }}" class="license__image">
-                                <svg>
-                                    <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#pdf-icon"></use>
-                                </svg>
+                            <a href="{% if license.file is not null %}{{ vich_uploader_asset(license.file, 'imageFile') }}{% endif %}" target="_blank" class="license__image{% if license.preview is not null %} license__image_picture{% endif %}">
+                                {% if license.preview is not null %}
+                                    <img src="{{ vich_uploader_asset(license.preview, 'imageFile') }}" alt="{{ license.title }}">
+                                {% else %}
+                                    <svg>
+                                        <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#pdf-icon"></use>
+                                    </svg>
+                                {% endif %}
+
                             </a>
                             <div class="license__bottom">
-                                <a href="{{ license.file }}" class="text-16 license__link">{{ license.title }}</a>
-                                <a href="{{ license.file }}" class="license__download" download="">
+                                <a href="{% if license.file is not null %}{{ vich_uploader_asset(license.file, 'imageFile') }}{% endif %}" target="_blank" class="text-16 license__link">{{ license.title }}</a>
+                                <a href="{% if license.file is not null %}{{ vich_uploader_asset(license.file, 'imageFile') }}{% endif %}" class="license__download" download="">
                                     <svg>
                                         <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#download-icon"></use>
                                     </svg>

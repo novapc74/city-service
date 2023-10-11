@@ -31,6 +31,12 @@
   }
 }
 
+.licenses-swiper {
+  &__wrapper {
+    padding: 5px 5px 0;
+  }
+}
+
 .license {
   &__image {
     height: 390px;
@@ -61,6 +67,15 @@
       svg {
         width: 115px;
         height: 115px;
+      }
+    }
+    &_picture {
+      overflow: hidden;
+      box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+      background-color: $white;
+      img {
+        object-fit: contain;
+        transition: transform 1s ease;
       }
     }
   }
@@ -100,6 +115,9 @@
       svg {
         transform: scale(1.05);
         fill: $blue;
+      }
+      img {
+        transform: scale(1.05);
       }
     }
     &:hover &__link {

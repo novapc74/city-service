@@ -14,6 +14,7 @@
   }
   @media screen and (min-width: 1366px) {
     padding-top: 56px;
+    height: calc(100dvh - 76px);
   }
 
   &__container {
