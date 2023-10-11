@@ -3,14 +3,14 @@
 
 .hero {
   position: relative;
-  height: calc(100vh - 54px);
+  height: calc(100dvh - 54px);
   padding-top: 30px;
   @media screen and (min-width: 768px) {
     padding-top: 20px;
   }
   @media screen and (min-width: 1024px) {
     padding-top: 30px;
-    height: calc(100vh - 66px);
+    height: calc(100dvh - 66px);
   }
   @media screen and (min-width: 1366px) {
     padding-top: 56px;
