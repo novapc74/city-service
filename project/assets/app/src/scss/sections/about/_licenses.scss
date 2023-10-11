@@ -32,9 +32,7 @@
 }
 
 .licenses-swiper {
-  &__wrapper {
     padding: 5px 5px 0;
-  }
 }
 
 .license {
@@ -82,7 +80,7 @@
 
   &__bottom {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     margin-top: 15px;
     color: $blue-dark;
@@ -95,6 +93,7 @@
   &__download {
     width: 24px;
     height: 24px;
+    flex-shrink: 0;
     svg {
       fill: $blue-dark;
       width: 100%;
