@@ -21,7 +21,7 @@
             {{ service.subTitle }}
         </h1>
     </div>
-    {% set image_main = service | filterServiceImage(2) %}
+    {% set image_main = service | filterServiceImage(1) %}
     <div class="main__image">
         {% if image_main %}
             <img src="{{ vich_uploader_asset(image_main, 'imageFile') | imagine_filter_cache('banner_md') }}"

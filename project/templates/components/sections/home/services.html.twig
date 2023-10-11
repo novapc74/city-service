@@ -11,7 +11,7 @@
                 <li class="services__card services-card">
                     <div class="services-card__image">
                         {% if image_preview is not null %}
-                            <img src="{{ vich_uploader_asset(image_preview.image, 'imageFile') | imagine_filter_cache('medium') }}"
+                            <img src="{{ vich_uploader_asset(image_preview, 'imageFile') | imagine_filter_cache('medium') }}"
                                  alt="{{ service.title }}">
                         {% else %}
                             <img src="{{ asset('build/images/default-service-image.jpg') | imagine_filter_cache('medium') }}"
