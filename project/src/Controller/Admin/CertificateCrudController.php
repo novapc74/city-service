@@ -40,6 +40,18 @@ class CertificateCrudController extends AbstractCrudController
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
             FormField::addRow(),
+	        TextField::new('preview', 'Превью')
+		        ->setTemplatePath('admin/crud/assoc_image.html.twig')
+	        ,
+	        FormField::addPanel('Превью')
+		        ->setProperty('preview')
+		        ->setTextAlign('center')
+		        ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+		        ->setFormType(MediaType::class)
+		        ->setFormTypeOptions([
+			        'mapped' => true
+		        ])
+	        ,
             TextField::new('file', 'Файл')
                 ->setTemplatePath('admin/crud/assoc_image.html.twig')
             ,
@@ -51,6 +63,7 @@ class CertificateCrudController extends AbstractCrudController
                 ->setFormTypeOptions([
                     'mapped' => true
                 ])
+	        ,
         ];
     }
 

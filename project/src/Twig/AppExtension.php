@@ -65,7 +65,7 @@ class AppExtension extends AbstractExtension
             $galleryItem = $service->getGallery()->filter(fn(Gallery $galleryItem) => $galleryItem->getSort() == $imageSort)->current();
         }
 
-        if ($galleryItem) {
+        if ($galleryItem instanceof Gallery) {
             return $galleryItem->getImage();
         }
 
