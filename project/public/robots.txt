@@ -5,3 +5,9 @@ Allow: /
 Disallow: /o-kompanii
 Disallow: /kontakty
 Disallow: /uslugi
+Disallow: /133.html
+Disallow: /uslugi/ezhednevnaya-uborka-torgovyh-czentrov-i-pavilonov
+Disallow: /uslugi/kompleksnaya-uborka-proizvodstvennyh-pomeshhenij
+Disallow: /filialy
+Disallow: /uslugi/uborka-posle-stroitelstva
+Disallow: /uslugi/uborka-prilegayushhej-territorii
