@@ -16,35 +16,36 @@ use Symfony\Component\Messenger\MessageBusInterface;
 class FeedbackController extends AbstractController
 {
 	public function __construct(private readonly ManagerRegistry     $managerRegistry,
-	                            private readonly MessageBusInterface $bus)
+	                            private readonly MessageBusInterface $bus,
+	                            private readonly Request             $request)
 	{
 	}
 
 	#[Route('/feedback/popup', name: 'app_feedback_popup', methods: ['GET', 'POST'])]
-	public function resolvePopupForm(Request $request): Response
+	public function resolvePopupForm(): Response
 	{
-		return $this->resolveForm($request, PopupFeedbackFormType::class);
+		return $this->resolveForm( PopupFeedbackFormType::class);
 	}
 
 	#[Route('/feedback/footer', name: 'app_feedback_footer', methods: ['GET', 'POST'])]
-	public function resolveFooterForm(Request $request): Response
+	public function resolveFooterForm(): Response
 	{
-		return $this->resolveForm($request, FooterFeedbackFormType::class);
+		return $this->resolveForm(FooterFeedbackFormType::class);
 	}
 
-	private function resolveForm($request, $formType): Response
+	private function resolveForm(string $formType): Response
 	{
-		if (!$request->isXmlHttpRequest()) {
-			return $this->json(['success' => false]);
+		if (!$this->request->isXmlHttpRequest()) {
+			return $this->redirectToRoute('app_home');
+//			return $this->json(['success' => false]);
 		}
 
 		$feedBack = new Feedback();
 
 		$form = $this->createForm($formType, $feedBack);
-		$form->handleRequest($request);
+		$form->handleRequest($this->request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
-
 			$feedBack = $form->getData();
 
 			$em = $this->managerRegistry->getManager();
