@@ -18,7 +18,10 @@
         </h1>
     </div>
     <div class="main__image">
-        <img src="{{ asset('build/images/in-developing-image.webp') | imagine_filter_cache('banner_md') }}"
-             alt="Страница в разработке">
+        <picture>
+            <source srcset="{{ asset('build/images/in-developing-image.webp') | imagine_filter_cache('banner_md') }}" type="image/webp">
+            <source srcset="{{ asset('build/images/in-developing-image.jpg') | imagine_filter_cache('banner_md') }}" type="image/jpeg">
+            <img src="{{ asset('build/images/in-developing-image.jpg') | imagine_filter_cache('banner_md') }}" alt="Страница в разработке">
+        </picture>
     </div>
 {% endblock %}

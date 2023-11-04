@@ -34,7 +34,7 @@
         <div class="swiper-wrapper hero-bg__wrapper">
             {% for i in 1..3 %}
                 <div class="swiper-slide hero-bg__slide"
-                     style="background-image: url({{ asset("build/images/hero-#{i}.webp") | imagine_filter_cache('banner_md') }})"></div>
+                     style="background-image: url({{ asset("build/images/hero-#{i}.jpg") | imagine_filter_cache('banner_md') }})"></div>
             {% endfor %}
         </div>
         <div class="hero-bg__overlay"></div>

@@ -18,8 +18,11 @@
                     {% for item in history %}
                         <li class="swiper-slide swiper-section-swiper__slide history-swiper__slide">
                             <div class="swiper-section-swiper__image">
-                                <img src="{{ item.image }}"
-                                     alt="history image" loading="lazy">
+                                <picture >
+                                    <source srcset="{{ item.image_webp }}" type="image/webp">
+                                    <source srcset="{{ item.image_jpg }}" type="image/jpeg">
+                                    <img src="{{ item.image_jpg }}" alt="history image" loading="lazy">
+                                </picture>
                             </div>
                             <p class="swiper-section-swiper__text">{{ item.text }}</p>
                         </li>
