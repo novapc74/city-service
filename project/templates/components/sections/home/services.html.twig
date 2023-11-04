@@ -12,10 +12,10 @@
                     <div class="services-card__image">
                         {% if image_preview is not null %}
                             <img src="{{ vich_uploader_asset(image_preview, 'imageFile') | imagine_filter_cache('medium') }}"
-                                 alt="{{ service.title }}">
+                                 alt="{{ service.title }}" loading="lazy">
                         {% else %}
-                            <img src="{{ asset('build/images/default-service-image.jpg') | imagine_filter_cache('medium') }}"
-                                 alt="{{ service.title }}">
+                            <img src="{{ asset('build/images/default-service-image.webp') | imagine_filter_cache('medium') }}"
+                                 alt="{{ service.title }}" loading="lazy">
                         {% endif %}
                     </div>
                     <div class="services-card__inner">

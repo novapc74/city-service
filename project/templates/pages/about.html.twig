@@ -30,8 +30,8 @@
     </div>
 
     <div class="main__image">
-        <img src="{{ asset('build/images/default-about-image.jpg') | imagine_filter_cache('banner_md') }}"
-             alt="О нас">
+        <img src="{{ asset('build/images/default-about-image.webp') | imagine_filter_cache('banner_md') }}"
+             alt="О нас" style="object-position: top">
     </div>
 
     <section class="section section_light about-info">
@@ -46,23 +46,23 @@
 
     {% set history = [
         {
-            image: asset('build/images/about-1.jpg') | imagine_filter_cache('medium'),
+            image: asset('build/images/about-1.webp') | imagine_filter_cache('medium'),
             text: 'В 2006 году группа предпринимателей с большим опытом в сфере обслуживания и уборки помещений решила объединить свои усилия и создать компанию, которая предложила бы высококачественные услуги клининга и технической эксплуатации.'
         },
         {
-            image: asset('build/images/about-2.jpg') | imagine_filter_cache('medium'),
+            image: asset('build/images/about-2.webp') | imagine_filter_cache('medium'),
             text: 'Компания начала активно развиваться на рынке Северо-Западного Федерального округа, предоставляя услуги крупнейшим предприятиям России. Филиалы открылись во всех крупных центрах СЗФО.'
         },
         {
-            image: asset('build/images/about-3.jpg') | imagine_filter_cache('medium'),
+            image: asset('build/images/about-3.webp') | imagine_filter_cache('medium'),
             text: 'Создав репутацию надежного партнера в области клининга, ООО “Сити Сервис” открыло направление технической эксплуатации. Мы вязли больше ответственности перед своими клиентами, расширили штат компании и вышли на новый уровень работы.'
         },
         {
-            image: asset('build/images/hero-2.jpg') | imagine_filter_cache('medium'),
+            image: asset('build/images/hero-2.webp') | imagine_filter_cache('medium'),
             text: 'Успешно преодолев кризисы в отрасли, которые затронули большинство компаний, мы не только остались на рынке, но и расширили свою географию. Наши представительства открыты от Калининграда до Омска, от Архангельска до Волгограда.'
         },
         {
-            image: asset('build/images/hero-3.jpg') | imagine_filter_cache('medium'),
+            image: asset('build/images/hero-3.webp') | imagine_filter_cache('medium'),
             text: 'Мы продолжаем развиваться и совершенствовать свои услуги. Разрабатываем новые эффективные методы и внедряем все инновационные решения.'
         }
     ] %}

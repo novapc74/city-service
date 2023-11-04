@@ -23,7 +23,7 @@
                                         <div class="swiper-section-swiper__image">
                                             {% if case.gallery | length > 0 %}
                                                 <img src="{{ vich_uploader_asset(case.gallery[0].image, 'imageFile') | imagine_filter_cache('medium') }}"
-                                                     alt="{{ case.title }}">
+                                                     alt="{{ case.title }}" loading="lazy">
                                             {% endif %}
                                         </div>
                                     </li>

@@ -13,7 +13,7 @@ function requireAll(r) {
     r.keys().forEach(r);
 }
 // Переносим всв SVG из /app/src/static/img в /public/build
-requireAll(require.context('./app/src/images', true, /\.png|jpg|gif|svg$/));
+requireAll(require.context('./app/src/images', true, /\.png|jpg|webp|gif|svg$/));
 
 
 import './app/src/js/main'

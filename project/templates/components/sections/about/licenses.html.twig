@@ -22,7 +22,7 @@
                         <li class="swiper-slide licenses-swiper__slide license">
                             <a href="{% if license.file is not null %}{{ vich_uploader_asset(license.file, 'imageFile') }}{% endif %}" target="_blank" class="license__image{% if license.preview is not null %} license__image_picture{% endif %}">
                                 {% if license.preview is not null %}
-                                    <img src="{{ vich_uploader_asset(license.preview, 'imageFile') }}" alt="{{ license.title }}">
+                                    <img src="{{ vich_uploader_asset(license.preview, 'imageFile') }}" alt="{{ license.title }}" loading="lazy">
                                 {% else %}
                                     <svg>
                                         <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#pdf-icon"></use>
