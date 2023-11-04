@@ -14,7 +14,7 @@
 
         <div class="info__image">
             <picture >
-                <source srcset="{{ asset('build/images/info-image.webp') | imagine_filter_cache('middle_banner') }}" type="image/webp">
+{#                <source srcset="{{ asset('build/images/info-image.webp') | imagine_filter_cache('middle_banner') }}" type="image/webp">#}
                 <source srcset="{{ asset('build/images/info-image.jpg') | imagine_filter_cache('middle_banner') }}" type="image/jpeg">
                 <img src="{{ asset('build/images/info-image.jpg') | imagine_filter_cache('middle_banner') }}" alt="Наши работы отличаются высоким уровнем качества" loading="lazy">
             </picture>

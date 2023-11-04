@@ -25,13 +25,13 @@
     <div class="main__image">
         {% if image_main %}
             <picture>
-                <source srcset="{{ vich_uploader_asset(image_main, 'imageFile') | imagine_filter_cache('banner_md') }}" type="image/webp">
+{#                <source srcset="{{ vich_uploader_asset(image_main, 'imageFile') | imagine_filter_cache('banner_md') }}" type="image/webp">#}
                 <source srcset="{{ vich_uploader_asset(image_main, 'imageFile') | imagine_filter_cache('banner_md') }}" type="image/jpeg">
                 <img src="{{ vich_uploader_asset(image_main, 'imageFile') | imagine_filter_cache('banner_md') }}" alt="{{ service.title }}">
             </picture>
         {% else %}
             <picture>
-                <source srcset="{{ asset('build/images/default-service-page-image.webp') | imagine_filter_cache('banner_md') }}" type="image/webp">
+{#                <source srcset="{{ asset('build/images/default-service-page-image.webp') | imagine_filter_cache('banner_md') }}" type="image/webp">#}
                 <source srcset="{{ asset('build/images/default-service-page-image.jpg') | imagine_filter_cache('banner_md') }}" type="image/jpeg">
                 <img src="{{ asset('build/images/default-service-page-image.jpg') | imagine_filter_cache('banner_md') }}" alt="{{ service.title }}">
             </picture>

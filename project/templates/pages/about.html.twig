@@ -31,7 +31,7 @@
 
     <div class="main__image main__image_about">
         <picture >
-            <source srcset="{{ asset('build/images/default-about-image.webp') | imagine_filter_cache('banner_md') }}" type="image/webp">
+{#            <source srcset="{{ asset('build/images/default-about-image.webp') | imagine_filter_cache('banner_md') }}" type="image/webp">#}
             <source srcset="{{ asset('build/images/default-about-image.jpg') | imagine_filter_cache('banner_md') }}" type="image/jpeg">
             <img src="{{ asset('build/images/default-about-image.jpg') | imagine_filter_cache('banner_md') }}" alt="О нас" loading="lazy">
         </picture>
